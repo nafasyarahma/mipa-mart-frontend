@@ -1,14 +1,17 @@
 import DashboardLayout from "../../components/Layouts/DashboardLayout";
 import SidebarNavMember from "../../components/Fragments/SidebarNavMember";
+import TableProducts from "../../components/Fragments/TableProducts";
 
-const MemberDashboard = () => {
+const ProductsManagement = () => {
   return (
     <>
       <SidebarNavMember />
-        <DashboardLayout>
+        <DashboardLayout pageTitle="Data Produk">
+          <TableProducts></TableProducts> 
         </DashboardLayout>
     </>
   );
-}
 
-export default MemberDashboard
+
+}
+export default ProductsManagement

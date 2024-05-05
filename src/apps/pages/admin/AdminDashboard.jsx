@@ -1,21 +1,14 @@
-import { useState } from "react";
 import DashboardLayout from "../../components/Layouts/DashboardLayout";
-import NavDashboard from "../../components/Fragments/NavDashboard";
-import SidebarAdmin from "../../components/Fragments/SidebarAdmin";
+import SidebarNavAdmin from "../../components/Fragments/SidebarNavAdmin";
 
-const MemberDashboard = () => {
-  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-
-  const toggleSidebar = () => {
-    setIsSidebarOpen(!isSidebarOpen);
-  };
-
+const AdminDashboard = () => {
   return (
-    <DashboardLayout>
-      <NavDashboard pageTitle="Dashboard Admin" sidebar="sidebar-admin" toggleSidebar={toggleSidebar}/>
-      <SidebarAdmin isSidebarOpen={isSidebarOpen}/>
-    </DashboardLayout>
+    <>
+      <SidebarNavAdmin />
+      <DashboardLayout>
+      </DashboardLayout>
+    </>
   );
-};
+}
 
-export default MemberDashboard;
+export default AdminDashboard
