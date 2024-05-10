@@ -1,8 +1,17 @@
-import IconButton from "../Elements/IconButton";
+import IconButton from "../../Elements/IconButton";
+import Button from "../../Elements/Button";
+import { Link } from "react-router-dom";
 
-const TableDeliveryMethods = () => {
+const TableDeliveryMethods = ({subTitle}) => {
   return (
-    <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
+    <>
+      <div className="flex justify-between items-center pb-4">
+        <h2 className="text-black font-bold text-lg">{subTitle}</h2>
+          <Link to="/member/delivery-method/add">
+            <Button type="button" label="Tambah"></Button>
+          </Link>
+      </div>
+
       <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-white">
         <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
           <tr>
@@ -26,7 +35,9 @@ const TableDeliveryMethods = () => {
             <td className="px-6 py-4 ">COD</td>
             <td className="px-6 py-4 ">COD area Unila dan Kampung Baru. Lokasi di beringin cinta atau tulis di note saat order</td>
             <td className="flex items-center px-6 py-4">
-              <IconButton color="yellow" icon="fa-solid fa-pen-to-square" />
+              <Link to="/member/delivery-method/edit">
+                <IconButton color="yellow" icon="fa-solid fa-pen-to-square" />
+              </Link>
               <IconButton color="red" icon="fa-solid fa-trash" />
             </td>
           </tr>
@@ -50,7 +61,7 @@ const TableDeliveryMethods = () => {
           </tr>
         </tbody>
       </table>
-    </div>
+    </>
   );
 };
 

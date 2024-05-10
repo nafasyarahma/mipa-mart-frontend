@@ -1,15 +1,25 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import { 
+  // common
   HomePage, 
-  LoginPage, 
+  LoginPage,
+  
+  // member
   MemberDashboard, 
-  ProductsManagement,
-  PaymentMethodManagement,
-  DeliveryMethodManagement,
+  ManagementProducts,
+  ManagementPaymentMethods,
+  ManagementDeliveryMethods,
+  AddPaymentMethod,
+  AddDeliveryMethod,
+  EditDeliveryMethod,
+  AddProduct,
+
+  // admin
   AdminDashboard,
   CategoriesManagement,
   MembersManagement,
-  CustomersManagement 
+  CustomersManagement, 
+
 } from '../pages'
 
 const Routers = () => {
@@ -18,10 +28,16 @@ const Routers = () => {
       <Routes>
         <Route path='/'         element={ <HomePage/> }/>
         <Route path='/login'    element={ <LoginPage/> }/>
+
         <Route path='/member/dashboard' element={ <MemberDashboard/>}/>
-        <Route path='/member/products'    element={ <ProductsManagement/>}/>
-        <Route path='/member/payment-methods'    element={ <PaymentMethodManagement/>}/>
-        <Route path='/member/delivery-methods'    element={ <DeliveryMethodManagement/>}/>
+        <Route path='/member/products'    element={ <ManagementProducts/>}/>
+        <Route path='/member/product/add'    element={ <AddProduct/>}/>
+        <Route path='/member/payment-methods'    element={ <ManagementPaymentMethods/>}/>
+        <Route path='/member/payment-method/add'    element={ <AddPaymentMethod/>}/>
+        <Route path='/member/delivery-methods'    element={ <ManagementDeliveryMethods/>}/>
+        <Route path='/member/delivery-method/add'    element={ <AddDeliveryMethod/>}/>
+        <Route path='/member/delivery-method/edit'    element={ <EditDeliveryMethod/>}/>
+
         <Route path='/admin/dashboard'  element={ <AdminDashboard/>}/>
         <Route path='/admin/categories'  element={ <CategoriesManagement/>}/>
         <Route path='/admin/members'  element={ <MembersManagement/>}/>

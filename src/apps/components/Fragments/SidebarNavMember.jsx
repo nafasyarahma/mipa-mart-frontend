@@ -8,7 +8,7 @@ const SidebarNavMember = () => {
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
   };
-
+  
   return (
     <>
     <NavDashboard pageTitle="Dashboard Member" sidebar="sidebar-member" toggleSidebar={toggleSidebar}/>

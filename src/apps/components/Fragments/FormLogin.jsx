@@ -8,13 +8,15 @@ const FormLogin = () => {
         name="email"
         htmlFor="email"
         type="email"
-        placeholder="  Masukkan username"
+        placeholder="Masukkan username"
+        required
       >Username</InputForm>
       <InputForm
         name="password"
         htmlFor="password"
         type="password"
-        placeholder="  Masukkan password"
+        placeholder="Masukkan password"
+        required
       >Password</InputForm>
       <div className="text-sm text-right">
         <a
@@ -24,7 +26,7 @@ const FormLogin = () => {
           Forgot password?
         </a>
       </div>
-      <Button type="submit"></Button>
+      <Button type="submit" className="w-full" label="Login"></Button>
     </form>
   );
 };
