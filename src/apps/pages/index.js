@@ -12,6 +12,7 @@ import AddPaymentMethod from "./member/AddPaymentMethod";
 import AddDeliveryMethod from "./member/AddDeliveryMethod";
 import EditDeliveryMethod from "./member/EditDeliveryMethod";
 import AddProduct from "./member/AddProduct";
+import EditProduct from "./member/EditProduct";
 
 export { 
   HomePage, 
@@ -27,5 +28,6 @@ export {
   AddPaymentMethod,
   AddDeliveryMethod,
   EditDeliveryMethod,
-  AddProduct
+  AddProduct,
+  EditProduct,
 }

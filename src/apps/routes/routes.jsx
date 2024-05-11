@@ -13,6 +13,7 @@ import {
   AddDeliveryMethod,
   EditDeliveryMethod,
   AddProduct,
+  EditProduct,
 
   // admin
   AdminDashboard,
@@ -32,6 +33,7 @@ const Routers = () => {
         <Route path='/member/dashboard' element={ <MemberDashboard/>}/>
         <Route path='/member/products'    element={ <ManagementProducts/>}/>
         <Route path='/member/product/add'    element={ <AddProduct/>}/>
+        <Route path='/member/product/edit'    element={ <EditProduct/>}/>
         <Route path='/member/payment-methods'    element={ <ManagementPaymentMethods/>}/>
         <Route path='/member/payment-method/add'    element={ <AddPaymentMethod/>}/>
         <Route path='/member/delivery-methods'    element={ <ManagementDeliveryMethods/>}/>

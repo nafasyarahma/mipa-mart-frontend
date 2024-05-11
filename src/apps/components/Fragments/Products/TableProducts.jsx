@@ -1,13 +1,25 @@
+import { useState } from "react";
 import IconButton from "../../Elements/IconButton";
 import Button from "../../Elements/Button";
 import { Link } from "react-router-dom";
+import ModalUpdateStatus from "./ModalUpdateStatus";
 
 const TableProducts = ({subTitle}) => {
+  const [isUpdateStatusModalOpen, setUpdateStatusModalOpen] = useState(false);
+
+  const handleUpdateStatusModalOpen = () => {
+    setUpdateStatusModalOpen(true);
+  };
+
+  const handleUpdateStatusModalClose = () => {
+    setUpdateStatusModalOpen(false);
+  };
+
   return (
     <>
       <div className="flex justify-between items-center pb-4">
         <h2 className="text-black font-bold text-lg">{subTitle}</h2>
-          <Link to="/member/product/add">
+          <Link to="/member/product/edit">
             <Button type="button" label="Tambah"></Button>
           </Link>
       </div>
@@ -32,12 +44,14 @@ const TableProducts = ({subTitle}) => {
             <td className="px-6 py-4">Aneka nasi bakar berbagai rasa</td>
             <td className="px-6 py-4 flex justify-between items-center gap-3">
               <span className="flex-grow">Ready</span>
-              <IconButton color="green" icon="fa-solid fa-pen" />
+              <IconButton color="green" icon="fa-solid fa-pen" onClick={handleUpdateStatusModalOpen} dataModalTarget="updateStatusModal" dataModalToggle="updateStatusModal" />
             </td>
             <td className="px-6 py-4">Makanan</td>
             <td className="flex items-center px-6 py-4">
               <IconButton color="sky" icon="fa-solid fa-circle-info" />
-              <IconButton color="yellow" icon="fa-solid fa-pen-to-square" />
+              <Link to="/member/product/edit">
+                <IconButton color="yellow" icon="fa-solid fa-pen-to-square" />
+              </Link>
               <IconButton color="red" icon="fa-solid fa-trash" />
             </td>
           </tr>
@@ -77,6 +91,7 @@ const TableProducts = ({subTitle}) => {
           </tr>
         </tbody>
       </table>
+          <ModalUpdateStatus id="updateStatusModal" isOpen={isUpdateStatusModalOpen} onClose={handleUpdateStatusModalClose} />
     </>
   );
 };

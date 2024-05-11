@@ -1,8 +1,10 @@
+// import { useState } from "react";
 import DashboardLayout from "../../components/Layouts/DashboardLayout";
 import SidebarNavMember from "../../components/Fragments/SidebarNavMember";
 import TableProducts from "../../components/Fragments/Products/TableProducts";
 
 const ManagementProducts = () => {
+
   return (
     <>
       <SidebarNavMember />
