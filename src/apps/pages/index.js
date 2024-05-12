@@ -5,14 +5,18 @@ import ManagementProducts from "./member/ManagementProducts";
 import ManagementPaymentMethods from "./member/ManagementPaymentMethods";
 import ManagementDeliveryMethods from "./member/ManagementDeliveryMethods";
 import AdminDashboard from "./admin/AdminDashboard";
-import CategoriesManagement from "./admin/CategoriesManagement";
-import MembersManagement from "./admin/MembersManagement";
-import CustomersManagement from "./admin/CustomersManagement";
+import ManagementCategories from "./admin/ManagementCategories";
+import ManagementMembers from "./admin/ManagementMembers";
+import ManagementCustomers from "./admin/ManagementCustomers";
 import AddPaymentMethod from "./member/AddPaymentMethod";
 import AddDeliveryMethod from "./member/AddDeliveryMethod";
 import EditDeliveryMethod from "./member/EditDeliveryMethod";
 import AddProduct from "./member/AddProduct";
 import EditProduct from "./member/EditProduct";
+import AddCategory from "./admin/AddCategory";
+import EditCategory from "./admin/EditCategory";
+import EditMember from "./admin/EditMember";
+import EditCustomer from "./admin/EditCustomer";
 
 export { 
   HomePage, 
@@ -22,12 +26,16 @@ export {
   ManagementProducts,
   ManagementPaymentMethods, 
   ManagementDeliveryMethods,
-  CategoriesManagement,
-  MembersManagement,
-  CustomersManagement,
+  ManagementCategories,
+  ManagementMembers,
+  ManagementCustomers,
   AddPaymentMethod,
   AddDeliveryMethod,
   EditDeliveryMethod,
   AddProduct,
   EditProduct,
+  AddCategory,
+  EditCategory,
+  EditMember,
+  EditCustomer,
 }

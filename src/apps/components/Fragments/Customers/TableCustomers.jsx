@@ -1,8 +1,13 @@
-import IconButton from "../Elements/IconButton";
+import { Link } from "react-router-dom";
+import IconButton from "../../Elements/IconButton";
 
-const TableCustomers = () => {
+
+const TableCustomers = ({subTitle}) => {
   return (
-    <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
+    <>
+      <div className="flex justify-between items-center pb-4">
+        <h2 className="text-black font-bold text-lg">{subTitle}</h2>
+      </div>
       <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-white">
         <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
           <tr>
@@ -27,7 +32,9 @@ const TableCustomers = () => {
             <td className="px-6 py-4n">0812345678</td>
             <td className="px-6 py-4n">Jl. Bumi Manti 1, Kampung Baru.</td>
             <td className="flex items-center px-6 py-4">
-              <IconButton color="yellow" icon="fa-solid fa-pen-to-square" />
+              <Link to="/admin/customer/edit">
+                <IconButton color="yellow" icon="fa-solid fa-pen-to-square" />
+              </Link>
               <IconButton color="red" icon="fa-solid fa-trash" />
             </td>
           </tr>
@@ -61,7 +68,7 @@ const TableCustomers = () => {
           </tr>          
         </tbody>
       </table>
-    </div>
+    </>
   );
 };
 

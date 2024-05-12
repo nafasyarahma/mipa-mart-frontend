@@ -17,10 +17,13 @@ import {
 
   // admin
   AdminDashboard,
-  CategoriesManagement,
-  MembersManagement,
-  CustomersManagement, 
-
+  ManagementCategories,
+  ManagementMembers,
+  ManagementCustomers, 
+  AddCategory,
+  EditCategory,
+  EditMember,
+  EditCustomer,
 } from '../pages'
 
 const Routers = () => {
@@ -41,9 +44,13 @@ const Routers = () => {
         <Route path='/member/delivery-method/edit'    element={ <EditDeliveryMethod/>}/>
 
         <Route path='/admin/dashboard'  element={ <AdminDashboard/>}/>
-        <Route path='/admin/categories'  element={ <CategoriesManagement/>}/>
-        <Route path='/admin/members'  element={ <MembersManagement/>}/>
-        <Route path='/admin/customers'  element={ <CustomersManagement/>}/>
+        <Route path='/admin/categories'  element={ <ManagementCategories/>}/>
+        <Route path='/admin/category/add'  element={ <AddCategory/>}/>
+        <Route path='/admin/category/edit'  element={ <EditCategory/>}/>
+        <Route path='/admin/members'  element={ <ManagementMembers/>}/>
+        <Route path='/admin/member/edit'  element={ <EditMember/>}/>
+        <Route path='/admin/customers'  element={ <ManagementCustomers/>}/>
+        <Route path='/admin/customer/edit'  element={ <EditCustomer/>}/>
       </Routes>
     </BrowserRouter>
   )
