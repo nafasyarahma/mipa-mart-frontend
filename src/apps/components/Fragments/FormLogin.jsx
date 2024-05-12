@@ -3,6 +3,7 @@ import Button from "../Elements/Button.jsx";
 
 const FormLogin = () => {
   return (
+    <div className="sm:max-w-sm sm:mx-auto sm:w-full">
     <form className="space-y-6" action="#" method="POST">
       <InputForm
         name="email"
@@ -28,6 +29,7 @@ const FormLogin = () => {
       </div>
       <Button type="submit" className="w-full" label="Login"></Button>
     </form>
+    </div>
   );
 };
 

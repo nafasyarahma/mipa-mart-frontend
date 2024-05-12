@@ -1,6 +1,6 @@
-const TextArea = ({ id, label, placeholder }) => {
+const TextArea = ({ id, label, placeholder, containerClassName }) => {
   return (
-    <div>
+    <div className={containerClassName}>
       <label
         htmlFor={id}
         className="block mb-2 text-sm font-semibold text-gray-900"

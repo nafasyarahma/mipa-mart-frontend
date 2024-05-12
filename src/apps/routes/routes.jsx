@@ -23,7 +23,10 @@ import {
   AddCategory,
   EditCategory,
   EditMember,
+  EditProfileMember,
   EditCustomer,
+  RegisterMemberPage,
+  RegisterCustomerPage
 } from '../pages'
 
 const Routers = () => {
@@ -32,6 +35,8 @@ const Routers = () => {
       <Routes>
         <Route path='/'         element={ <HomePage/> }/>
         <Route path='/login'    element={ <LoginPage/> }/>
+        <Route path='/member/register'    element={ <RegisterMemberPage/> }/>
+        <Route path='/customer/register'    element={ <RegisterCustomerPage/> }/>
 
         <Route path='/member/dashboard' element={ <MemberDashboard/>}/>
         <Route path='/member/products'    element={ <ManagementProducts/>}/>
@@ -42,6 +47,7 @@ const Routers = () => {
         <Route path='/member/delivery-methods'    element={ <ManagementDeliveryMethods/>}/>
         <Route path='/member/delivery-method/add'    element={ <AddDeliveryMethod/>}/>
         <Route path='/member/delivery-method/edit'    element={ <EditDeliveryMethod/>}/>
+        <Route path='/member/profil/edit'    element={ <EditProfileMember/>}/>
 
         <Route path='/admin/dashboard'  element={ <AdminDashboard/>}/>
         <Route path='/admin/categories'  element={ <ManagementCategories/>}/>

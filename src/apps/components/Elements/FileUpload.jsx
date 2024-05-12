@@ -1,6 +1,6 @@
-const FileUpload = ({id, multiple, label}) => {
+const FileUpload = ({id, multiple, label, containerClassName}) => {
   return (
-    <div>
+    <div className={containerClassName}>
       <label
         className="block mb-2 text-sm font-semibold text-gray-900"
         htmlFor={id}

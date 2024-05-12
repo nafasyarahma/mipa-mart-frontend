@@ -11,7 +11,7 @@ const SidebarNavMember = () => {
   
   return (
     <>
-    <NavDashboard pageTitle="Dashboard Member" sidebar="sidebar-member" toggleSidebar={toggleSidebar}/>
+    <NavDashboard pageTitle="Dashboard Member" sidebar="sidebar-member" toggleSidebar={toggleSidebar} link="/member/profil/edit"/>
     <aside
       id="sidebar-member"
       className={`fixed top-0 left-0 z-40 w-64 h-screen pt-20 transition-transform 
@@ -25,7 +25,7 @@ const SidebarNavMember = () => {
           <SidebarMenu link="/member/products" icon="fa-solid fa-box-open" label="Produk"/>
           <SidebarMenu link="/member/payment-methods" icon="fa-money-check-dollar" label="Metode Pembayaran"/>
           <SidebarMenu link="/member/delivery-methods" icon="fa-solid fa-truck-fast" label="Metode Pengiriman"/>
-          <SidebarMenu icon="fa-solid fa-right-from-bracket" label="Logout"/>
+          <SidebarMenu link="/login" icon="fa-solid fa-right-from-bracket" label="Logout"/>
         </ul>
       </div>
     </aside>

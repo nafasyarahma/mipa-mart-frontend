@@ -21,6 +21,12 @@ const FormEditMember = ({subTitle}) => {
           required
         >Email</InputForm>
         <InputForm
+          id="password"
+          type="password"
+          placeholder="****"
+          required
+        >Password</InputForm>
+        <InputForm
           id="name"
           type="text"
           placeholder="Nama lengkap"

@@ -11,7 +11,7 @@ const SidebarNavAdmin = () => {
 
   return (
     <>
-      <NavDashboard pageTitle="Dashboard Admin" sidebar="sidebar-admin" toggleSidebar={toggleSidebar}/>
+      <NavDashboard pageTitle="Dashboard Admin" sidebar="sidebar-admin" toggleSidebar={toggleSidebar} isAdmin/>
       
       <aside
         id="sidebar-admin"
@@ -21,11 +21,11 @@ const SidebarNavAdmin = () => {
       >
         <div className="h-full px-3 pb-4 overflow-y-auto bg-white dark:bg-gray-800">
           <ul className="space-y-2 font-medium">
-            <SidebarMenu icon="fa-solid fa-table-columns" label="Dashboard"/>
+            <SidebarMenu link="/admin/dashboard" icon="fa-solid fa-table-columns" label="Dashboard"/>
             <SidebarMenu link="/admin/categories" icon="fa-solid fa-layer-group" label="Kategori"/>
             <SidebarMenu link="/admin/members" icon="fa-solid fa-address-card" label="Member"/>
             <SidebarMenu link="/admin/customers" icon="fa-solid fa-user-tag" label="Customer"/>
-            <SidebarMenu icon="fa-solid fa-right-from-bracket" label="Logout"/>
+            <SidebarMenu link="/login" icon="fa-solid fa-right-from-bracket" label="Logout"/>
           </ul>
         </div>
       </aside>

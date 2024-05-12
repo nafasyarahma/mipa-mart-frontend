@@ -1,5 +1,6 @@
 import HomePage from "./common/HomePage";
 import LoginPage from "./common/LoginPage";
+import RegisterMemberPage from "./common/RegisterMemberPage";
 import MemberDashboard from "./member/MemberDashboard";
 import ManagementProducts from "./member/ManagementProducts";
 import ManagementPaymentMethods from "./member/ManagementPaymentMethods";
@@ -17,10 +18,13 @@ import AddCategory from "./admin/AddCategory";
 import EditCategory from "./admin/EditCategory";
 import EditMember from "./admin/EditMember";
 import EditCustomer from "./admin/EditCustomer";
+import EditProfileMember from "./member/EditProfileMember";
+import RegisterCustomerPage from "./common/RegisterCustomer";
 
 export { 
   HomePage, 
-  LoginPage, 
+  LoginPage,
+  RegisterMemberPage, 
   MemberDashboard, 
   AdminDashboard, 
   ManagementProducts,
@@ -38,4 +42,6 @@ export {
   EditCategory,
   EditMember,
   EditCustomer,
+  EditProfileMember,
+  RegisterCustomerPage
 }

@@ -1,8 +1,8 @@
 const InputForm = (props) => {
-  const { name, id, children, type, placeholder, required, disabled } = props;
+  const { name, id, children, type, placeholder, required, disabled, className } = props;
 
   return (
-    <div>
+    <div className={className}>
       <label
         htmlFor={id}
         className="block text-sm font-semibold leading-6 text-gray-900"
