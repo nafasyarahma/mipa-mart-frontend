@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 library.add(fas);
 
 const IconButton = (props) => {
-  const { icon, color, dataModalTarget, dataModalToggle, onClick } = props;
+  const { icon, bgColor, iconColor="white", size, dataModalTarget, dataModalToggle, onClick } = props;
 
   return (
     <button
@@ -12,9 +12,9 @@ const IconButton = (props) => {
       data-modal-target={dataModalTarget}
       data-modal-toggle={dataModalToggle}
       onClick={onClick}
-      className={`dark:text-white bg-${color}-500 hover:bg-${color}-600 font-medium rounded-lg text-sm p-2.5 text-center inline-flex items-center me-2`}
+      className={`text-${iconColor}-500 bg-${bgColor}-500 hover:bg-${bgColor}-600 font-medium rounded-lg text-sm p-2.5 text-center inline-flex items-center `}
     >
-      <FontAwesomeIcon icon={icon} />
+      <FontAwesomeIcon icon={icon} size={size} />
     </button>
   );
 };

@@ -1,7 +1,7 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import { 
   // common
-  HomePage, 
+  CatalogPage, 
   LoginPage,
   
   // member
@@ -26,17 +26,26 @@ import {
   EditProfileMember,
   EditCustomer,
   RegisterMemberPage,
-  RegisterCustomerPage
+  RegisterCustomerPage,
+  ChooseRole,
+  ForgotPasswordPage,
+  ResetPasswordPage,
+
+  // customer
+  CartPage
 } from '../pages'
 
 const Routers = () => {
   return(
     <BrowserRouter>
       <Routes>
-        <Route path='/'         element={ <HomePage/> }/>
+        <Route path='/'         element={ <CatalogPage/> }/>
         <Route path='/login'    element={ <LoginPage/> }/>
         <Route path='/member/register'    element={ <RegisterMemberPage/> }/>
         <Route path='/customer/register'    element={ <RegisterCustomerPage/> }/>
+        <Route path='/choose-role'    element={ <ChooseRole/> }/>
+        <Route path='/forgot-password'    element={ <ForgotPasswordPage/> }/>
+        <Route path='/reset-password'    element={ <ResetPasswordPage/> }/>
 
         <Route path='/member/dashboard' element={ <MemberDashboard/>}/>
         <Route path='/member/products'    element={ <ManagementProducts/>}/>
@@ -48,6 +57,8 @@ const Routers = () => {
         <Route path='/member/delivery-method/add'    element={ <AddDeliveryMethod/>}/>
         <Route path='/member/delivery-method/edit'    element={ <EditDeliveryMethod/>}/>
         <Route path='/member/profil/edit'    element={ <EditProfileMember/>}/>
+
+        <Route path='/customer/cart'    element={ <CartPage/>}/>
 
         <Route path='/admin/dashboard'  element={ <AdminDashboard/>}/>
         <Route path='/admin/categories'  element={ <ManagementCategories/>}/>

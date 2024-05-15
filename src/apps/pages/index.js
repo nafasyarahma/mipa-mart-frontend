@@ -1,4 +1,4 @@
-import HomePage from "./common/HomePage";
+import CatalogPage from "./common/CatalogPage";
 import LoginPage from "./common/LoginPage";
 import RegisterMemberPage from "./common/RegisterMemberPage";
 import MemberDashboard from "./member/MemberDashboard";
@@ -20,9 +20,13 @@ import EditMember from "./admin/EditMember";
 import EditCustomer from "./admin/EditCustomer";
 import EditProfileMember from "./member/EditProfileMember";
 import RegisterCustomerPage from "./common/RegisterCustomer";
+import ChooseRole from "./common/ChooseRolePage";
+import ForgotPasswordPage from "./common/ForgotPasswordPage";
+import ResetPasswordPage from "./common/ResetPasswordPage";
+import CartPage from "./common/CartPage";
 
 export { 
-  HomePage, 
+  CatalogPage, 
   LoginPage,
   RegisterMemberPage, 
   MemberDashboard, 
@@ -43,5 +47,9 @@ export {
   EditMember,
   EditCustomer,
   EditProfileMember,
-  RegisterCustomerPage
+  RegisterCustomerPage,
+  ChooseRole,
+  ForgotPasswordPage,
+  ResetPasswordPage,
+  CartPage,
 }
