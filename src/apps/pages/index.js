@@ -24,6 +24,7 @@ import ChooseRole from "./common/ChooseRolePage";
 import ForgotPasswordPage from "./common/ForgotPasswordPage";
 import ResetPasswordPage from "./common/ResetPasswordPage";
 import CartPage from "./common/CartPage";
+import DetailProduct from "./common/DetailProductPage";
 
 export { 
   CatalogPage, 
@@ -52,4 +53,5 @@ export {
   ForgotPasswordPage,
   ResetPasswordPage,
   CartPage,
+  DetailProduct
 }
