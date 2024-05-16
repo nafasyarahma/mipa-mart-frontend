@@ -34,6 +34,8 @@ import {
   // customer
   CartPage,
   DetailProduct,
+  CheckoutPage,
+  CustomerOrderPage,
 } from '../pages'
 
 const Routers = () => {
@@ -60,6 +62,8 @@ const Routers = () => {
         <Route path='/member/profil/edit'    element={ <EditProfileMember/>}/>
 
         <Route path='/customer/cart'    element={ <CartPage/>}/>
+        <Route path='/customer/checkout'    element={ <CheckoutPage/>}/>
+        <Route path='/customer/order'    element={ <CustomerOrderPage/>}/>
         <Route path='/detail'    element={ <DetailProduct/>}/>
 
         <Route path='/admin/dashboard'  element={ <AdminDashboard/>}/>

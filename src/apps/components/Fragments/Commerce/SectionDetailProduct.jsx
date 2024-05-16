@@ -1,6 +1,6 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMinus, faPlus } from "@fortawesome/free-solid-svg-icons";
-import Button from "../../components/Elements/Button";
+import Button from "../../Elements/Button";
 
 const SectionDetailProduct = () => {
   return (

@@ -1,6 +1,6 @@
 import CommerceLayout from "../../components/Layouts/CommerceLayout";
-import CartItem from "../../components/Fragments/CartItem";
-import SubTotal from "../../components/Fragments/SubTotal";
+import CartItem from "../../components/Elements/CartItem";
+import SubTotal from "../../components/Fragments/Commerce/SubTotal";
 
 CartItem;
 const CartPage = () => {

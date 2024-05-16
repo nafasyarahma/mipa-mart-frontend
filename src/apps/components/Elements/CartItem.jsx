@@ -1,4 +1,4 @@
-import IconButton from "../Elements/IconButton";
+import IconButton from "./IconButton";
 
 const CartItem = () => {
   return (

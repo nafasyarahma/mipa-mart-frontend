@@ -1,4 +1,4 @@
-import NavbarCatalog from "../Fragments/NavbarCatalog"
+import NavbarCatalog from "../Fragments/Commerce/NavbarCatalog"
 const CommerceLayout = ({children}) => {
   return (
     <div className="">

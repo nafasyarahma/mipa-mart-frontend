@@ -1,7 +1,7 @@
 import { useState } from "react";
-import SlideImage from "../../components/Fragments/SlideImage";
+import SlideImage from "../../components/Elements/SlideImage";
 import CommerceLayout from "../../components/Layouts/CommerceLayout";
-import SectionDetailProduct from "../../components/Fragments/SectionDetailProduct";
+import SectionDetailProduct from "../../components/Fragments/Commerce/SectionDetailProduct";
 
 const images = [
   "https://images.pexels.com/photos/22873741/pexels-photo-22873741/free-photo-of-close-up-of-a-cup-of-coffee.jpeg",
