@@ -1,17 +1,15 @@
-import DashboardLayout from "../../components/Layouts/DashboardLayout";
-import SidebarNavMember from "../../components/Fragments/Dashboard/SidebarNavMember";
+import DashboarMemberLayout from "../../components/Layouts/DashboardMemberLayout"
 import FormEditMember from "../../components/Fragments/Members/FormEditMember";
 
 const EditProfileMember = () => {
   return (
     <>
-      <SidebarNavMember />
-      <DashboardLayout 
+      <DashboarMemberLayout 
         pageTitle="Profil Member"
         pageDescription="Informasi profil akun Anda"
       >
         <FormEditMember subTitle="Edit Profil"/>
-      </DashboardLayout>
+      </DashboarMemberLayout>
     </>
   )
 }

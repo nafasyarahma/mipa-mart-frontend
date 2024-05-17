@@ -1,14 +1,12 @@
-import DashboardLayout from "../../components/Layouts/DashboardLayout";
-import SidebarNavMember from "../../components/Fragments/Dashboard/SidebarNavMember";
+import DashboarMemberLayout from "../../components/Layouts/DashboardMemberLayout";
 import FormAddDeliveryMethod from "../../components/Fragments/DeliveryMethods/FormAddDeliveryMethod";
 
 const AddDeliveryMethod = () => {
   return (
     <>
-      <SidebarNavMember />
-      <DashboardLayout pageTitle="Kelola Metode Pengiriman">
+      <DashboarMemberLayout pageTitle="Kelola Metode Pengiriman">
         <FormAddDeliveryMethod subTitle="Tambah Metode Pengiriman"/>
-      </DashboardLayout>
+      </DashboarMemberLayout>
     </>
   )
 }

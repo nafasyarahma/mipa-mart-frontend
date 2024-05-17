@@ -1,20 +1,17 @@
-import DashboardLayout from "../../components/Layouts/DashboardLayout";
-import SidebarNavAdmin from "../../components/Fragments/Dashboard/SidebarNavAdmin";
+import DashboardAdminLayout from "../../components/Layouts/DashboardAdminLayout";
 import TableCustomers from "../../components/Fragments/Customers/TableCustomers";
-
 
 const ManagementCustomers = () => {
   return (
     <>
-    <SidebarNavAdmin/>
-    <DashboardLayout 
-      pageTitle="Kelola Customer"
-      pageDescription="Admin dapat mengelola customer yang telah melakukan registrasi"
+      <DashboardAdminLayout
+        pageTitle="Kelola Customer"
+        pageDescription="Admin dapat mengelola customer yang telah melakukan registrasi"
       >
-      <TableCustomers subTitle="Data Customer"/>
-    </DashboardLayout>
-  </>
-  )
-}
+        <TableCustomers subTitle="Data Customer" />
+      </DashboardAdminLayout>
+    </>
+  );
+};
 
-export default ManagementCustomers
+export default ManagementCustomers;

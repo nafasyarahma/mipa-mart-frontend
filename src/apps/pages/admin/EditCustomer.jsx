@@ -1,14 +1,12 @@
-import DashboardLayout from "../../components/Layouts/DashboardLayout";
-import SidebarNavAdmin from "../../components/Fragments/Dashboard/SidebarNavAdmin";
+import DashboardAdminLayout from "../../components/Layouts/DashboardAdminLayout";
 import FormEditCustomer from "../../components/Fragments/Customers/FormEditCustomer";
 
 const EditCustomer = () => {
   return (
     <>
-      <SidebarNavAdmin />
-      <DashboardLayout pageTitle="Kelola Customer">
+      <DashboardAdminLayout pageTitle="Kelola Customer">
         <FormEditCustomer subTitle="Edit Customer"/>
-      </DashboardLayout>
+      </DashboardAdminLayout>
     </>
   )
 }

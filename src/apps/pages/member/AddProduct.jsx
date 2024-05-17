@@ -1,14 +1,12 @@
-import DashboardLayout from "../../components/Layouts/DashboardLayout";
-import SidebarNavMember from "../../components/Fragments/Dashboard/SidebarNavMember";
+import DashboarMemberLayout from "../../components/Layouts/DashboardMemberLayout"
 import FormAddProduct from "../../components/Fragments/Products/FormAddProduct";
 
 const AddProduct = () => {
   return (
     <>
-      <SidebarNavMember />
-      <DashboardLayout pageTitle="Kelola Produk">
+      <DashboarMemberLayout pageTitle="Kelola Produk">
         <FormAddProduct subTitle="Tambah Produk"/>
-      </DashboardLayout>
+      </DashboarMemberLayout>
     </>
   )
 }

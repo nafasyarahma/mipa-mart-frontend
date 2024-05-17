@@ -1,14 +1,12 @@
-import DashboardLayout from "../../components/Layouts/DashboardLayout";
-import SidebarNavMember from "../../components/Fragments/Dashboard/SidebarNavMember";
+import DashboarMemberLayout from "../../components/Layouts/DashboardMemberLayout"
 import FormEditDeliveryMethod from "../../components/Fragments/DeliveryMethods/FormEditDeliveryMethod";
 
 const EditDeliveryMethod = () => {
   return (
     <>
-      <SidebarNavMember />
-      <DashboardLayout pageTitle="Kelola Metode Pengiriman">
+      <DashboarMemberLayout pageTitle="Kelola Metode Pengiriman">
         <FormEditDeliveryMethod subTitle="Edit Metode Pengiriman"/>
-      </DashboardLayout>
+      </DashboarMemberLayout>
     </>
   )
 }

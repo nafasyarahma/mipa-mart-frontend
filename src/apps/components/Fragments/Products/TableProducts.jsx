@@ -19,7 +19,7 @@ const TableProducts = ({subTitle}) => {
     <>
       <div className="flex justify-between items-center pb-4">
         <h2 className="text-black font-bold text-lg">{subTitle}</h2>
-          <Link to="/member/product/edit">
+          <Link to="/member/product/add">
             <Button type="button" label="Tambah"></Button>
           </Link>
       </div>
