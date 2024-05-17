@@ -1,5 +1,5 @@
 import DashboardLayout from "../../components/Layouts/DashboardLayout";
-import SidebarNavMember from "../../components/Fragments/SidebarNavMember";
+import SidebarNavMember from "../../components/Fragments/Dashboard/SidebarNavMember";
 import FormEditDeliveryMethod from "../../components/Fragments/DeliveryMethods/FormEditDeliveryMethod";
 
 const EditDeliveryMethod = () => {

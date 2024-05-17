@@ -1,5 +1,5 @@
 import DashboardLayout from "../../components/Layouts/DashboardLayout";
-import SidebarNavAdmin from "../../components/Fragments/SidebarNavAdmin";
+import SidebarNavAdmin from "../../components/Fragments/Dashboard/SidebarNavAdmin";
 import FormAddCategory from "../../components/Fragments/Categories/FormAddCategory";
 
 const AddCategory = () => {

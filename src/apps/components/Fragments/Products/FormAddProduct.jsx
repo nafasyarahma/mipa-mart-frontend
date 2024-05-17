@@ -1,9 +1,9 @@
 import InputForm from "../../Elements/InputForm.jsx";
-import Button from "../../Elements/Button.jsx";
+import Button from "../../Elements/basic/Button.jsx";
 import useSelect from "../../../../hooks/userSelect.jsx";
-import RadioOption from "../../Elements/RadioOption.jsx";
-import TextArea from "../../Elements/TextArea.jsx";
-import FileUpload from "../../Elements/FileUpload.jsx";
+import RadioOption from "../../Elements/basic/RadioOption.jsx";
+import TextArea from "../../Elements/basic/TextArea.jsx";
+import FileUpload from "../../Elements/basic/FileUpload.jsx";
 
 const FormAddProduct = ({ subTitle }) => {
   const { selectedValue, handleChange } = useSelect("");

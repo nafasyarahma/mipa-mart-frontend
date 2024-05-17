@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import IconButton from "../../Elements/IconButton";
+import IconButton from "../../Elements/basic/IconButton";
 
 
 const TableMembers = ({subTitle}) => {

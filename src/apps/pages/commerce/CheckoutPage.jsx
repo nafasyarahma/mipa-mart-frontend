@@ -1,7 +1,7 @@
 import OrderSummary from "../../components/Fragments/Commerce/OrderSummary";
 import OrderDelivery from "../../components/Fragments/Commerce/OrderDelivery";
 import OrderPayment from "../../components/Fragments/Commerce/OrderPayment";
-import Button from "../../components/Elements/Button";
+import Button from "../../components/Elements/basic/Button";
 import { Link } from "react-router-dom";
 
 const CheckoutPage = () => {

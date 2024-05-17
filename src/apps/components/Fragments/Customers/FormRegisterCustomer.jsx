@@ -1,5 +1,5 @@
 import InputForm from "../../Elements/InputForm";
-import TextArea from "../../Elements/TextArea";
+import TextArea from "../../Elements/basic/TextArea";
 
 const FormRegisterCustomer = () => {
 

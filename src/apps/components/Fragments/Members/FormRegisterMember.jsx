@@ -1,7 +1,7 @@
 import InputForm from "../../Elements/InputForm";
 import useSelect from "../../../../hooks/userSelect";
-import FileUpload from "../../Elements/FileUpload";
-import TextArea from "../../Elements/TextArea";
+import FileUpload from "../../Elements/basic/FileUpload";
+import TextArea from "../../Elements/basic/TextArea";
 
 const FormRegisterMember = () => {
   const { selectedValue, handleChange } = useSelect("");

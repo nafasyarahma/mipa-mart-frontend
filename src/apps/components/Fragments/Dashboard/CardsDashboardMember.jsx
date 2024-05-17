@@ -1,4 +1,4 @@
-import CardDashboard from "../Elements/CardDashbooard"
+import CardDashboard from "../../Elements/CardDashbooard"
 
 const CardsDashboardMember = () => {
   return (

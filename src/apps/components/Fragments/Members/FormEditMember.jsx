@@ -1,6 +1,6 @@
 import InputForm from "../../Elements/InputForm.jsx";
-import Button from "../../Elements/Button.jsx";
-import TextArea from "../../Elements/TextArea.jsx";
+import Button from "../../Elements/basic/Button.jsx";
+import TextArea from "../../Elements/basic/TextArea.jsx";
 
 const FormEditMember = ({subTitle}) => {
   return (

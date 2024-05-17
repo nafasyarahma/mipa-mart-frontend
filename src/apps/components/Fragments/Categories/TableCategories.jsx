@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
-import IconButton from "../../Elements/IconButton";
-import Button from "../../Elements/Button";
+import IconButton from "../../Elements/basic/IconButton";
+import Button from "../../Elements/basic/Button";
 
 const TableCategories = ({subTitle}) => {
   return (

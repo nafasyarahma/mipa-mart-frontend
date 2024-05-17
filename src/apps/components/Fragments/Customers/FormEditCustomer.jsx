@@ -1,5 +1,5 @@
 import InputForm from "../../Elements/InputForm.jsx";
-import Button from "../../Elements/Button.jsx";
+import Button from "../../Elements/basic/Button.jsx";
 
 const FormEditCustomer = ({subTitle}) => {
   return (

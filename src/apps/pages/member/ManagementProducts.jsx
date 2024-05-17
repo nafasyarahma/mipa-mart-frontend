@@ -1,6 +1,6 @@
 // import { useState } from "react";
 import DashboardLayout from "../../components/Layouts/DashboardLayout";
-import SidebarNavMember from "../../components/Fragments/SidebarNavMember";
+import SidebarNavMember from "../../components/Fragments/Dashboard/SidebarNavMember";
 import TableProducts from "../../components/Fragments/Products/TableProducts";
 
 const ManagementProducts = () => {

@@ -1,5 +1,5 @@
 import InputForm from "../../components/Elements/InputForm";
-import Button from "../../components/Elements/Button";
+import Button from "../../components/Elements/basic/Button";
 import { Link } from "react-router-dom";
 
 const ResetPasswordPage = () => {

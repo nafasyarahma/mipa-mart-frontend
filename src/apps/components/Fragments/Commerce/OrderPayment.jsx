@@ -1,6 +1,6 @@
-import RadioOptionPayment from "../../Elements/RadioOptionPayment";
-import FileUpload from "../../Elements/FileUpload";
-import TextArea from "../../Elements/TextArea";
+import RadioOptionPayment from "../../Elements/RadioOptionPayment"
+import FileUpload from "../../Elements/basic/FileUpload"
+import TextArea from "../../Elements/basic/TextArea";
 
 const OrderPayment = () => {
   return (

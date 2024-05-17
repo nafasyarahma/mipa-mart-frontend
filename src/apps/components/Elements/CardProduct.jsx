@@ -1,4 +1,4 @@
-import Button from "./Button";
+import Button from "./basic/Button";
 const CardProduct = () => {
   return (
     <div className="bg-white rounded-lg overflow-hidden shadow-lg w-full sm:w-54 lg:w-64">

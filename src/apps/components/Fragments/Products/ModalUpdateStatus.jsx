@@ -1,5 +1,5 @@
-import RadioOption from "../../Elements/RadioOption"
-import Button from "../../Elements/Button"
+import RadioOption from "../../Elements/basic/RadioOption"
+import Button from "../../Elements/basic/Button"
 
 const ModalUpdateStatus = ({ isOpen, onClose, id }) => {
   return (

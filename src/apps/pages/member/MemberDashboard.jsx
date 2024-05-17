@@ -1,6 +1,6 @@
 import DashboardLayout from "../../components/Layouts/DashboardLayout";
-import SidebarNavMember from "../../components/Fragments/SidebarNavMember";
-import CardsDashboardMember from "../../components/Fragments/CardsDashboardMember";
+import SidebarNavMember from "../../components/Fragments/Dashboard/SidebarNavMember";
+import CardsDashboardMember from "../../components/Fragments/Dashboard/CardsDashboardMember";
 
 const MemberDashboard = () => {
   return (

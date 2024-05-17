@@ -1,5 +1,5 @@
 import DashboardLayout from "../../components/Layouts/DashboardLayout";
-import SidebarNavAdmin from "../../components/Fragments/SidebarNavAdmin";
+import SidebarNavAdmin from "../../components/Fragments/Dashboard/SidebarNavAdmin";
 import FormEditMember from "../../components/Fragments/Members/FormEditMember";
 
 const EditMember = () => {

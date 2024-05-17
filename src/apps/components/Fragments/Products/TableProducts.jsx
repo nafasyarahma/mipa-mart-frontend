@@ -1,6 +1,6 @@
 import { useState } from "react";
-import IconButton from "../../Elements/IconButton";
-import Button from "../../Elements/Button";
+import IconButton from "../../Elements/basic/IconButton";
+import Button from "../../Elements/basic/Button";
 import { Link } from "react-router-dom";
 import ModalUpdateStatus from "./ModalUpdateStatus";
 

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import SidebarMenu from "../Elements/SidebarMenu";
+import SidebarMenu from "../../Elements/SidebarMenu";
 import NavDashboard from "./NavDashboard";
 
 const SidebarNavAdmin = () => {
