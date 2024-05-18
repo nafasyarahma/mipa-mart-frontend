@@ -3,12 +3,7 @@ import SlideImage from "../../components/Elements/SlideImage";
 import CommerceLayout from "../../components/Layouts/CommerceLayout";
 import SectionDetailProduct from "../../components/Fragments/Commerce/SectionDetailProduct";
 
-const images = [
-  "https://images.pexels.com/photos/22873741/pexels-photo-22873741/free-photo-of-close-up-of-a-cup-of-coffee.jpeg",
-  "https://images.pexels.com/photos/16135377/pexels-photo-16135377/free-photo-of-close-up-of-yellow-flower.jpeg",
-];
-
-const DetailProduct = () => {
+const DetailProduct = ({images}) => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const previousImage = () => {

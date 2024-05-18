@@ -26,7 +26,8 @@ import ResetPasswordPage from "./common/ResetPasswordPage";
 import CartPage from "./commerce/CartPage";
 import DetailProduct from "./commerce/DetailProductPage";
 import CheckoutPage from "./commerce/CheckoutPage";
-import CustomerOrderPage from "./customer/CustomerOrderPage";
+import OrderPageCustomer from "./commerce/OrderPageCustomer";
+import OrderDetailCustomer from "./commerce/OrderDetailCustomer";
 
 export { 
   CatalogPage, 
@@ -57,5 +58,6 @@ export {
   CartPage,
   DetailProduct,
   CheckoutPage,
-  CustomerOrderPage,
+  OrderPageCustomer,
+  OrderDetailCustomer,
 }

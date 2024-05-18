@@ -1,6 +1,6 @@
 import RadioOptionDelivery from "../../Elements/RadioOptionDelivery";
 
-const OrderDelivery = () => {
+const OrderDeliveries = () => {
   return (
     <div>
       <p className="mt-8 text-lg font-medium">Metode Pengiriman</p>
@@ -14,4 +14,4 @@ const OrderDelivery = () => {
   );
 };
 
-export default OrderDelivery;
+export default OrderDeliveries;
