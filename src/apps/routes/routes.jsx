@@ -29,8 +29,10 @@ import {
   EditCustomer,
   RegisterMemberPage,
   RegisterCustomerPage,
-  ChooseRole,
-  ForgotPasswordPage,
+  ChooseRoleRegister,
+  ChooseRoleForgotPassword,
+  ForgotPasswordMember,
+  ForgotPasswordCustomer,
   ResetPasswordPage,
 
   // customer
@@ -50,8 +52,10 @@ const Routers = () => {
         <Route path="/login" element={<LoginPage />} />
         <Route path="/member/register" element={<RegisterMemberPage />} />
         <Route path="/customer/register" element={<RegisterCustomerPage />} />
-        <Route path="/choose-role" element={<ChooseRole />} />
-        <Route path="/forgot-password" element={<ForgotPasswordPage />} />
+        <Route path="/register/choose-role" element={<ChooseRoleRegister />} />
+        <Route path="/forgot-password/choose-role" element={<ChooseRoleForgotPassword />} />
+        <Route path="/member/forgot-password" element={<ForgotPasswordMember />} />
+        <Route path="/customer/forgot-password" element={<ForgotPasswordCustomer />} />
         <Route path="/reset-password" element={<ResetPasswordPage />} />
 
         <Route path="/member/dashboard" element={<MemberDashboard />} />

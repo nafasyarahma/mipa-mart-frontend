@@ -2,6 +2,7 @@ import InputForm from "../../Elements/InputForm";
 import useSelect from "../../../../hooks/useSelect";
 import FileUpload from "../../Elements/basic/FileUpload";
 import TextArea from "../../Elements/basic/TextArea";
+import Button from "../../Elements/basic/Button";
 
 const FormRegisterMember = () => {
   const { selectedValue, handleChange } = useSelect("");
@@ -106,6 +107,7 @@ const FormRegisterMember = () => {
             containerClassName="sm:col-span-6"
           />
         </div>
+        <Button label="Daftar" className="w-full mt-6"></Button>
       </form>
     </div>
   );

@@ -1,11 +1,11 @@
 import { Link } from "react-router-dom";
-const SectionChooseRole = ({ memberLink, customerLink }) => {
+const SectionChooseRole = ({ memberLink, customerLink, subTitle }) => {
   return (
     <>
       <div className="text-center mb-10">
         <h1 className="font-bold text-2xl text-gray-700 mb-4">Pilih Role</h1>
         <p className="text-gray-500 text-sm">
-          Anda ingin mendaftar sebagai apa?
+          {subTitle}
         </p>
       </div>
       <div>

@@ -1,5 +1,5 @@
 import InputForm from "../../Elements/InputForm";
-import TextArea from "../../Elements/basic/TextArea";
+import Button from "../../Elements/basic/Button";
 
 const FormRegisterCustomer = () => {
   return (
@@ -60,13 +60,8 @@ const FormRegisterCustomer = () => {
           >
             Alamat
           </InputForm>
-          <TextArea
-            id="bio"
-            label="Bio"
-            placeholder="Jelaskan tentang informasi usaha Anda seperti produk yang ditawarkan sosial media dll..."
-            containerClassName="sm:col-span-6"
-          />
         </div>
+        <Button label="Daftar" className="w-full mt-6"></Button>
       </form>
     </div>
   );

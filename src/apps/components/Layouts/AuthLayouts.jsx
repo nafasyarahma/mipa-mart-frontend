@@ -19,7 +19,7 @@ const AuthLayout = (props) => {
 
           {type === "login" && (
             <Link
-              to="/choose-role"
+              to="/register/choose-role"
               className="font-semibold leading-6 text-indigo-600 hover:text-indigo-500"
             >
               Register

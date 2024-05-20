@@ -20,8 +20,8 @@ const FormLogin = () => {
       >Password</InputForm>
       <div className="text-sm text-right">
         <Link
-          to="/choose-role"
-          className="font-semibold text-indigo-600 hover:text-indigo-500"
+          to="/forgot-password/choose-role"
+          className="font-semibold text-sm text-indigo-600 hover:text-indigo-500"
         >
           Forgot password?
         </Link>

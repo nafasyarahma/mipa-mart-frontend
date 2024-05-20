@@ -22,8 +22,10 @@ import EditMember from "./admin/EditMember";
 import EditCustomer from "./admin/EditCustomer";
 import EditProfileMember from "./member/EditProfileMember";
 import RegisterCustomerPage from "./common/RegisterCustomer";
-import ChooseRole from "./common/ChooseRolePage";
-import ForgotPasswordPage from "./common/ForgotPasswordPage";
+import ChooseRoleRegister from "./common/ChooseRoleRegister";
+import ChooseRoleForgotPassword from "./common/ChooseRoleForgotPassword";
+import ForgotPasswordMember from "./common/ForgotPasswordMember";
+import ForgotPasswordCustomer from "./common/ForgotPasswordCustomer";
 import ResetPasswordPage from "./common/ResetPasswordPage";
 import CartPage from "./commerce/CartPage";
 import DetailProduct from "./commerce/DetailProductPage";
@@ -57,8 +59,10 @@ export {
   EditCustomer,
   EditProfileMember,
   RegisterCustomerPage,
-  ChooseRole,
-  ForgotPasswordPage,
+  ChooseRoleRegister,
+  ChooseRoleForgotPassword,
+  ForgotPasswordMember,
+  ForgotPasswordCustomer,
   ResetPasswordPage,
   CartPage,
   DetailProduct,
