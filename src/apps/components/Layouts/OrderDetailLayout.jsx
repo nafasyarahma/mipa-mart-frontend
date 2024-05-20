@@ -3,12 +3,13 @@ import OrderDetailPayment from "../Fragments/Commerce/OrderDetailPayment";
 import OrderDetailDelivery from "../Fragments/Commerce/OrderDetailDelivery";
 import OrderDetailNote from "../Fragments/Commerce/OrderDetailNote";
 import SellerInfo from "../Fragments/Commerce/SellerInfo";
+import CustomerInfo from "../Fragments/Commerce/CustomerInfo";
 
-const OrderDetailLayout = () => {
+const OrderDetailLayout = ({ type, title }) => {
   return (
     <>
       <h1 className="mb-4 text-gray-700 text-2xl text-center lg:text-start font-bold">
-        Pesanan Saya
+        {title}
       </h1>
       <h1 className="text-gray-600 font-semobild mb-2">
         ID: #7103171038{" "}
@@ -30,7 +31,8 @@ const OrderDetailLayout = () => {
         {/* <!-- Sub total --> */}
         <div className="flex flex-col gap-6 w-1/3">
           <OrderDetailNote></OrderDetailNote>
-          <SellerInfo></SellerInfo>
+          {type === "member" && <CustomerInfo></CustomerInfo>}
+          {type === "customer" && <SellerInfo></SellerInfo>}
         </div>
       </div>
     </>

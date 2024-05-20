@@ -4,7 +4,7 @@ import CommerceLayout from "../../components/Layouts/CommerceLayout";
 const OrderDetailCustomer = () => {
   return (
     <CommerceLayout>
-      <OrderDetailLayout></OrderDetailLayout>
+      <OrderDetailLayout title="Pesanan Saya" type="customer"></OrderDetailLayout>
     </CommerceLayout>
   )
 }

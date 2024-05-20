@@ -21,7 +21,7 @@ const SidebarNavMember = () => {
       <div className="h-full px-3 pb-4 overflow-y-auto bg-white dark:bg-gray-800">
         <ul className="space-y-2 font-medium">
           <SidebarMenu link="/member/dashboard" icon="fa-solid fa-table-columns" label="Dashboard"/>
-          <SidebarMenu icon="fa-solid fa-cart-arrow-down" label="Pesanan"/>
+          <SidebarMenu link="/member/orders" icon="fa-solid fa-cart-arrow-down" label="Pesanan"/>
           <SidebarMenu link="/member/products" icon="fa-solid fa-box-open" label="Produk"/>
           <SidebarMenu link="/member/payment-methods" icon="fa-money-check-dollar" label="Metode Pembayaran"/>
           <SidebarMenu link="/member/delivery-methods" icon="fa-solid fa-truck-fast" label="Metode Pengiriman"/>

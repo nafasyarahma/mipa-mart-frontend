@@ -5,6 +5,7 @@ import MemberDashboard from "./member/MemberDashboard";
 import ManagementProducts from "./member/ManagementProducts";
 import ManagementPaymentMethods from "./member/ManagementPaymentMethods";
 import ManagementDeliveryMethods from "./member/ManagementDeliveryMethods";
+import ManagementOrders from "./member/ManagementOrders";
 import AdminDashboard from "./admin/AdminDashboard";
 import ManagementCategories from "./admin/ManagementCategories";
 import ManagementMembers from "./admin/ManagementMembers";
@@ -14,6 +15,7 @@ import AddDeliveryMethod from "./member/AddDeliveryMethod";
 import EditDeliveryMethod from "./member/EditDeliveryMethod";
 import AddProduct from "./member/AddProduct";
 import EditProduct from "./member/EditProduct";
+import OrderDetailMember from "./member/OrderDetailMember";
 import AddCategory from "./admin/AddCategory";
 import EditCategory from "./admin/EditCategory";
 import EditMember from "./admin/EditMember";
@@ -28,6 +30,7 @@ import DetailProduct from "./commerce/DetailProductPage";
 import CheckoutPage from "./commerce/CheckoutPage";
 import OrderPageCustomer from "./commerce/OrderPageCustomer";
 import OrderDetailCustomer from "./commerce/OrderDetailCustomer";
+import EditProfileCustomer from "./customer/EditProfileCustomer";
 
 export { 
   CatalogPage, 
@@ -38,6 +41,7 @@ export {
   ManagementProducts,
   ManagementPaymentMethods, 
   ManagementDeliveryMethods,
+  ManagementOrders,
   ManagementCategories,
   ManagementMembers,
   ManagementCustomers,
@@ -46,6 +50,7 @@ export {
   EditDeliveryMethod,
   AddProduct,
   EditProduct,
+  OrderDetailMember,
   AddCategory,
   EditCategory,
   EditMember,
@@ -60,4 +65,5 @@ export {
   CheckoutPage,
   OrderPageCustomer,
   OrderDetailCustomer,
+  EditProfileCustomer,
 }

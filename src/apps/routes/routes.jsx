@@ -9,11 +9,13 @@ import {
   ManagementProducts,
   ManagementPaymentMethods,
   ManagementDeliveryMethods,
+  ManagementOrders,
   AddPaymentMethod,
   AddDeliveryMethod,
   EditDeliveryMethod,
   AddProduct,
   EditProduct,
+  OrderDetailMember,
 
   // admin
   AdminDashboard,
@@ -37,6 +39,7 @@ import {
   CheckoutPage,
   OrderPageCustomer,
   OrderDetailCustomer,
+  EditProfileCustomer
 } from '../pages'
 
 const Routers = () => {
@@ -60,6 +63,8 @@ const Routers = () => {
         <Route path='/member/delivery-methods'    element={ <ManagementDeliveryMethods/>}/>
         <Route path='/member/delivery-method/add'    element={ <AddDeliveryMethod/>}/>
         <Route path='/member/delivery-method/edit'    element={ <EditDeliveryMethod/>}/>
+        <Route path='/member/orders'    element={ <ManagementOrders/>}/>
+        <Route path='/member/order/detail'    element={ <OrderDetailMember/>}/>
         <Route path='/member/profil/edit'    element={ <EditProfileMember/>}/>
 
         <Route path='/customer/cart'    element={ <CartPage/>}/>
@@ -67,6 +72,7 @@ const Routers = () => {
         <Route path='/customer/order'    element={ <OrderPageCustomer/>}/>
         <Route path='/customer/order/detail'    element={ <OrderDetailCustomer/>}/>
         <Route path='/detail'    element={ <DetailProduct/>}/>
+        <Route path='/customer/profile/edit'    element={ <EditProfileCustomer/>}/>
 
         <Route path='/admin/dashboard'  element={ <AdminDashboard/>}/>
         <Route path='/admin/categories'  element={ <ManagementCategories/>}/>

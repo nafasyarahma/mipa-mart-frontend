@@ -4,8 +4,12 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 library.add(fas);
 
 import { Link } from "react-router-dom";
+import useDropdown from "../../../../hooks/useDropdown";
+import DropdownMenuCustomer from "../Customers/DropdownMenuCustomer";
 
 const NavbarCatalog = () => {
+  const { dropdownVisible, toggleDropdown } = useDropdown();
+
   return (
     <nav className="fixed top-0 z-50 flex justify-between items-center w-full bg-white text-gray-700 border border-b-gray-500">
       <div className="px-5 xl:px-12 py-6 flex justify-between w-full items-center">
@@ -32,13 +36,20 @@ const NavbarCatalog = () => {
         </ul>
         {/* Header Icons */}
         <div className="hidden xl:flex items-center space-x-5">
-          <Link className="flex items-center hover:text-purple-500" to="/customer/cart">
+          <Link
+            className="flex items-center hover:text-purple-500"
+            to="/customer/cart"
+          >
             <FontAwesomeIcon icon="fa-solid fa-shopping-cart" size="xl" />
           </Link>
-          {/* Sign In / Register */}
-          <Link className="flex items-center hover:text-purple-500" to="/signin">
+          {/* Customer Menu */}
+          <button
+            onClick={toggleDropdown}
+            className="flex items-center hover:text-purple-500"
+          >
             <FontAwesomeIcon icon="fa-solid fa-user-circle" size="xl" />
-          </Link>
+          </button>
+          { dropdownVisible && <DropdownMenuCustomer/> }
         </div>
       </div>
       {/* Responsive navbar */}
