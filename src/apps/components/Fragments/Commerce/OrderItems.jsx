@@ -12,4 +12,4 @@ const OrderItems = () => {
   );
 };
 
-export default OrderItems
+export default OrderItems;

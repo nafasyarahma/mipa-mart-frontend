@@ -1,7 +1,7 @@
 import InputForm from "../../Elements/InputForm.jsx";
 import Button from "../../Elements/basic/Button.jsx";
 
-const FormAddCategory = ({subTitle}) => {
+const FormAddCategory = ({ subTitle }) => {
   return (
     <>
       <h2 className="text-black font-bold text-lg">{subTitle}</h2>
@@ -12,20 +12,23 @@ const FormAddCategory = ({subTitle}) => {
           type="text"
           placeholder="Contoh: Makanan, Minuman, Aksesoris, dsb."
           required
-        >Nama Kategori</InputForm>
+        >
+          Nama Kategori
+        </InputForm>
         <InputForm
           id="category_desc"
           htmlFor="category_desc"
           type="text"
           placeholder="Deskripsi kategori"
-        >Deskripsi</InputForm>
+        >
+          Deskripsi
+        </InputForm>
       </form>
       <div className="flex justify-end">
         <Button type="submit" className="mt-10 w-32" label="Simpan"></Button>
       </div>
-  </>
-  )
-  
-}
+    </>
+  );
+};
 
-export default FormAddCategory
+export default FormAddCategory;

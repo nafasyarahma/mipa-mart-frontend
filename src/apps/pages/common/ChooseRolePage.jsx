@@ -1,5 +1,5 @@
-import SectionChooseRole from "../../components/Fragments/SectionChooseRole";
-import TextInfoRole from "../../components/Fragments/TextInfoRole";
+import SectionChooseRole from "../../components/Fragments/Common/SectionChooseRole";
+import TextInfoRole from "../../components/Fragments/Common/TextInfoRole";
 
 const ChooseRole = () => {
   return (

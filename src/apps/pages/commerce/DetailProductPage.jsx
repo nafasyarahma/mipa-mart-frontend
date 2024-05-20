@@ -3,7 +3,7 @@ import SlideImage from "../../components/Elements/SlideImage";
 import CommerceLayout from "../../components/Layouts/CommerceLayout";
 import SectionDetailProduct from "../../components/Fragments/Commerce/SectionDetailProduct";
 
-const DetailProduct = ({images}) => {
+const DetailProduct = ({ images }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const previousImage = () => {

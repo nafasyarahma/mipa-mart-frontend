@@ -1,5 +1,5 @@
-import RadioOptionPayment from "../../Elements/RadioOptionPayment"
-import FileUpload from "../../Elements/basic/FileUpload"
+import RadioOptionPayment from "../../Elements/RadioOptionPayment";
+import FileUpload from "../../Elements/basic/FileUpload";
 import TextArea from "../../Elements/basic/TextArea";
 
 const OrderPayments = () => {
@@ -31,4 +31,4 @@ const OrderPayments = () => {
   );
 };
 
-export default OrderPayments
+export default OrderPayments;

@@ -1,11 +1,11 @@
-import { BrowserRouter, Route, Routes } from 'react-router-dom'
-import { 
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import {
   // common
-  CatalogPage, 
+  CatalogPage,
   LoginPage,
-  
+
   // member
-  MemberDashboard, 
+  MemberDashboard,
   ManagementProducts,
   ManagementPaymentMethods,
   ManagementDeliveryMethods,
@@ -21,7 +21,7 @@ import {
   AdminDashboard,
   ManagementCategories,
   ManagementMembers,
-  ManagementCustomers, 
+  ManagementCustomers,
   AddCategory,
   EditCategory,
   EditMember,
@@ -39,52 +39,73 @@ import {
   CheckoutPage,
   OrderPageCustomer,
   OrderDetailCustomer,
-  EditProfileCustomer
-} from '../pages'
+  EditProfileCustomer,
+} from "../pages";
 
 const Routers = () => {
-  return(
+  return (
     <BrowserRouter>
       <Routes>
-        <Route path='/'         element={ <CatalogPage/> }/>
-        <Route path='/login'    element={ <LoginPage/> }/>
-        <Route path='/member/register'    element={ <RegisterMemberPage/> }/>
-        <Route path='/customer/register'    element={ <RegisterCustomerPage/> }/>
-        <Route path='/choose-role'    element={ <ChooseRole/> }/>
-        <Route path='/forgot-password'    element={ <ForgotPasswordPage/> }/>
-        <Route path='/reset-password'    element={ <ResetPasswordPage/> }/>
+        <Route path="/" element={<CatalogPage />} />
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/member/register" element={<RegisterMemberPage />} />
+        <Route path="/customer/register" element={<RegisterCustomerPage />} />
+        <Route path="/choose-role" element={<ChooseRole />} />
+        <Route path="/forgot-password" element={<ForgotPasswordPage />} />
+        <Route path="/reset-password" element={<ResetPasswordPage />} />
 
-        <Route path='/member/dashboard' element={ <MemberDashboard/>}/>
-        <Route path='/member/products'    element={ <ManagementProducts/>}/>
-        <Route path='/member/product/add'    element={ <AddProduct/>}/>
-        <Route path='/member/product/edit'    element={ <EditProduct/>}/>
-        <Route path='/member/payment-methods'    element={ <ManagementPaymentMethods/>}/>
-        <Route path='/member/payment-method/add'    element={ <AddPaymentMethod/>}/>
-        <Route path='/member/delivery-methods'    element={ <ManagementDeliveryMethods/>}/>
-        <Route path='/member/delivery-method/add'    element={ <AddDeliveryMethod/>}/>
-        <Route path='/member/delivery-method/edit'    element={ <EditDeliveryMethod/>}/>
-        <Route path='/member/orders'    element={ <ManagementOrders/>}/>
-        <Route path='/member/order/detail'    element={ <OrderDetailMember/>}/>
-        <Route path='/member/profil/edit'    element={ <EditProfileMember/>}/>
+        <Route path="/member/dashboard" element={<MemberDashboard />} />
+        <Route path="/member/products" element={<ManagementProducts />} />
+        <Route path="/member/product/add" element={<AddProduct />} />
+        <Route path="/member/product/edit" element={<EditProduct />} />
+        <Route
+          path="/member/payment-methods"
+          element={<ManagementPaymentMethods />}
+        />
+        <Route
+          path="/member/payment-method/add"
+          element={<AddPaymentMethod />}
+        />
+        <Route
+          path="/member/delivery-methods"
+          element={<ManagementDeliveryMethods />}
+        />
+        <Route
+          path="/member/delivery-method/add"
+          element={<AddDeliveryMethod />}
+        />
+        <Route
+          path="/member/delivery-method/edit"
+          element={<EditDeliveryMethod />}
+        />
+        <Route path="/member/orders" element={<ManagementOrders />} />
+        <Route path="/member/order/detail" element={<OrderDetailMember />} />
+        <Route path="/member/profil/edit" element={<EditProfileMember />} />
 
-        <Route path='/customer/cart'    element={ <CartPage/>}/>
-        <Route path='/customer/checkout'    element={ <CheckoutPage/>}/>
-        <Route path='/customer/order'    element={ <OrderPageCustomer/>}/>
-        <Route path='/customer/order/detail'    element={ <OrderDetailCustomer/>}/>
-        <Route path='/detail'    element={ <DetailProduct/>}/>
-        <Route path='/customer/profile/edit'    element={ <EditProfileCustomer/>}/>
+        <Route path="/customer/cart" element={<CartPage />} />
+        <Route path="/customer/checkout" element={<CheckoutPage />} />
+        <Route path="/customer/order" element={<OrderPageCustomer />} />
+        <Route
+          path="/customer/order/detail"
+          element={<OrderDetailCustomer />}
+        />
+        <Route path="/detail" element={<DetailProduct />} />
+        <Route
+          path="/customer/profile/edit"
+          element={<EditProfileCustomer />}
+        />
 
-        <Route path='/admin/dashboard'  element={ <AdminDashboard/>}/>
-        <Route path='/admin/categories'  element={ <ManagementCategories/>}/>
-        <Route path='/admin/category/add'  element={ <AddCategory/>}/>
-        <Route path='/admin/category/edit'  element={ <EditCategory/>}/>
-        <Route path='/admin/members'  element={ <ManagementMembers/>}/>
-        <Route path='/admin/member/edit'  element={ <EditMember/>}/>
-        <Route path='/admin/customers'  element={ <ManagementCustomers/>}/>
-        <Route path='/admin/customer/edit'  element={ <EditCustomer/>}/>
+        <Route path="/admin/dashboard" element={<AdminDashboard />} />
+        <Route path="/admin/categories" element={<ManagementCategories />} />
+        <Route path="/admin/category/add" element={<AddCategory />} />
+        <Route path="/admin/category/edit" element={<EditCategory />} />
+        <Route path="/admin/members" element={<ManagementMembers />} />
+        <Route path="/admin/member/edit" element={<EditMember />} />
+        <Route path="/admin/customers" element={<ManagementCustomers />} />
+        <Route path="/admin/customer/edit" element={<EditCustomer />} />
       </Routes>
     </BrowserRouter>
-  )
-}
+  );
+};
 
-export default Routers
+export default Routers;

@@ -20,11 +20,11 @@ const CardProduct = () => {
         </p>
         <div className="flex items-center justify-between">
           <span className="font-bold text-lg">Rp35.000</span>
-          <Button label="+ Keranjang"/>
+          <Button label="+ Keranjang" />
         </div>
       </div>
     </div>
   );
 };
 
-export default CardProduct
+export default CardProduct;

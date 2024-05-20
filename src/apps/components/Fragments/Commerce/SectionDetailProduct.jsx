@@ -55,8 +55,8 @@ const SectionDetailProduct = () => {
       </div>
 
       <div className="flex flex-col items-center gap-5 my-16 sm:flex-row lg:mb-0">
-        <Button type="submit" className="w-full" label="Tambah ke keranjang"/>
-        <Button type="submit" className="w-full" label="Hubungi Penjual"/>
+        <Button type="submit" className="w-full" label="Tambah ke keranjang" />
+        <Button type="submit" className="w-full" label="Hubungi Penjual" />
       </div>
     </>
   );

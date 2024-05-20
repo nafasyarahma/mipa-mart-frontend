@@ -2,7 +2,6 @@ import InputForm from "../../Elements/InputForm";
 import TextArea from "../../Elements/basic/TextArea";
 
 const FormRegisterCustomer = () => {
-
   return (
     <div className="mx-auto max-w-xl">
       <form action="#">

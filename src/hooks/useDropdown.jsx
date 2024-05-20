@@ -5,7 +5,6 @@ const useDropdown = () => {
 
   const toggleDropdown = () => {
     setDropdownVisible(!dropdownVisible)
-    console.log(!dropdownVisible)
   }
 
   return { dropdownVisible, toggleDropdown}

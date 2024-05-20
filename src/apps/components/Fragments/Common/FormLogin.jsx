@@ -1,5 +1,5 @@
-import InputForm from "../Elements/InputForm.jsx";
-import Button from "../Elements/basic/Button.jsx";
+import InputForm from "../../Elements/InputForm.jsx";
+import Button from "../../Elements/basic/Button.jsx";
 import { Link } from "react-router-dom";
 
 const FormLogin = () => {

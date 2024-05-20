@@ -49,7 +49,7 @@ const NavbarCatalog = () => {
           >
             <FontAwesomeIcon icon="fa-solid fa-user-circle" size="xl" />
           </button>
-          { dropdownVisible && <DropdownMenuCustomer/> }
+          {dropdownVisible && <DropdownMenuCustomer />}
         </div>
       </div>
       {/* Responsive navbar */}

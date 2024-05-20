@@ -24,4 +24,4 @@ const DropdownMenuCustomer = () => {
   );
 };
 
-export default DropdownMenuCustomer
+export default DropdownMenuCustomer;

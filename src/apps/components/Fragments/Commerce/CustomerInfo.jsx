@@ -24,4 +24,4 @@ const CustomerInfo = () => {
   );
 };
 
-export default CustomerInfo
+export default CustomerInfo;

@@ -1,4 +1,4 @@
-import IconButton from "../Elements/basic/IconButton"
+import IconButton from "../Elements/basic/IconButton";
 
 const CartItem = () => {
   return (
@@ -17,7 +17,9 @@ const CartItem = () => {
             <p className="mt-1 text-sm text-gray-600">Rp35.000</p>
           </div>
           <div className="flex items-center">
-            <p className="text-sm font-semibold text-gray-600 mr-2">Jumlah: 1</p>
+            <p className="text-sm font-semibold text-gray-600 mr-2">
+              Jumlah: 1
+            </p>
             <IconButton icon="fa-solid fa-pen" iconColor="purple"></IconButton>
           </div>
         </div>
@@ -27,7 +29,11 @@ const CartItem = () => {
             <p className="mt-2 font-bold text-gray-900 text-right">Rp35.000</p>
           </div>
           <div className="flex justify-end">
-            <IconButton icon="fa-solid fa-trash" iconColor="red" size="lg" ></IconButton>
+            <IconButton
+              icon="fa-solid fa-trash"
+              iconColor="red"
+              size="lg"
+            ></IconButton>
           </div>
         </div>
       </div>

@@ -1,8 +1,8 @@
-import IconButton from "../../Elements/basic/IconButton"
+import IconButton from "../../Elements/basic/IconButton";
 import Button from "../../Elements/basic/Button";
 import { Link } from "react-router-dom";
 
-const TablePaymentMethods = ({subTitle}) => {
+const TablePaymentMethods = ({ subTitle }) => {
   return (
     <>
       <div className="flex justify-between items-center pb-4">
@@ -11,15 +11,25 @@ const TablePaymentMethods = ({subTitle}) => {
           <Button type="button" label="Tambah"></Button>
         </Link>
       </div>
-      
+
       <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-white">
         <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
           <tr>
-            <th scope="col" className="px-6 py-3">No</th>
-            <th scope="col" className="px-6 py-3">Provider/Bank</th>
-            <th scope="col" className="px-6 py-3">Nomor Akun/Rekening</th>
-            <th scope="col" className="px-6 py-3">Atas Nama</th>
-            <th scope="col" className="px-6 py-3">Aksi</th>
+            <th scope="col" className="px-6 py-3">
+              No
+            </th>
+            <th scope="col" className="px-6 py-3">
+              Provider/Bank
+            </th>
+            <th scope="col" className="px-6 py-3">
+              Nomor Akun/Rekening
+            </th>
+            <th scope="col" className="px-6 py-3">
+              Atas Nama
+            </th>
+            <th scope="col" className="px-6 py-3">
+              Aksi
+            </th>
           </tr>
         </thead>
         <tbody>

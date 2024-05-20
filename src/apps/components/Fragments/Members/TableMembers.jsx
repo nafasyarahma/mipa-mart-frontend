@@ -1,8 +1,7 @@
 import { Link } from "react-router-dom";
 import IconButton from "../../Elements/basic/IconButton";
 
-
-const TableMembers = ({subTitle}) => {
+const TableMembers = ({ subTitle }) => {
   return (
     <>
       <div className="flex justify-between items-center pb-4">
@@ -11,20 +10,42 @@ const TableMembers = ({subTitle}) => {
       <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-white">
         <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
           <tr>
-            <th scope="col" className="px-6 py-3">No</th>
-            <th scope="col" className="px-6 py-3">Username</th>
-            <th scope="col" className="px-6 py-3">Email</th>
-            <th scope="col" className="px-6 py-3">Email Terverifikasi</th>
-            <th scope="col" className="px-6 py-3">Nama</th>
-            <th scope="col" className="px-6 py-3">Status</th>
-            <th scope="col" className="px-6 py-3">NPM</th>
-            <th scope="col" className="px-6 py-3">Jurusan</th>
-            <th scope="col" className="px-6 py-3">Bukti KTM</th>
-            <th scope="col" className="px-6 py-3">No WhatsApp</th>
-            <th scope="col" className="px-6 py-3">Aksi</th>
+            <th scope="col" className="px-6 py-3">
+              No
+            </th>
+            <th scope="col" className="px-6 py-3">
+              Username
+            </th>
+            <th scope="col" className="px-6 py-3">
+              Email
+            </th>
+            <th scope="col" className="px-6 py-3">
+              Email Terverifikasi
+            </th>
+            <th scope="col" className="px-6 py-3">
+              Nama
+            </th>
+            <th scope="col" className="px-6 py-3">
+              Status
+            </th>
+            <th scope="col" className="px-6 py-3">
+              NPM
+            </th>
+            <th scope="col" className="px-6 py-3">
+              Jurusan
+            </th>
+            <th scope="col" className="px-6 py-3">
+              Bukti KTM
+            </th>
+            <th scope="col" className="px-6 py-3">
+              No WhatsApp
+            </th>
+            <th scope="col" className="px-6 py-3">
+              Aksi
+            </th>
           </tr>
         </thead>
-        
+
         <tbody>
           <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
             <td className="px-6 py-4">1</td>
@@ -90,8 +111,6 @@ const TableMembers = ({subTitle}) => {
               <IconButton color="red" icon="fa-solid fa-trash" />
             </td>
           </tr>
-
-          
         </tbody>
       </table>
     </>
