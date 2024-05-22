@@ -42,6 +42,10 @@ import {
   OrderPageCustomer,
   OrderDetailCustomer,
   EditProfileCustomer,
+
+  // Common
+  ForbiddenPage,
+  NotFoundPage,
 } from "../pages";
 
 const Routers = () => {
@@ -50,6 +54,9 @@ const Routers = () => {
       <Routes>
         <Route path="/" element={<CatalogPage />} />
         <Route path="/login" element={<LoginPage />} />
+        <Route path="/forbidden" element={<ForbiddenPage />} />
+        <Route path="/not-found" element={<NotFoundPage />} />
+
         <Route path="/member/register" element={<RegisterMemberPage />} />
         <Route path="/customer/register" element={<RegisterCustomerPage />} />
         <Route path="/register/choose-role" element={<ChooseRoleRegister />} />

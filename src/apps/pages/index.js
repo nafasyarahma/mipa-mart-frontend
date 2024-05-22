@@ -34,6 +34,9 @@ import OrderPageCustomer from "./commerce/OrderPageCustomer";
 import OrderDetailCustomer from "./commerce/OrderDetailCustomer";
 import EditProfileCustomer from "./customer/EditProfileCustomer";
 
+import ForbiddenPage from "./error/UnauthorizedPage";
+import NotFoundPage from "./error/NotFoundPage";
+
 export { 
   CatalogPage, 
   LoginPage,
@@ -70,4 +73,7 @@ export {
   OrderPageCustomer,
   OrderDetailCustomer,
   EditProfileCustomer,
+
+  ForbiddenPage,
+  NotFoundPage
 }
