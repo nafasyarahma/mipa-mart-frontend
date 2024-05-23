@@ -5,6 +5,8 @@ const InputForm = (props) => {
     children,
     type,
     placeholder,
+    value,
+    onChange,
     required,
     disabled,
     className,
@@ -23,10 +25,12 @@ const InputForm = (props) => {
         id={id}
         name={name}
         type={type}
+        placeholder={placeholder}
+        value={value}
+        onChange={onChange}
         required={required}
         disabled={disabled}
         className="block w-full rounded-md mt-2 border-0 py-1.5 px-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-1 focus:ring-inset focus:ring-indigo-500 sm:text-sm sm:leading-6"
-        placeholder={placeholder}
       />
     </div>
   );

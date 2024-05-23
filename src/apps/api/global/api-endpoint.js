@@ -8,7 +8,7 @@ const API_ENDPOINT = {
 
   // Categories
   ADMIN_CATEGORIES: `${BASE_URL}/admin/categories`,
-  ADMIN_CATEGORIES_BY_ID: (id) => `${BASE_URL}/admin/categories/${id}`,
+  ADMIN_CATEGORY_BY_ID: (id) => `${BASE_URL}/admin/categories/${id}`,
 
   // Members
   MEMBER_REGISTER: `${BASE_URL}/member/register`,

@@ -1,9 +1,24 @@
 import Routers from "./routes/routes";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/ReactToastify.css";
 
 const App = () => {
   return (
-    <Routers></Routers>
-  )
-}
+    <div>
+      <Routers></Routers>
+      <ToastContainer
+        position="top-right"
+        autoClose={3000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
+    </div>
+  );
+};
 
 export default App;
