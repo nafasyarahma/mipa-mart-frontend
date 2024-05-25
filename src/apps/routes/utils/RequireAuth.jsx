@@ -4,10 +4,10 @@ const RequireAuth = ({ redirectPath }) => {
   const isAuthenticated = localStorage.getItem('accessToken');
 
   if (!isAuthenticated) {
-    return <Navigate to={redirectPath} />
+    return <Navigate to={redirectPath}/>
   }
 
-  return (<Outlet />)
+  return <Outlet/>
 }
 
 export default RequireAuth

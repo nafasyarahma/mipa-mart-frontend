@@ -17,8 +17,13 @@ class DeliveryMethodSourceAPI {
     return response.data.data;
   }
 
-  static async putDeliveryMethodById(id) {
-    const response = await authenticatedApi.put(MEMBER_DELIVERY_METHOD_BY_ID(id));
+  static async getDeliveryMethodById(id) {
+    const response = await authenticatedApi.get(MEMBER_DELIVERY_METHOD_BY_ID(id));
+    return response.data.data;
+  }
+
+  static async putDeliveryMethodById(id, data) {
+    const response = await authenticatedApi.put(MEMBER_DELIVERY_METHOD_BY_ID(id), data);
     return response.data.message;
   }
 

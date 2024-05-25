@@ -1,8 +1,38 @@
+import { useEffect, useState } from "react";
 import IconButton from "../../Elements/basic/IconButton";
 import Button from "../../Elements/basic/Button";
 import { Link } from "react-router-dom";
+import DeliveryMethodSourceAPI from "../../../api/resources/sourceDeliveryMethod";
+import ToastNotification from "../../assets/helpers/ToastNotification";
 
 const TableDeliveryMethods = ({ subTitle }) => {
+  const [deliveryMethods, setdeliveryMethods] = useState([]);
+
+  useEffect(() => {
+    const fetchDeliveryMethods = async () => {
+      try {
+        const data = await DeliveryMethodSourceAPI.getMemberDeliveryMethods();
+        setdeliveryMethods(data.deliveryMethods);
+      } catch (error) {
+        console.error(error);
+        ToastNotification.toastError(error.response.data.message);
+      }
+    };
+    fetchDeliveryMethods();
+  }, []);
+
+  const handleDelete = async(id) => {
+    try {
+      const response = await DeliveryMethodSourceAPI.deleteDeliveryMethodById(id);
+      const currectData = deliveryMethods.filter((method) => method.id !== id);
+      setdeliveryMethods(currectData);
+      ToastNotification.toastSuccess(response);
+    } catch (error) {
+      console.error(error)
+      ToastNotification.toastError(error.response.data.message)
+    }
+  }
+
   return (
     <>
       <div className="flex justify-between items-center pb-4">
@@ -29,44 +59,39 @@ const TableDeliveryMethods = ({ subTitle }) => {
             </th>
           </tr>
         </thead>
+
         <tbody>
-          <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-            <td className="px-6 py-4">1</td>
-            <td className="px-6 py-4 ">COD</td>
-            <td className="px-6 py-4 ">
-              COD area Unila dan Kampung Baru. Lokasi di beringin cinta atau
-              tulis di note saat order
-            </td>
-            <td className="flex items-center px-6 py-4">
-              <Link to="/member/delivery-method/edit">
-                <IconButton color="yellow" icon="fa-solid fa-pen-to-square" />
-              </Link>
-              <IconButton color="red" icon="fa-solid fa-trash" />
-            </td>
-          </tr>
-          <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-            <td className="px-6 py-4">2</td>
-            <td className="px-6 py-4 ">Delivery</td>
-            <td className="px-6 py-4 ">
-              Delivery wilayah Unila dan Kampung Baru khusus weekend. Tuliskan
-              alamat di note order
-            </td>
-            <td className="flex items-center px-6 py-4">
-              <IconButton color="yellow" icon="fa-solid fa-pen-to-square" />
-              <IconButton color="red" icon="fa-solid fa-trash" />
-            </td>
-          </tr>
-          <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-            <td className="px-6 py-4">3</td>
-            <td className="px-6 py-4 ">Pick Up</td>
-            <td className="px-6 py-4 ">
-              Ambil sendiri di Kos Asmara Cinta, Kampung Baru
-            </td>
-            <td className="flex items-center px-6 py-4">
-              <IconButton color="yellow" icon="fa-solid fa-pen-to-square" />
-              <IconButton color="red" icon="fa-solid fa-trash" />
-            </td>
-          </tr>
+          {deliveryMethods.length > 0 ? (
+            deliveryMethods.map((method, index) => (
+              <tr
+                key={method.id}
+                className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600"
+              >
+                <td className="px-6 py-4">{index + 1}</td>
+                <td className="px-6 py-4 ">{method.method}</td>
+                <td className="px-6 py-4 ">{method.description}</td>
+                <td className="flex items-center px-6 py-4">
+                  <Link to={`/member/delivery-method/${method.id}/edit`}>
+                    <IconButton
+                      color="yellow"
+                      icon="fa-solid fa-pen-to-square"
+                    />
+                  </Link>
+                  <IconButton 
+                    color="red" 
+                    icon="fa-solid fa-trash"
+                    onClick={() => handleDelete(method.id)} 
+                  />
+                </td>
+              </tr>
+            ))
+          ) : (
+            <tr>
+              <td colSpan="5" className="px-6 py-4 text-center text-black">
+                Belum ada metode pengiriman yang ditambahkan
+              </td>
+            </tr>
+          )}
         </tbody>
       </table>
     </>

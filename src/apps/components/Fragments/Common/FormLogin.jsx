@@ -16,7 +16,6 @@ const FormLogin = ({ onLoginSuccess }) => {
     try {
       const data = { username, password };
       const response = await AuthSourceAPI.login(data);
-      console.log(response)
       const { accessToken, refreshToken } = response;
       
       localStorage.setItem('accessToken', accessToken);

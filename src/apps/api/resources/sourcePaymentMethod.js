@@ -3,11 +3,12 @@ import authenticatedApi from "../packages/interceptors";
 
 const {
   MEMBER_PAYMENT_METHODS,
-  MEMBER_PAYMENT_METHODS_BY_ID,
+  MEMBER_PAYMENT_METHOD_BY_ID,
 } = API_ENDPOINT;
 
 class PaymentMethodSourceAPI {
   static async postPaymentMethod(data) {
+    console.log(data)
     const response = await authenticatedApi.post(MEMBER_PAYMENT_METHODS, data);
     return response.data.message;
   }
@@ -18,12 +19,12 @@ class PaymentMethodSourceAPI {
   }
 
   static async putPaymentMethodById(id) {
-    const response = await authenticatedApi.put(MEMBER_PAYMENT_METHODS_BY_ID(id));
+    const response = await authenticatedApi.put(MEMBER_PAYMENT_METHOD_BY_ID(id));
     return response.data.message;
   }
 
   static async deletePaymentMethodById(id) {
-    const response = await authenticatedApi.delete(MEMBER_PAYMENT_METHODS_BY_ID(id));
+    const response = await authenticatedApi.delete(MEMBER_PAYMENT_METHOD_BY_ID(id));
     return response.data.message;
   }
 }

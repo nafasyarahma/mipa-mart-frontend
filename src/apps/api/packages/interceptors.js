@@ -32,7 +32,7 @@ authenticatedApi.interceptors.response.use(
 
       try {
         const response = await axios.put(AUTHENTICATIONS, {
-          refreshToken: localStorage.getItem.apply('refreshToken')
+          refreshToken: localStorage.getItem('refreshToken')
         });
 
         const newAccessToken = response.data.data.accessToken;
