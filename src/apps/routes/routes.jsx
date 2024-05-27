@@ -105,7 +105,7 @@ const Routers = () => {
 
           <Route path="/member/products" element={<ManagementProducts />} />
           <Route path="/member/product/add" element={<AddProduct />} />
-          <Route path="/member/product/edit" element={<EditProduct />} />
+          <Route path="/member/product/:id/edit" element={<EditProduct />} />
 
           <Route
             path="/member/payment-method/add"

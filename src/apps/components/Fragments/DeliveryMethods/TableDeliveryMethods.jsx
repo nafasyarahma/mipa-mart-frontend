@@ -11,8 +11,8 @@ const TableDeliveryMethods = ({ subTitle }) => {
   useEffect(() => {
     const fetchDeliveryMethods = async () => {
       try {
-        const data = await DeliveryMethodSourceAPI.getMemberDeliveryMethods();
-        setdeliveryMethods(data.deliveryMethods);
+        const response = await DeliveryMethodSourceAPI.getMemberDeliveryMethods();
+        setdeliveryMethods(response.deliveryMethods);
       } catch (error) {
         console.error(error);
         ToastNotification.toastError(error.response.data.message);

@@ -1,7 +1,9 @@
 import API_ENDPOINT from "../global/api-endpoint";
 import authenticatedApi from "../packages/interceptors";
+import axios from "axios";
 
 const {
+  CATEGORIES,
   ADMIN_CATEGORIES,
   ADMIN_CATEGORY_BY_ID,
 } = API_ENDPOINT
@@ -13,7 +15,7 @@ class CategorySourceAPI {
   }
 
   static async getAllCategories() {
-    const response = await authenticatedApi.get(ADMIN_CATEGORIES);
+    const response = await axios.get(CATEGORIES);
     return response.data.data;
   }
 

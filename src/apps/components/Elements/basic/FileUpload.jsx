@@ -1,4 +1,4 @@
-const FileUpload = ({id, multiple, label, containerClassName}) => {
+const FileUpload = ({id, onChange, multiple, required, label, containerClassName}) => {
   return (
     <div className={containerClassName}>
       <label
@@ -13,6 +13,8 @@ const FileUpload = ({id, multiple, label, containerClassName}) => {
         id={id}
         type="file"
         multiple={multiple}
+        onChange={onChange}
+        required={required}
       />
       <p
         className="mt-1 text-xs text-gray-500"

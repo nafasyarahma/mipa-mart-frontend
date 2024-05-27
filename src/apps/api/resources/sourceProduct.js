@@ -23,7 +23,7 @@ class ProductSourceAPI {
 
   // member
   static async postProduct(data) {
-    const response = await authenticatedApi.post(PRODUCTS, data)
+    const response = await authenticatedApi.post(MEMBER_PRODUCTS, data)
     return response.data.message;
   }
 
@@ -32,8 +32,8 @@ class ProductSourceAPI {
     return response.data.data;
   }
 
-  static async putProductById(id) {
-    const response = await authenticatedApi.put(MEMBER_PRODUCT_BY_ID(id))
+  static async putProductById(id, data) {
+    const response = await authenticatedApi.put(MEMBER_PRODUCT_BY_ID(id), data)
     return response.data.message;
   }
 

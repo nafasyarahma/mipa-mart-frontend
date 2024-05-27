@@ -7,6 +7,7 @@ const API_ENDPOINT = {
   AUTHENTICATIONS: `${BASE_URL}/authentications`,
 
   // Categories
+  CATEGORIES: `${BASE_URL}/categories`,
   ADMIN_CATEGORIES: `${BASE_URL}/admin/categories`,
   ADMIN_CATEGORY_BY_ID: (id) => `${BASE_URL}/admin/categories/${id}`,
 
