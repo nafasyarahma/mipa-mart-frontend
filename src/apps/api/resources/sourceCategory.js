@@ -4,6 +4,7 @@ import axios from "axios";
 
 const {
   CATEGORIES,
+  CATEGORY_BY_ID,
   ADMIN_CATEGORIES,
   ADMIN_CATEGORY_BY_ID,
 } = API_ENDPOINT
@@ -19,8 +20,13 @@ class CategorySourceAPI {
     return response.data.data;
   }
 
-  static async putCategoryById(id) {
-    const response = await authenticatedApi.put(ADMIN_CATEGORY_BY_ID(id));
+  static async getCategoryById(id) {
+    const response = await axios.get(CATEGORY_BY_ID(id));
+    return response.data.data;
+  }
+
+  static async putCategoryById(id, data) {
+    const response = await authenticatedApi.put(ADMIN_CATEGORY_BY_ID(id), data);
     return response.data.message;
   }
 

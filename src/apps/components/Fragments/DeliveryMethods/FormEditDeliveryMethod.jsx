@@ -30,13 +30,12 @@ const FormEditDeliveryMethod = ({ subTitle }) => {
   const handleSumbit = async (e) => {
     e.preventDefault();
     const data = { description }
-    console.log(data)
+   
     try {
       const response = await DeliveryMethodSourceAPI.putDeliveryMethodById(id, data);
       ToastNotification.toastSuccess(response);
       navigate("/member/delivery-methods")
     } catch (error) {
-      console.log(error);
       ToastNotification.toastError(error.response.data.message);
     }
   }

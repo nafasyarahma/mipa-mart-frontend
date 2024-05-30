@@ -20,7 +20,6 @@ const FormAddDeliveryMethod = ({ subTitle }) => {
       ToastNotification.toastSuccess(response);
       navigate("/member/delivery-methods");
     } catch (error) {
-      console.error(error)
       ToastNotification.toastError(error.response.data.message);
     }
   }

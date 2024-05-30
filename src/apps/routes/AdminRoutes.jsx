@@ -26,7 +26,7 @@ const useAdminRoutes = () => {
 
       <Route path="/admin/categories" element={<ManagementCategories />} />
       <Route path="/admin/category/add" element={<AddCategory />} />
-      <Route path="/admin/category/edit" element={<EditCategory />} />
+      <Route path="/admin/category/:id/edit" element={<EditCategory />} />
       <Route path="/admin/members" element={<ManagementMembers />} />
       <Route path="/admin/member/edit" element={<EditMember />} />
       <Route path="/admin/customers" element={<ManagementCustomers />} />

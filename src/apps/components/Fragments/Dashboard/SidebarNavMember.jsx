@@ -1,13 +1,32 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import SidebarMenu from "../../Elements/SidebarMenu";
 import NavDashboard from "./NavDashboard";
+import AuthSourceAPI from "../../../api/resources/sourceAuth"
+import ToastNotification from "../../assets/helpers/ToastNotification";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faRightFromBracket } from "@fortawesome/free-solid-svg-icons";
 
 const SidebarNavMember = () => {
+  const navigate = useNavigate();
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
   };
+
+  const handleLogout = async () => {
+    try {
+      const response = await AuthSourceAPI.logout();
+      localStorage.removeItem('refreshToken');
+      localStorage.removeItem('accessToken');
+
+      ToastNotification.toastSuccess(response);
+      navigate('/login')
+    } catch (error) {
+      ToastNotification.toastError(error.response.data.message);
+    }
+  }
 
   return (
     <>
@@ -52,11 +71,13 @@ const SidebarNavMember = () => {
               icon="fa-solid fa-truck-fast"
               label="Metode Pengiriman"
             />
-            <SidebarMenu
-              link="/login"
-              icon="fa-solid fa-right-from-bracket"
-              label="Logout"
-            />
+            <button
+                onClick={handleLogout}
+                className="flex items-center p-2 text-red-500 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 group"
+              >
+                <FontAwesomeIcon icon={faRightFromBracket} size="lg" style={{color: "#ff3d3d",}} />
+                <span className="ml-3">Logout</span>
+              </button>
           </ul>
         </div>
       </aside>

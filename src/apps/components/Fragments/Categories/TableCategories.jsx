@@ -1,8 +1,36 @@
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import IconButton from "../../Elements/basic/IconButton";
 import Button from "../../Elements/basic/Button";
+import CategorySourceAPI from "../../../api/resources/sourceCategory";
+import ToastNotification from "../../assets/helpers/ToastNotification";
 
 const TableCategories = ({ subTitle }) => {
+  const [categories, setCategories] = useState([]);
+
+  useEffect(() => {
+    const fetchCategories = async () => {
+      try {
+        const response = await CategorySourceAPI.getAllCategories();
+        setCategories(response.categories);
+      } catch (error) {
+        ToastNotification.toastError(error.response.data.message);
+      }
+    };
+    fetchCategories();
+  }, []);
+
+  const handleDelete = async(id) => {
+    try {
+      const response = await CategorySourceAPI.deleteCategoryById(id);
+      const currectData = categories.filter((category) => category.id !== id);
+      setCategories(currectData);
+      ToastNotification.toastSuccess(response);
+    } catch (error) {
+      ToastNotification.toastError(error.response.data.message);
+    }
+  }
+
   return (
     <>
       <div className="flex justify-between items-center pb-4">
@@ -29,38 +57,35 @@ const TableCategories = ({ subTitle }) => {
             </th>
           </tr>
         </thead>
+
         <tbody>
-          <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-            <td className="px-6 py-4">1</td>
-            <td className="px-6 py-4 ">Makanan</td>
-            <td className="px-6 py-4">Aneka makanan kering atau basah halal</td>
-            <td className="flex items-center px-6 py-4">
-              <Link to="/admin/category/edit">
-                <IconButton color="yellow" icon="fa-solid fa-pen-to-square" />
-              </Link>
-              <IconButton color="red" icon="fa-solid fa-trash" />
-            </td>
-          </tr>
-          <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-            <td className="px-6 py-4">2</td>
-            <td className="px-6 py-4 ">Minuman</td>
-            <td className="px-6 py-4">Minuman menyegarkan</td>
-            <td className="flex items-center px-6 py-4">
-              <IconButton color="yellow" icon="fa-solid fa-pen-to-square" />
-              <IconButton color="red" icon="fa-solid fa-trash" />
-            </td>
-          </tr>
-          <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-            <td className="px-6 py-4">3</td>
-            <td className="px-6 py-4 ">Jasa</td>
-            <td className="px-6 py-4">
-              Berbagai jasa seperti desain, coding, dll
-            </td>
-            <td className="flex items-center px-6 py-4">
-              <IconButton color="yellow" icon="fa-solid fa-pen-to-square" />
-              <IconButton color="red" icon="fa-solid fa-trash" />
-            </td>
-          </tr>
+          {categories.length > 0 ? (
+            categories.map((category, index) => (
+              <tr
+                key={category.id}
+                className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600"
+              >
+                <td className="px-6 py-4">{index + 1}</td>
+                <td className="px-6 py-4 ">{category.name}</td>
+                <td className="px-6 py-4">{category.description || "-"}</td>
+                <td className="flex items-center px-6 py-4">
+                  <Link to={`/admin/category/${category.id}/edit`}>
+                    <IconButton
+                      color="yellow"
+                      icon="fa-solid fa-pen-to-square"
+                    />
+                  </Link>
+                  <IconButton color="red" icon="fa-solid fa-trash" onClick={() => handleDelete(category.id)} />
+                </td>
+              </tr>
+            ))
+          ) : (
+            <tr>
+              <td colSpan="5" className="px-6 py-4 text-center text-black">
+                Belum ada kategori yang ditambahkan
+              </td>
+            </tr>
+          )}
         </tbody>
       </table>
     </>

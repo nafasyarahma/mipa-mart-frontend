@@ -1,7 +1,6 @@
 import Button from "./basic/Button";
 
 const CardProduct = ({ product }) => {
-  console.log(product);
   return (
     <div className="bg-white rounded-lg overflow-hidden shadow-lg w-full sm:w-54 lg:w-64">
       <div className="relative w-full h-48">
