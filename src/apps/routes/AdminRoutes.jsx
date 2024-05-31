@@ -28,9 +28,9 @@ const useAdminRoutes = () => {
       <Route path="/admin/category/add" element={<AddCategory />} />
       <Route path="/admin/category/:id/edit" element={<EditCategory />} />
       <Route path="/admin/members" element={<ManagementMembers />} />
-      <Route path="/admin/member/edit" element={<EditMember />} />
+      <Route path="/admin/member/:id/edit" element={<EditMember />} />
       <Route path="/admin/customers" element={<ManagementCustomers />} />
-      <Route path="/admin/customer/edit" element={<EditCustomer />} />
+      <Route path="/admin/customer/:id/edit" element={<EditCustomer />} />
     </Fragment>
   );
 };

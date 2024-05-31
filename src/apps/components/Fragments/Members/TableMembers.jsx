@@ -1,7 +1,50 @@
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import IconButton from "../../Elements/basic/IconButton";
+import MemberSourceAPI from "../../../api/resources/sourceMember";
+import ToastNotification from "../../assets/helpers/ToastNotification";
+import ModalMemberVerifStatus from "./ModalMemberVerifStatus";
 
 const TableMembers = ({ subTitle }) => {
+  const [members, setMembers] = useState([]);
+  const [isModalOpen, setModalOpen] = useState(false);
+  const [selectedMemberId, setSelectedMemberId] = useState(null);
+
+  useEffect(() => {
+    const fetchMembers = async () => {
+      try {
+        const response = await MemberSourceAPI.getAllMembers();
+        setMembers(response.members);
+      } catch (error) {
+        ToastNotification.toastError(error.response.data.message);
+      }
+    };
+
+    fetchMembers();
+  }, []);
+
+  const handleDelete = async (id) => {
+    try {
+      const response = await MemberSourceAPI.deleteMemberById(id);
+      const currectData = members.filter((member) => member.id !== id);
+      setMembers(currectData);
+      ToastNotification.toastSuccess(response);
+    } catch (error) {
+      console.error(error);
+      ToastNotification.toastError(error.response.data.message);
+    }
+  };
+  
+  const handleModalOpen = (memberId) => {
+    setSelectedMemberId(memberId);
+    setModalOpen(true);
+  };
+
+  const handleModalClose = () => {
+    setModalOpen(false);
+    setSelectedMemberId(null)
+  };
+
   return (
     <>
       <div className="flex justify-between items-center pb-4">
@@ -47,72 +90,70 @@ const TableMembers = ({ subTitle }) => {
         </thead>
 
         <tbody>
-          <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-            <td className="px-6 py-4">1</td>
-            <td className="px-6 py-4">aputeee</td>
-            <td className="px-6 py-4">anisaputri@gmail.com</td>
-            <td className="px-6 py-4">Ya</td>
-            <td className="px-6 py-4">Anisa Putri</td>
-            <td className="px-6 py-4 flex justify-between items-center gap-3">
-              <span className="flex-grow">Pending</span>
-              <IconButton color="green" icon="fa-solid fa-pen" />
-            </td>
-            <td className="px-6 py-4">2081927190</td>
-            <td className="px-6 py-4">Biologi</td>
-            <td className="px-6 py-4n underline text-sky-400">Lihat</td>
-            <td className="px-6 py-4n">0812345678</td>
-            <td className="flex items-center px-6 py-4">
-              <IconButton color="sky" icon="fa-solid fa-circle-info" />
-              <Link to="/admin/member/edit">
-                <IconButton color="yellow" icon="fa-solid fa-pen-to-square" />
-              </Link>
-              <IconButton color="red" icon="fa-solid fa-trash" />
-            </td>
-          </tr>
-
-          <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-            <td className="px-6 py-4">2</td>
-            <td className="px-6 py-4">iamfitri</td>
-            <td className="px-6 py-4">fitrinur@gmail.com</td>
-            <td className="px-6 py-4">Ya</td>
-            <td className="px-6 py-4">Fitri Nur Hasanah</td>
-            <td className="px-6 py-4 flex justify-between items-center gap-3">
-              <span className="flex-grow">Accepted</span>
-              <IconButton color="green" icon="fa-solid fa-pen" />
-            </td>
-            <td className="px-6 py-4">2018927190</td>
-            <td className="px-6 py-4">Matematika</td>
-            <td className="px-6 py-4n underline text-sky-400">Lihat</td>
-            <td className="px-6 py-4n">08123497469</td>
-            <td className="flex items-center px-6 py-4">
-              <IconButton color="sky" icon="fa-solid fa-circle-info" />
-              <IconButton color="yellow" icon="fa-solid fa-pen-to-square" />
-              <IconButton color="red" icon="fa-solid fa-trash" />
-            </td>
-          </tr>
-
-          <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-            <td className="px-6 py-4">2</td>
-            <td className="px-6 py-4">bangjago</td>
-            <td className="px-6 py-4">riskiram@gmail.com</td>
-            <td className="px-6 py-4">Tidak</td>
-            <td className="px-6 py-4">Riski Ramadhan</td>
-            <td className="px-6 py-4 flex justify-between items-center gap-3">
-              <span className="flex-grow">Rejected</span>
-              <IconButton color="green" icon="fa-solid fa-pen" />
-            </td>
-            <td className="px-6 py-4">2070987190</td>
-            <td className="px-6 py-4">Ilmu Komputer</td>
-            <td className="px-6 py-4n underline text-sky-400">Lihat</td>
-            <td className="px-6 py-4n">0837t219012</td>
-            <td className="flex items-center px-6 py-4">
-              <IconButton color="sky" icon="fa-solid fa-circle-info" />
-              <IconButton color="yellow" icon="fa-solid fa-pen-to-square" />
-              <IconButton color="red" icon="fa-solid fa-trash" />
-            </td>
-          </tr>
+          {members.length > 0 ? (
+            members.map((member, index) => (
+              <tr
+                key={member.id}
+                className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600"
+              >
+                <td className="px-6 py-4">{index + 1}</td>
+                <td className="px-6 py-4">{member.username}</td>
+                <td className="px-6 py-4">{member.email}</td>
+                <td className="px-6 py-4">
+                  {member.email_verified ? "Ya" : "Tidak"}
+                </td>
+                <td className="px-6 py-4">{member.name}</td>
+                <td className="px-6 py-4 flex justify-between items-center gap-3">
+                  <span className="flex-grow capitalize">
+                    {member.verif_status}
+                  </span>
+                  <IconButton
+                    color="green"
+                    icon="fa-solid fa-pen"
+                    onClick={() => handleModalOpen(member.id)}
+                    dataModalTarget="updateMemberVerifStatus"
+                    dataModalToggle="updateMemberVerifStatus"
+                  />
+                </td>
+                <td className="px-6 py-4">{member.npm}</td>
+                <td className="px-6 py-4 capitalize">{member.major}</td>
+                <td className="px-6 py-4">
+                  <Link to={member.ktm_image}>
+                    <span className="underline text-sky-400">Lihat</span>
+                  </Link>
+                </td>
+                <td className="px-6 py-4n">{member.no_wa}</td>
+                <td className="flex items-center px-6 py-4">
+                  <IconButton color="sky" icon="fa-solid fa-circle-info" />
+                  <Link to={`/admin/member/${member.id}/edit`}>
+                    <IconButton
+                      color="yellow"
+                      icon="fa-solid fa-pen-to-square"
+                    />
+                  </Link>
+                  <IconButton
+                    onClick={() => handleDelete(member.id)}
+                    color="red"
+                    icon="fa-solid fa-trash"
+                  />
+                </td>
+              </tr>
+            ))
+          ) : (
+            <tr>
+              <td colSpan="11" className="px-6 py-4 text-center text-black">
+                Belum ada member terdaftar
+              </td>
+            </tr>
+          )}
         </tbody>
       </table>
+      <ModalMemberVerifStatus
+        modalId="updateMemberVerifStatus"
+        memberId={selectedMemberId}
+        isOpen={isModalOpen}
+        onClose={handleModalClose}
+      />
     </>
   );
 };

@@ -10,7 +10,6 @@ const FormEditDeliveryMethod = ({ subTitle }) => {
   const { id } = useParams();
 
   //const [ deliveryMethod, setDeliveryMethod ] = useState('');
-  // const [ method, setMethod ] = useState("");
   const [ description, setDescription ] = useState("");
 
   useEffect(() => {

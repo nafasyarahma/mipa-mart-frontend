@@ -20,8 +20,8 @@ class CustomerSourceAPI {
     return response.data.data;
   }
 
-  static async putCustomerProfile() {
-    const response = await authenticatedApi.put(CUSTOMER_PROFILE);
+  static async putCustomerProfile(data) {
+    const response = await authenticatedApi.put(CUSTOMER_PROFILE, data);
     return response.data.message;
   }
 
@@ -36,8 +36,8 @@ class CustomerSourceAPI {
     return response.data.data;
   }
 
-  static async putCustomerById(id) {
-    const response = await authenticatedApi.put(ADMIN_CUSTOMER_BY_ID(id));
+  static async putCustomerById(id, data) {
+    const response = await authenticatedApi.put(ADMIN_CUSTOMER_BY_ID(id), data);
     return response.data.message;
   }
 

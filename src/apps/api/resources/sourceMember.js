@@ -21,8 +21,8 @@ class MemberSourceAPI {
     return response.data.data;
   }
 
-  static async putMemberProfile() {
-    const response = await authenticatedApi.put(MEMBER_PROFILE);
+  static async putMemberProfile(data) {
+    const response = await authenticatedApi.put(MEMBER_PROFILE, data);
     return response.data.message;
   }
 
@@ -37,13 +37,13 @@ class MemberSourceAPI {
     return response.data.data;
   }
 
-  static async putMemberById(id) {
-    const response = await authenticatedApi.put(ADMIN_MEMBER_BY_ID(id));
+  static async putMemberById(id, data) {
+    const response = await authenticatedApi.put(ADMIN_MEMBER_BY_ID(id), data);
     return response.data.message;
   }
 
-  static async putMemberStatusById(id) {
-    const response = await authenticatedApi.put(ADMIN_MEMBER_STATUS(id));
+  static async putMemberStatusById(id, data) {
+    const response = await authenticatedApi.put(ADMIN_MEMBER_STATUS(id), data);
     return response.data.message;
   }
 

@@ -11,7 +11,7 @@ const LoginPage = () => {
     } else if (role === 'member') {
       navigate('/member/dashboard') 
     } else if (role === 'customer') {
-      navigate('/catalog')
+      navigate('/')
     }
   }
 

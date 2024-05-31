@@ -1,46 +1,71 @@
 import InputForm from "../../Elements/InputForm.jsx";
 import Button from "../../Elements/basic/Button.jsx";
 
-const FormEditCustomer = ({ subTitle }) => {
+const FormEditCustomer = ({ subTitle, customerData, handleChange, handleSumbit }) => {
+
   return (
     <>
       <h2 className="text-black font-bold text-lg">{subTitle}</h2>
-      <form className="space-y-6 mt-4" action="#" method="POST">
+      <form onSubmit={handleSumbit} className="space-y-6 mt-4">
         <InputForm
-          id="username"
-          type="text"
-          placeholder="userexample"
+          id="email"
+          name="email"
+          type="email"
+          value={customerData.email}
+          onChange={handleChange}
+          placeholder="Email aktif"
           required
-          disabled
         >
-          Username
-        </InputForm>
-        <InputForm id="email" type="email" placeholder="Email aktif" required>
           Email
         </InputForm>
-        <InputForm id="name" type="text" placeholder="Nama lengkap" required>
+        <InputForm
+          id="password"
+          name="password"
+          type="password"
+          placeholder="****"
+          value={customerData.password}
+          onChange={handleChange}
+          required
+        >
+          Password
+        </InputForm>
+        <InputForm
+          id="name"
+          name="name"
+          type="text"
+          placeholder="Nama lengkap"
+          value={customerData.name}
+          onChange={handleChange}
+          required
+        >
           Nama
         </InputForm>
         <InputForm
-          id="no_wa"
+          id="whatsappNumber"
+          name="whatsappNumber"
           type="text"
           placeholder="Nomor WhatsApp yang dapat dihubungi"
+          value={customerData.whatsappNumber}
+          onChange={handleChange}
           required
         >
           Nomor WhatsApp
         </InputForm>
         <InputForm
           id="address"
+          name="address"
           type="text"
           placeholder="Alamat atau tempat tinggal saat ini"
+          value={customerData.address}
+          onChange={handleChange}
           required
         >
           Alamat
         </InputForm>
+        <div className="flex justify-end">
+          <Button type="submit" className="mt-10 w-32" label="Simpan"></Button>
+        </div>
       </form>
-      <div className="flex justify-end">
-        <Button type="submit" className="mt-10 w-32" label="Simpan"></Button>
-      </div>
     </>
   );
 };

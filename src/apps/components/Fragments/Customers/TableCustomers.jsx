@@ -1,7 +1,37 @@
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import IconButton from "../../Elements/basic/IconButton";
+import CustomerSourceAPI from "../../../api/resources/sourceCustomer";
+import ToastNotification from "../../assets/helpers/ToastNotification";
 
 const TableCustomers = ({ subTitle }) => {
+  const [customers, setCustomers] = useState([]);
+
+  useEffect(() => {
+    const fetchCustomers = async () => {
+      try {
+        const response = await CustomerSourceAPI.getAllCustomers();
+        setCustomers(response.customers);
+      } catch (error) {
+        ToastNotification.toastError(error.response.data.message);
+      }
+    };
+
+    fetchCustomers();
+  }, []);
+
+  const handleDelete = async (id) => {
+    try {
+      const response = await CustomerSourceAPI.deleteCustomerById(id);
+      const currectData = customers.filter((customer) => customer.id !== id);
+      setCustomers(currectData);
+      ToastNotification.toastSuccess(response);
+    } catch (error) {
+      console.error(error);
+      ToastNotification.toastError(error.response.data.message);
+    }
+  };
+
   return (
     <>
       <div className="flex justify-between items-center pb-4">
@@ -38,49 +68,43 @@ const TableCustomers = ({ subTitle }) => {
         </thead>
 
         <tbody>
-          <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-            <td className="px-6 py-4">1</td>
-            <td className="px-6 py-4">vanysep</td>
-            <td className="px-6 py-4">vanysepti@gmail.com</td>
-            <td className="px-6 py-4">Ya</td>
-            <td className="px-6 py-4">Vany Septiana</td>
-            <td className="px-6 py-4n">0812345678</td>
-            <td className="px-6 py-4n">Jl. Bumi Manti 1, Kampung Baru.</td>
-            <td className="flex items-center px-6 py-4">
-              <Link to="/admin/customer/edit">
-                <IconButton color="yellow" icon="fa-solid fa-pen-to-square" />
-              </Link>
-              <IconButton color="red" icon="fa-solid fa-trash" />
-            </td>
-          </tr>
-
-          <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-            <td className="px-6 py-4">2</td>
-            <td className="px-6 py-4">safiraaa</td>
-            <td className="px-6 py-4">safirarahma@gmail.com</td>
-            <td className="px-6 py-4">Ya</td>
-            <td className="px-6 py-4">Safira Rahma</td>
-            <td className="px-6 py-4n">081029384746</td>
-            <td className="px-6 py-4n">Jl. Abdul Muis X, Gedong Meneng</td>
-            <td className="flex items-center px-6 py-4">
-              <IconButton color="yellow" icon="fa-solid fa-pen-to-square" />
-              <IconButton color="red" icon="fa-solid fa-trash" />
-            </td>
-          </tr>
-
-          <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-            <td className="px-6 py-4">2</td>
-            <td className="px-6 py-4">nurset</td>
-            <td className="px-6 py-4">nursetiawati@gmail.com</td>
-            <td className="px-6 py-4">Ya</td>
-            <td className="px-6 py-4">Nur Setiawati</td>
-            <td className="px-6 py-4n">08674562729</td>
-            <td className="px-6 py-4n">Jl. Cengkeh, Rajabasa.</td>
-            <td className="flex items-center px-6 py-4">
-              <IconButton color="yellow" icon="fa-solid fa-pen-to-square" />
-              <IconButton color="red" icon="fa-solid fa-trash" />
-            </td>
-          </tr>
+          {customers.length > 0 ? (
+            customers.map((customer, index) => (
+              <tr
+                key={customer.id}
+                className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600"
+              >
+                <td className="px-6 py-4">{index + 1}</td>
+                <td className="px-6 py-4">{customer.username}</td>
+                <td className="px-6 py-4">{customer.email}</td>
+                <td className="px-6 py-4">
+                  {customer.email_verified ? "Ya" : "Tidak"}
+                </td>
+                <td className="px-6 py-4">{customer.name}</td>
+                <td className="px-6 py-4n">{customer.no_wa}</td>
+                <td className="px-6 py-4n">{customer.address}</td>
+                <td className="flex items-center px-6 py-4">
+                  <Link to={`/admin/customer/${customer.id}/edit`}>
+                    <IconButton
+                      color="yellow"
+                      icon="fa-solid fa-pen-to-square"
+                    />
+                  </Link>
+                  <IconButton
+                    color="red"
+                    icon="fa-solid fa-trash"
+                    onClick={() => handleDelete(customer.id)}
+                  />
+                </td>
+              </tr>
+            ))
+          ) : (
+            <tr>
+              <td colSpan="8" className="px-6 py-4 text-center text-black">
+                Belum ada customer terdaftar
+              </td>
+            </tr>
+          )}
         </tbody>
       </table>
     </>
