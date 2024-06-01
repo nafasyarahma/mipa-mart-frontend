@@ -5,6 +5,8 @@ import authenticatedApi from "../packages/interceptors";
 const {
   CUSTOMER_REGISTER,
   CUSTOMER_PROFILE,
+  CUSTOMER_CART,
+  CUSTOMER_CART_ITEM,
   ADMIN_CUSTOMERS,
   ADMIN_CUSTOMER_BY_ID
 } = API_ENDPOINT;
@@ -22,6 +24,22 @@ class CustomerSourceAPI {
 
   static async putCustomerProfile(data) {
     const response = await authenticatedApi.put(CUSTOMER_PROFILE, data);
+    return response.data.message;
+  }
+
+   // Commerce
+   static async addToCart(data) {
+    const response = await authenticatedApi.post(CUSTOMER_CART, data);
+    return response.data.message;
+  }
+
+  static async getCart() {
+    const response = await authenticatedApi.get(CUSTOMER_CART);
+    return response.data.data;
+  }
+
+  static async deleteCartItem(id) {
+    const response = await authenticatedApi.delete(CUSTOMER_CART_ITEM(id));
     return response.data.message;
   }
 

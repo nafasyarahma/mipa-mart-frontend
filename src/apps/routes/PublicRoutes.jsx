@@ -7,6 +7,7 @@ import {
   RegisterMemberPage,
   RegisterCustomerPage,
   ChooseRoleRegister,
+  DetailProduct,
   ChooseRoleForgotPassword,
   ForgotPasswordMember,
   ForgotPasswordCustomer,
@@ -20,13 +21,12 @@ const usePublicRoutes = () => {
     <Fragment>
       <Route path="/*" element={<NotFoundPage />} />
       <Route path="/" element={<CatalogPage />} />
+      <Route path="/product/:id/detail" element={<DetailProduct />} />
       <Route path="/login" element={<LoginPage />} />
       <Route path="/forbidden" element={<ForbiddenPage />} />
       <Route path="/not-found" element={<NotFoundPage />} />
       <Route path="/member/register" element={<RegisterMemberPage />} />
-
       <Route path="/customer/register" element={<RegisterCustomerPage />} />
-
       <Route path="/register/choose-role" element={<ChooseRoleRegister />} />
       <Route
         path="/forgot-password/choose-role"

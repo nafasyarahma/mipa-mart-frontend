@@ -30,6 +30,8 @@ const API_ENDPOINT = {
   CUSTOMER_VERIFY_EMAIL: (token) => `${BASE_URL}/customer/verify-email/${token}`,
   CUSTOMER_FORGOT_PASSWORD: `${BASE_URL}/customer/forgot-password`,
   CUSTOMER_RESET_PASSWORD: (token) => `${BASE_URL}/customer/reset-email/${token}`,
+  CUSTOMER_CART: `${BASE_URL}/customer/carts`,
+  CUSTOMER_CART_ITEM: (id) => `${BASE_URL}/customer/carts/item/${id}`,
   ADMIN_CUSTOMERS: `${BASE_URL}/admin/customers`,
   ADMIN_CUSTOMER_BY_ID: (id) => `${BASE_URL}/admin/customers/${id}`,
 

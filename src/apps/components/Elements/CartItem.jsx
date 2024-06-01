@@ -1,6 +1,8 @@
 import IconButton from "../Elements/basic/IconButton";
 
-const CartItem = () => {
+const CartItem = ({item, handleDelete}) => {
+  const totalPrice = item.product.price * item.quantity;
+
   return (
     <div className="justify-between mb-6 rounded-lg bg-white p-6 shadow-md sm:flex sm:justify-start">
       <img
@@ -12,13 +14,13 @@ const CartItem = () => {
         <div className="mt-5 sm:mt-0 flex flex-col justify-between">
           <div>
             <h2 className="text-lg font-bold text-gray-900">
-              Nike Air Max 2019
+              {item.product.name}
             </h2>
-            <p className="mt-1 text-sm text-gray-600">Rp35.000</p>
+            <p className="mt-1 text-sm text-gray-600">Rp{item.product.price}</p>
           </div>
           <div className="flex items-center">
             <p className="text-sm font-semibold text-gray-600 mr-2">
-              Jumlah: 1
+              Jumlah: {item.quantity}
             </p>
             <IconButton icon="fa-solid fa-pen" iconColor="purple"></IconButton>
           </div>
@@ -26,13 +28,14 @@ const CartItem = () => {
         <div className="flex flex-col justify-between">
           <div className=" border-gray-100">
             <p className="text-sm text-gray-600 text-right">Total</p>
-            <p className="mt-2 font-bold text-gray-900 text-right">Rp35.000</p>
+            <p className="mt-2 font-bold text-gray-900 text-right">Rp{totalPrice}</p>
           </div>
           <div className="flex justify-end">
             <IconButton
               icon="fa-solid fa-trash"
               iconColor="red"
               size="lg"
+              onClick={() => handleDelete(item.id)}
             ></IconButton>
           </div>
         </div>

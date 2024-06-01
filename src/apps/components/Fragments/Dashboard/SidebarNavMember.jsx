@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import SidebarMenu from "../../Elements/SidebarMenu";
 import NavDashboard from "./NavDashboard";
-import AuthSourceAPI from "../../../api/resources/sourceAuth"
+import AuthSourceAPI from "../../../api/resources/sourceAuth";
 import ToastNotification from "../../assets/helpers/ToastNotification";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faRightFromBracket } from "@fortawesome/free-solid-svg-icons";
@@ -18,15 +18,15 @@ const SidebarNavMember = () => {
   const handleLogout = async () => {
     try {
       const response = await AuthSourceAPI.logout();
-      localStorage.removeItem('refreshToken');
-      localStorage.removeItem('accessToken');
+      localStorage.removeItem("refreshToken");
+      localStorage.removeItem("accessToken");
 
       ToastNotification.toastSuccess(response);
-      navigate('/login')
+      navigate("/login");
     } catch (error) {
       ToastNotification.toastError(error.response.data.message);
     }
-  }
+  };
 
   return (
     <>
@@ -72,12 +72,16 @@ const SidebarNavMember = () => {
               label="Metode Pengiriman"
             />
             <button
-                onClick={handleLogout}
-                className="flex items-center p-2 text-red-500 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 group"
-              >
-                <FontAwesomeIcon icon={faRightFromBracket} size="lg" style={{color: "#ff3d3d",}} />
-                <span className="ml-3">Logout</span>
-              </button>
+              onClick={handleLogout}
+              className="flex items-center p-2 text-red-500 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 group"
+            >
+              <FontAwesomeIcon
+                icon={faRightFromBracket}
+                size="lg"
+                style={{ color: "#ff3d3d" }}
+              />
+              <span className="ml-3">Logout</span>
+            </button>
           </ul>
         </div>
       </aside>

@@ -10,7 +10,7 @@ import {
   EditCategory,
   EditMember,
   EditCustomer,
-} from "../pages"
+} from "../pages";
 
 const useAdminRoutes = () => {
   return (
@@ -24,15 +24,70 @@ const useAdminRoutes = () => {
         }
       />
 
-      <Route path="/admin/categories" element={<ManagementCategories />} />
-      <Route path="/admin/category/add" element={<AddCategory />} />
-      <Route path="/admin/category/:id/edit" element={<EditCategory />} />
-      <Route path="/admin/members" element={<ManagementMembers />} />
-      <Route path="/admin/member/:id/edit" element={<EditMember />} />
-      <Route path="/admin/customers" element={<ManagementCustomers />} />
-      <Route path="/admin/customer/:id/edit" element={<EditCustomer />} />
+      <Route
+        path="/admin/categories"
+        element={
+          <PrivateRoute role="admin" redirectPath="/forbidden">
+            <ManagementCategories />
+          </PrivateRoute>
+        }
+      />
+
+      <Route
+        path="/admin/category/add"
+        element={
+          <PrivateRoute role="admin" redirectPath="/forbidden">
+            <AddCategory />
+          </PrivateRoute>
+        }
+      />
+
+      <Route
+        path="/admin/category/:id/edit"
+        element={
+          <PrivateRoute role="admin" redirectPath="/forbidden">
+            <EditCategory />
+          </PrivateRoute>
+        }
+      />
+
+      <Route
+        path="/admin/members"
+        element={
+          <PrivateRoute role="admin" redirectPath="/forbidden">
+            <ManagementMembers />
+          </PrivateRoute>
+        }
+      />
+
+      <Route
+        path="/admin/member/:id/edit"
+        element={
+          <PrivateRoute role="admin" redirectPath="/forbidden">
+            <EditMember />
+          </PrivateRoute>
+        }
+      />
+
+      <Route
+        path="/admin/customers"
+        element={
+          <PrivateRoute role="admin" redirectPath="/forbidden">
+            <ManagementCustomers />
+          </PrivateRoute>
+        }
+      />
+
+      <Route
+        path="/admin/customer/:id/edit"
+        element={
+          <PrivateRoute role="admin" redirectPath="/forbidden">
+            <EditCustomer />
+          </PrivateRoute>
+        }
+      />
     </Fragment>
   );
 };
 
-export default useAdminRoutes
+export default useAdminRoutes;
