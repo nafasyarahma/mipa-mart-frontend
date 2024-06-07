@@ -14,6 +14,8 @@ const {
   CUSTOMER_ORDER_BY_ID,
   ADMIN_CUSTOMERS,
   ADMIN_CUSTOMER_BY_ID,
+  CUSTOMER_FORGOT_PASSWORD,
+  CUSTOMER_RESET_PASSWORD,
 } = API_ENDPOINT;
 
 class CustomerSourceAPI {
@@ -96,6 +98,17 @@ class CustomerSourceAPI {
 
   static async deleteCustomerById(id) {
     const response = await authenticatedApi.delete(ADMIN_CUSTOMER_BY_ID(id));
+    return response.data.message;
+  }
+
+  //common
+  static async sendEmailForgotPassword(data) {
+    const response = await axios.post(CUSTOMER_FORGOT_PASSWORD, data);
+    return response.data.message;
+  }
+
+  static async resetPassword(token, data) {
+    const response = await axios.post(CUSTOMER_RESET_PASSWORD(token), data);
     return response.data.message;
   }
 }

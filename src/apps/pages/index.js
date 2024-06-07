@@ -26,7 +26,8 @@ import ChooseRoleRegister from "./common/ChooseRoleRegister";
 import ChooseRoleForgotPassword from "./common/ChooseRoleForgotPassword";
 import ForgotPasswordMember from "./common/ForgotPasswordMember";
 import ForgotPasswordCustomer from "./common/ForgotPasswordCustomer";
-import ResetPasswordPage from "./common/ResetPasswordPage";
+import ResetPasswordMember from "./common/ResetPasswordMember";
+import ResetPasswordCustomer from "./common/ResetPasswordCustomer";
 import CartPage from "./commerce/CartPage";
 import DetailProduct from "./commerce/DetailProductPage";
 import CheckoutPage from "./commerce/CheckoutPage";
@@ -36,6 +37,8 @@ import EditProfileCustomer from "./customer/EditProfileCustomer";
 
 import ForbiddenPage from "./error/UnauthorizedPage";
 import NotFoundPage from "./error/NotFoundPage";
+
+import CheckEmailCallOut from "./common/CheckEmailCallOut";
 
 export { 
   CatalogPage, 
@@ -66,7 +69,8 @@ export {
   ChooseRoleForgotPassword,
   ForgotPasswordMember,
   ForgotPasswordCustomer,
-  ResetPasswordPage,
+  ResetPasswordMember,
+  ResetPasswordCustomer,
   CartPage,
   DetailProduct,
   CheckoutPage,
@@ -75,5 +79,7 @@ export {
   EditProfileCustomer,
 
   ForbiddenPage,
-  NotFoundPage
+  NotFoundPage,
+
+  CheckEmailCallOut,
 }

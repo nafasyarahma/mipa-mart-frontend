@@ -11,6 +11,8 @@ const {
   ADMIN_MEMBERS,
   ADMIN_MEMBER_BY_ID,
   ADMIN_MEMBER_STATUS,
+  MEMBER_FORGOT_PASSWORD,
+  MEMBER_RESET_PASSWORD,
 } = API_ENDPOINT;
 
 class MemberSourceAPI {
@@ -67,6 +69,17 @@ class MemberSourceAPI {
 
   static async deleteMemberById(id) {
     const response = await authenticatedApi.delete(ADMIN_MEMBER_BY_ID(id));
+    return response.data.message;
+  }
+
+  // common
+  static async sendEmailForgotPassword(data) {
+    const response = await axios.post(MEMBER_FORGOT_PASSWORD, data);
+    return response.data.message;
+  }
+
+  static async resetPassword(token, data) {
+    const response = await axios.post(MEMBER_RESET_PASSWORD(token), data);
     return response.data.message;
   }
 }

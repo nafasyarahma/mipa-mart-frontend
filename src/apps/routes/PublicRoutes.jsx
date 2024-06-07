@@ -11,9 +11,11 @@ import {
   ChooseRoleForgotPassword,
   ForgotPasswordMember,
   ForgotPasswordCustomer,
-  ResetPasswordPage,
+  ResetPasswordMember,
+  ResetPasswordCustomer,
   ForbiddenPage,
   NotFoundPage,
+  CheckEmailCallOut,
 } from "../pages";
 
 const usePublicRoutes = () => {
@@ -40,7 +42,9 @@ const usePublicRoutes = () => {
         path="/customer/forgot-password"
         element={<ForgotPasswordCustomer />}
       />
-      <Route path="/reset-password" element={<ResetPasswordPage />} />
+      <Route path="/member/reset-password/:token" element={<ResetPasswordMember />} />
+      <Route path="/customer/reset-password/:token" element={<ResetPasswordCustomer />} />
+      <Route path="/check-your-email" element={<CheckEmailCallOut />} />
     </Fragment>
   );
 };

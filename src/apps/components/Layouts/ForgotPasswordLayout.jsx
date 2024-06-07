@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom"
 import FormEmail from "../Fragments/Common/FormEmail"
 
-const ForgotPasswordLayout = ({type}) => {
+const ForgotPasswordLayout = ({type, email, onSubmit, onChange}) => {
   return (
     <div className="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8 ">
     <div className="sm:mx-auto sm:w-full sm:max-w-sm content-center">
@@ -14,7 +14,7 @@ const ForgotPasswordLayout = ({type}) => {
         </p>
       </div>
 
-      <FormEmail/>
+      <FormEmail email={email} onSubmit={onSubmit} onChange={onChange} />
       <p className="mt-10 text-center text-sm text-gray-500">
         Butuh Bantuan?
         <Link
