@@ -1,10 +1,55 @@
+import { useEffect, useState } from "react";
 import RadioOption from "../../Elements/basic/RadioOption";
 import Button from "../../Elements/basic/Button";
+import MemberSourceAPI from "../../../api/resources/sourceMember";
+import ToastNotification from "../../assets/helpers/ToastNotification";
 
-const ModalUpdateStatus = ({ isOpen, onClose, id }) => {
+const ModalOrderStatus = ({ isOpen, onClose, orderId }) => {
+  const [orderStatus, setOrderStatus] = useState("");
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await MemberSourceAPI.getMemberOrderById(orderId);
+        setOrderStatus(response.order.status);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    if (isOpen && orderId) {
+      fetchData();
+    }
+  }, [orderId, isOpen]);
+
+  const handleStatusChange = (e) => {
+    setOrderStatus(e.target.value);
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      const data = { status: orderStatus};
+  
+      const response = await MemberSourceAPI.putOrderStatusById(
+        orderId,
+        data
+      );
+      ToastNotification.toastSuccess(response);
+      onClose();
+      setTimeout(() => {
+        document.location.reload();
+      }, 3000);
+    } catch (error) {
+      ToastNotification.toastError(error.response.data.message);
+      console.error(error);
+    }
+  };
+
   return (
     <div
-      id={id}
+      id="updateOrderStatus"
       tabIndex="-1"
       aria-hidden="true"
       className={`modal ${
@@ -17,7 +62,7 @@ const ModalUpdateStatus = ({ isOpen, onClose, id }) => {
           {/* Modal header */}
           <div className="flex justify-between items-center pb-4 mb-4 rounded-t border-b sm:mb-5 ">
             <h3 className="text-lg font-semibold text-gray-900">
-              Update Status
+              Update Status Order
             </h3>
             <button
               onClick={onClose}
@@ -42,28 +87,42 @@ const ModalUpdateStatus = ({ isOpen, onClose, id }) => {
             </button>
           </div>
           {/* Modal body*/}
-          <form action="#">
+          <form onSubmit={handleSubmit}>
             <div className="flex items-center py-4">
               <p className="block text-sm font-semibold text-gray-900 mr-16">
                 Status
               </p>
               <RadioOption
+                id="pending"
                 name="status"
-                id="ready"
-                value="ready"
-                label="Ready"
+                value="pending"
+                label="Pending"
+                checked={orderStatus === "pending"}
+                onChange={handleStatusChange}
               />
               <RadioOption
+                id="accepted"
                 name="status"
-                id="preorder"
-                value="preorder"
-                label="Pre-Order"
+                value="accepted"
+                label="Setujui"
+                checked={orderStatus === "accepted"}
+                onChange={handleStatusChange}
               />
               <RadioOption
+                id="rejected"
                 name="status"
-                id="soldout"
-                value="soldout"
-                label="Habis"
+                value="rejected"
+                label="Tolak"
+                checked={orderStatus === "rejected"}
+                onChange={handleStatusChange}
+              />
+              <RadioOption
+                id="completed"
+                name="status"
+                value="completed"
+                label="Selesai"
+                checked={orderStatus === "completed"}
+                onChange={handleStatusChange}
               />
             </div>
             <div className="flex justify-end gap-2">
@@ -76,4 +135,4 @@ const ModalUpdateStatus = ({ isOpen, onClose, id }) => {
   );
 };
 
-export default ModalUpdateStatus;
+export default ModalOrderStatus;

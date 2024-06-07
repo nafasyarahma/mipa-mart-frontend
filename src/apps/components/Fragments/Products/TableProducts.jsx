@@ -2,13 +2,14 @@ import { useState, useEffect } from "react";
 import IconButton from "../../Elements/basic/IconButton";
 import Button from "../../Elements/basic/Button";
 import { Link } from "react-router-dom";
-import ModalUpdateStatus from "./ModalUpdateStatus";
+import ModalUpdateProductStatus from "./ModalUpdateProductStatus";
 import ProductSourceAPI from "../../../api/resources/sourceProduct";
 import ToastNotification from "../../assets/helpers/ToastNotification";
 
 const TableProducts = ({ subTitle }) => {
   const [produts, setProducts] = useState([]);
   const [isUpdateStatusModalOpen, setUpdateStatusModalOpen] = useState(false);
+  const [selectedProductId, setSelectedProductId] = useState(null);
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -36,12 +37,14 @@ const TableProducts = ({ subTitle }) => {
     }
   }
 
-  const handleUpdateStatusModalOpen = () => {
+  const handleModalOpen = (productId) => {
+    setSelectedProductId(productId)
     setUpdateStatusModalOpen(true);
   };
 
-  const handleUpdateStatusModalClose = () => {
+  const handleModalClose = () => {
     setUpdateStatusModalOpen(false);
+    setSelectedProductId(null)
   };
 
   return (
@@ -95,9 +98,9 @@ const TableProducts = ({ subTitle }) => {
                   <IconButton
                     color="green"
                     icon="fa-solid fa-pen"
-                    onClick={handleUpdateStatusModalOpen}
-                    dataModalTarget="updateStatusModal"
-                    dataModalToggle="updateStatusModal"
+                    onClick={() => handleModalOpen(product.id)}
+                    dataModalTarget="updateProductStatus"
+                    dataModalToggle="updateProductStatus"
                   />
                 </td>
                 <td className="px-6 py-4">{product.category?.name ?? "-"}</td>
@@ -122,10 +125,10 @@ const TableProducts = ({ subTitle }) => {
           )}
         </tbody>
       </table>
-      <ModalUpdateStatus
-        id="updateStatusModal"
+      <ModalUpdateProductStatus
+        productId={selectedProductId}
         isOpen={isUpdateStatusModalOpen}
-        onClose={handleUpdateStatusModalClose}
+        onClose={handleModalClose}
       />
     </>
   );

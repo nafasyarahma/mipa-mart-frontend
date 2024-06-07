@@ -7,6 +7,7 @@ const {
   MEMBER_PROFILE,
   MEMBER_ORDERS,
   MEMBER_ORDER_BY_ID,
+  MEMBER_ORDER_STATUS,
   ADMIN_MEMBERS,
   ADMIN_MEMBER_BY_ID,
   ADMIN_MEMBER_STATUS,
@@ -36,6 +37,11 @@ class MemberSourceAPI {
   static async getMemberOrderById(id) {
     const response = await authenticatedApi.get(MEMBER_ORDER_BY_ID(id));
     return response.data.data;
+  }
+
+  static async putOrderStatusById(id, data) {
+    const response = await authenticatedApi.put(MEMBER_ORDER_STATUS(id), data);
+    return response.data.message;
   }
 
   // admin

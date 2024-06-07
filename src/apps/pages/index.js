@@ -30,7 +30,6 @@ import ResetPasswordPage from "./common/ResetPasswordPage";
 import CartPage from "./commerce/CartPage";
 import DetailProduct from "./commerce/DetailProductPage";
 import CheckoutPage from "./commerce/CheckoutPage";
-import OrderPageCustomer from "./commerce/OrderPageCustomer";
 import OrderListCustomer from "./customer/OrderListCustomer";
 import OrderDetailCustomer from "./customer/OrderDetailCustomer";
 import EditProfileCustomer from "./customer/EditProfileCustomer";
@@ -71,7 +70,6 @@ export {
   CartPage,
   DetailProduct,
   CheckoutPage,
-  OrderPageCustomer,
   OrderListCustomer,
   OrderDetailCustomer,
   EditProfileCustomer,

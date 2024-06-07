@@ -2,9 +2,12 @@ import { Link } from "react-router-dom";
 import IconButton from "../../Elements/basic/IconButton";
 import { useEffect, useState } from "react";
 import MemberSourceAPI from "../../../api/resources/sourceMember";
+import ModalOrderStatus from "./ModalOrderStatus";
 
 const TableOrders = ({ subTitle }) => {
   const [orders, setOrders] = useState([]);
+  const [isModalOpen, setModalOpen] = useState(false);
+  const [selectedOrderId, setSelectedOrderId] = useState(null);
 
   useEffect(() => {
     const fetchOrders = async () => {
@@ -18,6 +21,16 @@ const TableOrders = ({ subTitle }) => {
 
     fetchOrders();
   }, []);
+
+  const handleModalOpen = (orderId) => {
+    setSelectedOrderId(orderId);
+    setModalOpen(true);
+  };
+
+  const handleModalClose = () => {
+    setModalOpen(false);
+    setSelectedOrderId(null)
+  };
 
   return (
     <>
@@ -70,7 +83,13 @@ const TableOrders = ({ subTitle }) => {
             <td className="px-6 py-4 items-center gap-3">
               <span className="flex items-center gap-2">
                 {order.status}
-                <IconButton color="green" icon="fa-solid fa-pen" />
+                <IconButton 
+                  color="green" 
+                  icon="fa-solid fa-pen" 
+                  onClick={() => handleModalOpen(order.id)}
+                  dataModalTarget="updateOrderStatus"
+                  dataModalToggle="updateOrderStatus"
+                />
               </span>
             </td>
             <td className="flex items-center px-6 py-4">
@@ -90,6 +109,11 @@ const TableOrders = ({ subTitle }) => {
           
         </tbody>
       </table>
+      <ModalOrderStatus
+      orderId={selectedOrderId}
+      isOpen={isModalOpen}
+      onClose={handleModalClose}
+      />
     </>
   );
 };

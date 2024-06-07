@@ -7,6 +7,7 @@ const {
   PRODUCT_BY_ID,
   MEMBER_PRODUCTS,
   MEMBER_PRODUCT_BY_ID,
+  MEMBER_PRODUCT_STATUS,
 } = API_ENDPOINT
 
 class ProductSourceAPI {
@@ -34,6 +35,11 @@ class ProductSourceAPI {
 
   static async putProductById(id, data) {
     const response = await authenticatedApi.put(MEMBER_PRODUCT_BY_ID(id), data)
+    return response.data.message;
+  }
+
+  static async putProductStatusById(id, data) {
+    const response = await authenticatedApi.put(MEMBER_PRODUCT_STATUS(id), data)
     return response.data.message;
   }
 

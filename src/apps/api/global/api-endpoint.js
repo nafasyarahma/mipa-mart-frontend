@@ -16,6 +16,7 @@ const API_ENDPOINT = {
   MEMBER_REGISTER: `${BASE_URL}/member/register`,
   MEMBER_PROFILE: `${BASE_URL}/member/profile`,
   MEMBER_ORDERS: `${BASE_URL}/member/orders`,
+  MEMBER_ORDER_STATUS : (id) => `${BASE_URL}/member/orders/${id}/status`,
   MEMBER_ORDER_BY_ID: (id) => `${BASE_URL}/member/orders/${id}`,
   MEMBER_EMAIL_VERIFICATION: `${BASE_URL}/member/email-verification`,
   MEMBER_VERIFY_EMAIL: (token) => `${BASE_URL}/member/verify-email/${token}`,
@@ -52,6 +53,7 @@ const API_ENDPOINT = {
   PRODUCT_BY_ID: (id) => `${BASE_URL}/products/${id}`,
   MEMBER_PRODUCTS: `${BASE_URL}/member/products`,
   MEMBER_PRODUCT_BY_ID: (id) => `${BASE_URL}/member/products/${id}`,
+  MEMBER_PRODUCT_STATUS: (id) => `${BASE_URL}/member/products/${id}/status`,
 }
 
 export default API_ENDPOINT

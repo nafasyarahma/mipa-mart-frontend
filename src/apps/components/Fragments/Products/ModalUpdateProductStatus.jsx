@@ -1,38 +1,39 @@
 import RadioOption from "../../Elements/basic/RadioOption";
 import Button from "../../Elements/basic/Button";
 import { useEffect, useState } from "react";
-import MemberSourceAPI from "../../../api/resources/sourceMember";
+import ProductSourceAPI from "../../../api/resources/sourceProduct";
 import ToastNotification from "../../assets/helpers/ToastNotification";
 
-const ModalMemberVerifStatus = ({ isOpen, onClose, modalId, memberId }) => {
-  const [verifStatus, setVerifStatus] = useState("");
+const ModalUpdateProductStatus = ({ isOpen, onClose, productId }) => {
+  const [productStatus, setProductStatus] = useState("");
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await MemberSourceAPI.getMemberById(memberId);
-        setVerifStatus(response.member.verif_status);
+        const response = await ProductSourceAPI.getProductById(productId);
+        setProductStatus(response.product.status);
       } catch (error) {
         console.error(error);
       }
     };
 
-    if (isOpen && memberId) {
+    if (isOpen && productId) {
       fetchData();
     }
-  }, [memberId, isOpen]);
+  }, [productId, isOpen]);
 
   const handleStatusChange = (e) => {
-    setVerifStatus(e.target.value);
+    setProductStatus(e.target.value);
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
-      const data = { verifStatus: verifStatus };
-      const response = await MemberSourceAPI.putMemberStatusById(
-        memberId,
+      const data = { status: productStatus};
+  
+      const response = await ProductSourceAPI.putProductStatusById(
+        productId,
         data
       );
       ToastNotification.toastSuccess(response);
@@ -48,7 +49,7 @@ const ModalMemberVerifStatus = ({ isOpen, onClose, modalId, memberId }) => {
 
   return (
     <div
-      id={modalId}
+      id="updateProductStatus"
       tabIndex="-1"
       aria-hidden="true"
       className={`modal ${
@@ -61,7 +62,7 @@ const ModalMemberVerifStatus = ({ isOpen, onClose, modalId, memberId }) => {
           {/* Modal header */}
           <div className="flex justify-between items-center pb-4 mb-4 rounded-t border-b sm:mb-5 ">
             <h3 className="text-lg font-semibold text-gray-900">
-              Update Status Member
+              Update Status
             </h3>
             <button
               onClick={onClose}
@@ -92,27 +93,27 @@ const ModalMemberVerifStatus = ({ isOpen, onClose, modalId, memberId }) => {
                 Status
               </p>
               <RadioOption
-                id="pending"
-                name="verifStatus"
-                value="pending"
-                label="Pending"
-                checked={verifStatus === "pending"}
+                name="status"
+                id="ready"
+                value="ready"
+                label="Ready"
+                checked={productStatus === "ready"}
                 onChange={handleStatusChange}
               />
               <RadioOption
-                id="approved"
-                name="verifStatus"
-                value="approved"
-                label="Approved"
-                checked={verifStatus === "approved"}
+                name="status"
+                id="preorder"
+                value="preorder"
+                label="Pre-Order"
+                checked={productStatus === "preorder"}
                 onChange={handleStatusChange}
               />
               <RadioOption
-                id="rejected"
-                name="verifStatus"
-                value="rejected"
-                label="Rejected"
-                checked={verifStatus === "rejected"}
+                name="status"
+                id="soldout"
+                value="soldout"
+                label="Habis"
+                checked={productStatus === "soldout"}
                 onChange={handleStatusChange}
               />
             </div>
@@ -126,4 +127,4 @@ const ModalMemberVerifStatus = ({ isOpen, onClose, modalId, memberId }) => {
   );
 };
 
-export default ModalMemberVerifStatus;
+export default ModalUpdateProductStatus;
