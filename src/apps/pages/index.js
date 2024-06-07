@@ -31,8 +31,8 @@ import CartPage from "./commerce/CartPage";
 import DetailProduct from "./commerce/DetailProductPage";
 import CheckoutPage from "./commerce/CheckoutPage";
 import OrderPageCustomer from "./commerce/OrderPageCustomer";
-import OrderListCustomer from "./commerce/OrderListCustomer";
-import OrderDetailCustomer from "./commerce/OrderDetailCustomer";
+import OrderListCustomer from "./customer/OrderListCustomer";
+import OrderDetailCustomer from "./customer/OrderDetailCustomer";
 import EditProfileCustomer from "./customer/EditProfileCustomer";
 
 import ForbiddenPage from "./error/UnauthorizedPage";

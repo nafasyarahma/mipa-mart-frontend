@@ -1,9 +1,9 @@
-import OrderDetailPayment from "../Fragments/Commerce/OrderDetailPayment";
-import OrderDetailDelivery from "../Fragments/Commerce/OrderDetailDelivery";
-import OrderDetailNote from "../Fragments/Commerce/OrderDetailNote";
-import SellerInfo from "../Fragments/Commerce/SellerInfo";
-import CustomerInfo from "../Fragments/Commerce/CustomerInfo";
-import OrderItems from "../Fragments/Commerce/OrderItems";
+import OrderDetailPayment from "../Fragments/Orders/OrderDetailPayment";
+import OrderDetailDelivery from "../Fragments/Orders/OrderDetailDelivery";
+import OrderDetailNote from "../Fragments/Orders/OrderDetailNote";
+import SellerInfo from "../Fragments/Orders/SellerInfo";
+import CustomerInfo from "../Fragments/Orders/CustomerInfo";
+import OrderProducts from "../Fragments/Orders/OrderProducts";
 
 const OrderDetailLayout = ({ type, title, order }) => {
   return (
@@ -20,19 +20,19 @@ const OrderDetailLayout = ({ type, title, order }) => {
       <p className="text-gray-600">Tanggal Pemesanan: {order.created_at}</p>
       <div className="mt-8 max-w-5xl justify-center md:flex md:space-x-6 xl:px-0">
         <div className="flex flex-col md:w-2/3 gap-6">
-          <OrderItems order={order}></OrderItems>
+          <OrderProducts order={order} />
 
           <div className="flex gap-4">
-            <OrderDetailPayment order={order}></OrderDetailPayment>
-            <OrderDetailDelivery order={order}></OrderDetailDelivery>
+            <OrderDetailPayment order={order} />
+            <OrderDetailDelivery order={order} />
           </div>
         </div>
 
         {/* <!-- Sub total --> */}
         <div className="flex flex-col gap-6 w-1/3">
           <OrderDetailNote order={order}></OrderDetailNote>
-          {type === "member" && <CustomerInfo order={order}></CustomerInfo>}
-          {type === "customer" && <SellerInfo order={order}></SellerInfo>}
+          {type === "member" && <CustomerInfo order={order} />}
+          {type === "customer" && <SellerInfo order={order} />}
         </div>
       </div>
     </>

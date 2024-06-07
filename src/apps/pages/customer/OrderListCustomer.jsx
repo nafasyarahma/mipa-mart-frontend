@@ -1,4 +1,4 @@
-import OrderList from "../../components/Fragments/Commerce/OrderList";
+import OrderList from "../../components/Fragments/Orders/OrderList";
 import CommerceLayout from "../../components/Layouts/CommerceLayout";
 
 const OrderListCustomer = () => {

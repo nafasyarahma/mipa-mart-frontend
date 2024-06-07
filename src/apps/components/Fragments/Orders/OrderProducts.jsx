@@ -1,5 +1,6 @@
 import OrderProduct from "../../Elements/OrderProduct";
-const OrderItems = ({order}) => {
+
+const OrderProducts = ({order}) => {
   const orderProducts = order?.products || [];
 
   return (
@@ -22,4 +23,4 @@ const OrderItems = ({order}) => {
   );
 };
 
-export default OrderItems;
+export default OrderProducts;

@@ -1,4 +1,4 @@
-import CheckoutItems from "./CheckoutItems";
+import CheckoutItems from "../Commerce/CheckoutItems";
 import { useState, useEffect } from "react";
 import CustomerSourceAPI from "../../../api/resources/sourceCustomer";
 

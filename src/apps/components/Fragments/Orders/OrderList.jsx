@@ -22,9 +22,7 @@ const OrderList = () => {
     <div className="mt-6 flow-root sm:mt-8">
       <div className="divide-y divide-gray-200 dark:divide-gray-700">
         {orders.length > 0 ? (
-          orders.map((order) => (
-            <OrderItem key={order.id} order={order} />
-          ))
+          orders.map((order) => <OrderItem key={order.id} order={order} />)
         ) : (
           <div>Tidak ada order</div>
         )}

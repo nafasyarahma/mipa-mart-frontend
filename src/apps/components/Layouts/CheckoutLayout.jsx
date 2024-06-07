@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
-import OrderSummary from "../Fragments/Commerce/OrderSummary";
-import OrderDeliveries from "../Fragments/Commerce/OrderDeliveries";
-import OrderPayments from "../Fragments/Commerce/OrderPayments";
+import OrderSummary from "../Fragments/Orders/OrderSummary";
+import OrderDeliveries from "../Fragments/Orders/OrderDeliveries";
+import OrderPayments from "../Fragments/Orders/OrderPayments";
 import Button from "../Elements/basic/Button";
 import { Link, useNavigate } from "react-router-dom";
 import TextArea from "../Elements/basic/TextArea";
