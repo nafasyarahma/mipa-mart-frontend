@@ -1,14 +1,25 @@
+import { useState } from "react";
 import IconButton from "../Elements/basic/IconButton";
+import ModalChangeQuantity from "../Fragments/Commerce/ModalChangeQuantity";
 
-const CartItem = ({item, handleDelete}) => {
+const CartItem = ({ item, handleDelete }) => {
   const totalPrice = item.product.price * item.quantity;
+  const [isModalOpen, setModalOpen] = useState(false);
+
+  const handleModalOpen = () => {
+    setModalOpen(true);
+  };
+
+  const handleModalClose = () => {
+    setModalOpen(false);
+  };
 
   return (
     <div className="justify-between mb-6 rounded-lg bg-white p-6 shadow-md sm:flex sm:justify-start">
       <img
-        src="https://images.unsplash.com/photo-1515955656352-a1fa3ffcd111?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
+        src={item.product.images}
         alt="product-image"
-        className="w-full rounded-lg sm:w-40"
+        className="rounded-lg w-40 h-20 object-cover"
       />
       <div className="sm:ml-4 sm:flex sm:w-full sm:justify-between">
         <div className="mt-5 sm:mt-0 flex flex-col justify-between">
@@ -22,13 +33,19 @@ const CartItem = ({item, handleDelete}) => {
             <p className="text-sm font-semibold text-gray-600 mr-2">
               Jumlah: {item.quantity}
             </p>
-            <IconButton icon="fa-solid fa-pen" iconColor="purple"></IconButton>
+            <IconButton
+              icon="fa-solid fa-pen"
+              iconColor="purple"
+              onClick={handleModalOpen}
+            ></IconButton>
           </div>
         </div>
         <div className="flex flex-col justify-between">
           <div className=" border-gray-100">
             <p className="text-sm text-gray-600 text-right">Total</p>
-            <p className="mt-2 font-bold text-gray-900 text-right">Rp{totalPrice}</p>
+            <p className="mt-2 font-bold text-gray-900 text-right">
+              Rp{totalPrice}
+            </p>
           </div>
           <div className="flex justify-end">
             <IconButton
@@ -40,6 +57,12 @@ const CartItem = ({item, handleDelete}) => {
           </div>
         </div>
       </div>
+      <ModalChangeQuantity
+        modalId="modalChangeQuantity"
+        item={item}
+        isOpen={isModalOpen}
+        onClose={handleModalClose}
+      />
     </div>
   );
 };

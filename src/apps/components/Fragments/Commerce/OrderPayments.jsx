@@ -1,8 +1,8 @@
 import RadioOptionPayment from "../../Elements/RadioOptionPayment";
 import FileUpload from "../../Elements/basic/FileUpload";
-import TextArea from "../../Elements/basic/TextArea";
 
-const OrderPayments = () => {
+
+const OrderPayments = ({paymentMethods, selectedPaymentMethod, onChangePaymentMethod, onFileChange }) => {
   return (
     <div>
       <p className="text-xl font-medium">Metode Pembayaran</p>
@@ -11,21 +11,24 @@ const OrderPayments = () => {
       </p>
 
       <div className="mt-6">
-        <RadioOptionPayment
-          id="dana"
-          methodName="DANA"
-          no_account="081927251822"
-          ownerName="Nabila Putri"
-        />
+        {paymentMethods.length > 0 ? (
+          paymentMethods.map((method) => (
+            <RadioOptionPayment
+              key={method.id}
+              id={method.id}
+              provider={method.provider}
+              no_account={method.no_account}
+              name={method.name}
+              checked={selectedPaymentMethod === method.id}
+              onChange={onChangePaymentMethod}
+            />
+          ))
+        ) : (
+          <p>Tidak ada metode pembayaran</p>
+        )}
         <div className="mt-6">
-          <FileUpload label="Bukti Transfer"></FileUpload>
+          <FileUpload label="Bukti Transfer" onChange={onFileChange}></FileUpload>
         </div>
-        <TextArea
-          id="order_note"
-          label="Catatan"
-          placeholder="Berikan catatan tambahan mengenai pesanan ..."
-          containerClassName="mt-6"
-        ></TextArea>
       </div>
     </div>
   );

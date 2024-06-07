@@ -1,14 +1,19 @@
 import axios from "axios";
 import API_ENDPOINT from "../global/api-endpoint";
 import authenticatedApi from "../packages/interceptors";
+import CONFIG from "../global/config";
+
+const { BASE_URL } = CONFIG
 
 const {
   CUSTOMER_REGISTER,
   CUSTOMER_PROFILE,
   CUSTOMER_CART,
   CUSTOMER_CART_ITEM,
+  CUSTOMER_ORDER,
+  CUSTOMER_ORDER_BY_ID,
   ADMIN_CUSTOMERS,
-  ADMIN_CUSTOMER_BY_ID
+  ADMIN_CUSTOMER_BY_ID,
 } = API_ENDPOINT;
 
 class CustomerSourceAPI {
@@ -38,9 +43,39 @@ class CustomerSourceAPI {
     return response.data.data;
   }
 
+  static async changeQuantity(id, data) {
+    const response = await authenticatedApi.put(CUSTOMER_CART_ITEM(id), data);
+    return response.data.message;
+  }
+
+  static async getSellerPaymentMethods() {
+    const response = await authenticatedApi.get(`${BASE_URL}/customer/order/payment-methods`);
+    return response.data.data;
+  }
+
+  static async getSellerDeliveryMethods() {
+    const response = await authenticatedApi.get(`${BASE_URL}/customer/order/delivery-methods`);
+    return response.data.data;
+  }
+
   static async deleteCartItem(id) {
     const response = await authenticatedApi.delete(CUSTOMER_CART_ITEM(id));
     return response.data.message;
+  }
+
+  static async postOrder(data) {
+    const response = await authenticatedApi.post(CUSTOMER_ORDER, data);
+    return response.data.message;
+  }
+
+  static async getOrdersCustomer() {
+    const response = await authenticatedApi.get(CUSTOMER_ORDER);
+    return response.data.data;
+  }
+
+  static async getOrderById(id) {
+    const response = await authenticatedApi.get(CUSTOMER_ORDER_BY_ID(id));
+    return response.data.data;
   }
 
   // admin

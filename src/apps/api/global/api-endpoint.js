@@ -15,6 +15,8 @@ const API_ENDPOINT = {
   // Members
   MEMBER_REGISTER: `${BASE_URL}/member/register`,
   MEMBER_PROFILE: `${BASE_URL}/member/profile`,
+  MEMBER_ORDERS: `${BASE_URL}/member/orders`,
+  MEMBER_ORDER_BY_ID: (id) => `${BASE_URL}/member/orders/${id}`,
   MEMBER_EMAIL_VERIFICATION: `${BASE_URL}/member/email-verification`,
   MEMBER_VERIFY_EMAIL: (token) => `${BASE_URL}/member/verify-email/${token}`,
   MEMBER_FORGOT_PASSWORD: `${BASE_URL}/member/forgot-password`,
@@ -32,6 +34,8 @@ const API_ENDPOINT = {
   CUSTOMER_RESET_PASSWORD: (token) => `${BASE_URL}/customer/reset-email/${token}`,
   CUSTOMER_CART: `${BASE_URL}/customer/carts`,
   CUSTOMER_CART_ITEM: (id) => `${BASE_URL}/customer/carts/item/${id}`,
+  CUSTOMER_ORDER: `${BASE_URL}/customer/orders`,
+  CUSTOMER_ORDER_BY_ID: (id) => `${BASE_URL}/customer/orders/${id}`,
   ADMIN_CUSTOMERS: `${BASE_URL}/admin/customers`,
   ADMIN_CUSTOMER_BY_ID: (id) => `${BASE_URL}/admin/customers/${id}`,
 

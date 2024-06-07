@@ -5,6 +5,8 @@ import authenticatedApi from "../packages/interceptors";
 const {
   MEMBER_REGISTER,
   MEMBER_PROFILE,
+  MEMBER_ORDERS,
+  MEMBER_ORDER_BY_ID,
   ADMIN_MEMBERS,
   ADMIN_MEMBER_BY_ID,
   ADMIN_MEMBER_STATUS,
@@ -24,6 +26,16 @@ class MemberSourceAPI {
   static async putMemberProfile(data) {
     const response = await authenticatedApi.put(MEMBER_PROFILE, data);
     return response.data.message;
+  }
+
+  static async getMemberOrders() {
+    const response = await authenticatedApi.get(MEMBER_ORDERS);
+    return response.data.data;
+  }
+
+  static async getMemberOrderById(id) {
+    const response = await authenticatedApi.get(MEMBER_ORDER_BY_ID(id));
+    return response.data.data;
   }
 
   // admin

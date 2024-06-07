@@ -31,6 +31,7 @@ import CartPage from "./commerce/CartPage";
 import DetailProduct from "./commerce/DetailProductPage";
 import CheckoutPage from "./commerce/CheckoutPage";
 import OrderPageCustomer from "./commerce/OrderPageCustomer";
+import OrderListCustomer from "./commerce/OrderListCustomer";
 import OrderDetailCustomer from "./commerce/OrderDetailCustomer";
 import EditProfileCustomer from "./customer/EditProfileCustomer";
 
@@ -71,6 +72,7 @@ export {
   DetailProduct,
   CheckoutPage,
   OrderPageCustomer,
+  OrderListCustomer,
   OrderDetailCustomer,
   EditProfileCustomer,
 

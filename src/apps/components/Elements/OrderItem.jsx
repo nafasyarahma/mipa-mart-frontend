@@ -1,17 +1,46 @@
-const OrderItem = () => {
+import { format } from "date-fns";
+import { Link } from "react-router-dom";
+import Button from "./basic/Button";
+
+const OrderItem = ({ order }) => {
+  const formattedDate = format(new Date(order.created_at), "dd-MM-yyyy");
+
   return (
-    <div className="flex flex-col rounded-lg bg-white sm:flex-row p-2">
-      <img
-        className="h-16 w-24 rounded-md border object-cover object-center"
-        src="https://images.unsplash.com/flagged/photo-1556637640-2c80d3201be8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8c25lYWtlcnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60"
-        alt=""
-      />
-      <div className="flex w-full flex-col justify-between px-4">
-        <p className="text-gray-600">Sepatu Adidos</p>
-        <div className="flex justify-between">
-          <p className="font-semibold">$138.99</p>
-          <p className="text-gray-500">x1</p>
-        </div>
+    <div className="flex flex-wrap items-center gap-y-4 gap-x-4 py-6">
+      <dl className="w-full sm:w-1/3 lg:w-1/4 ">
+        <dt className="text-base font-medium text-gray-500">Order ID:</dt>
+        <dd className="mt-1.5 text-base font-semibold text-gray-900">
+          <a href="#" className="hover:underline">
+            # {order.id}
+          </a>
+        </dd>
+      </dl>
+
+      <dl className="w-1/2 sm:w-1/4 lg:w-auto lg:flex-1">
+        <dt className="text-base font-medium text-gray-500">Date:</dt>
+        <dd className="mt-1.5 text-base font-semibold text-gray-900">
+          {formattedDate}
+        </dd>
+      </dl>
+
+      <dl className="w-1/2 sm:w-1/4 lg:w-auto lg:flex-1">
+        <dt className="text-base font-medium text-gray-500">Price:</dt>
+        <dd className="mt-1.5 text-base font-semibold text-gray-900">
+          Rp{order.total_price}
+        </dd>
+      </dl>
+
+      <dl className="w-1/2 sm:w-1/4 lg:w-auto lg:flex-1">
+        <dt className="text-base font-medium text-gray-500">Status:</dt>
+        <dd className="mt-1.5 text-base font-semibold text-gray-900">
+          {order.status}
+        </dd>
+      </dl>
+
+      <div className="w-full grid lg:w-40 lg:items-center">
+        <Link to={`/customer/order/${order.id}/detail`}>
+          <Button label="Lihat Detail"></Button>
+        </Link>
       </div>
     </div>
   );

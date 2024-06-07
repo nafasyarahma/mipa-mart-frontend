@@ -28,7 +28,7 @@ const DropdownMenuCustomer = () => {
       </Link>
       <Link
         className="block px-4 py-2 text-gray-700 hover:bg-gray-100"
-        to="/customer/order"
+        to="/customer/orders"
       >
         Daftar Pesanan
       </Link>

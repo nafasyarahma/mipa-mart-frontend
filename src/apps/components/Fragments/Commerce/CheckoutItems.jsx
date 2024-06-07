@@ -1,25 +1,23 @@
 import OrderProduct from "../../Elements/OrderProduct";
-const OrderItems = ({order}) => {
-  const orderProducts = order?.products || [];
-
+const CheckoutItems = ({cart, totalPrice}) => {
   return (
     <div className="rounded-lg border p-4 space-y-3">
-      {orderProducts.length > 0 ? (
-            order.products.map((product) => (
+      {cart.length > 0 ? (
+            cart.map((item) => (
               <OrderProduct
-                key={product.id}
-                item={product}
+                key={item.id}
+                item={item}
               />
             ))
           ) : (
-            <p>Order Anda kosong</p>
+            <p>Keranjang Anda kosong</p>
           )}
       <div className="flex justify-between font-bold px-2 pt-4 border-t">
         <p>Total Bayar</p>
-        <p>Rp{order.total_price}</p>
+        <p>Rp{totalPrice}</p>
       </div>
     </div>
   );
 };
 
-export default OrderItems;
+export default CheckoutItems;

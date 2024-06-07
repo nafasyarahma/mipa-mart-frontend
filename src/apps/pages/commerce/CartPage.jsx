@@ -7,13 +7,15 @@ import ToastNotification from "../../components/assets/helpers/ToastNotification
 
 const CartPage = () => {
   const [cart, setCart] = useState([]);
+  const [totalPrice, setTotalPrice] = useState(0);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchCartData = async () => {
       try {
         const response = await CustomerSourceAPI.getCart();
-        setCart(response.carts);
+        setCart(response.carts.cartItems);
+        setTotalPrice(response.carts.totalPrice);
       } catch (error) {
         console.error("Failed to fetch cart data:", error);
       } finally {
@@ -32,14 +34,20 @@ const CartPage = () => {
     console.log(id);
     try {
       const response = await CustomerSourceAPI.deleteCartItem(id);
-      const currectData = cart.filter((item) => item.id !== id);
-      setCart(currectData);
+      const updatedCart = cart.filter((item) => item.id !== id);
+      setCart(updatedCart);
+      const updatedTotalPrice = updatedCart.reduce(
+        (acc, item) => acc + item.product.price * item.quantity,
+        0
+      );
+      setTotalPrice(updatedTotalPrice);
       ToastNotification.toastSuccess(response);
     } catch (error) {
       console.error("Failed to add to cart", error);
       ToastNotification.toastError(error.response.data.message);
     }
   };
+
 
   return (
     <CommerceLayout>
@@ -50,14 +58,18 @@ const CartPage = () => {
         <div className="rounded-lg md:w-2/3">
           {cart.length > 0 ? (
             cart.map((item) => (
-              <CartItem key={item.id} item={item} handleDelete={handleDelete} />
+              <CartItem
+                key={item.id}
+                item={item}
+                handleDelete={handleDelete}
+              />
             ))
           ) : (
             <p>Keranjang Anda kosong</p>
           )}
         </div>
         {/* <!-- Sub total --> */}
-        <SubTotal></SubTotal>
+        <SubTotal totalPrice={totalPrice}></SubTotal>
       </div>
     </CommerceLayout>
   );

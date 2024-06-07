@@ -1,7 +1,24 @@
 import { Link } from "react-router-dom";
 import IconButton from "../../Elements/basic/IconButton";
+import { useEffect, useState } from "react";
+import MemberSourceAPI from "../../../api/resources/sourceMember";
 
 const TableOrders = ({ subTitle }) => {
+  const [orders, setOrders] = useState([]);
+
+  useEffect(() => {
+    const fetchOrders = async () => {
+      try {
+        const response = await MemberSourceAPI.getMemberOrders();
+        setOrders(response.orders);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    fetchOrders();
+  }, []);
+
   return (
     <>
       <div className="flex justify-between items-center pb-4">
@@ -38,25 +55,39 @@ const TableOrders = ({ subTitle }) => {
           </tr>
         </thead>
         <tbody>
-          <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-            <td className="px-6 py-4">1</td>
-            <td className="px-6 py-4">#customer-251673101</td>
-            <td className="px-6 py-4 ">1, Mar 2024</td>
-            <td className="px-6 py-4 ">DANA</td>
-            <td className="px-6 py-4 ">COD Sekitar Unila</td>
-            <td className="px-6 py-4 ">Rp50.000</td>
+          {orders.length > 0 ? (
+            orders.map((order, index) => (
+            <tr
+              key={order.id} 
+              className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600"
+            >
+            <td className="px-6 py-4">{index + 1}</td>
+            <td className="px-6 py-4">#{order.id}</td>
+            <td className="px-6 py-4 ">{order.created_at}</td>
+            <td className="px-6 py-4 ">{order.payment_method.provider}</td>
+            <td className="px-6 py-4 ">{order.delivery_method.method}</td>
+            <td className="px-6 py-4 ">Rp{order.total_price}</td>
             <td className="px-6 py-4 items-center gap-3">
               <span className="flex items-center gap-2">
-                Pending
+                {order.status}
                 <IconButton color="green" icon="fa-solid fa-pen" />
               </span>
             </td>
             <td className="flex items-center px-6 py-4">
-              <Link to="/member/order/detail">
+              <Link to={`/member/order/${order.id}/detail`}>
                 <p className="underline hover:text-purple-500">Lihat Detail</p>
               </Link>
             </td>
           </tr>
+            ))
+          ) :(
+            <tr>
+              <td colSpan="8" className="px-6 py-4 text-center text-black">
+                Belum ada pesanan
+              </td>
+            </tr>
+            )}
+          
         </tbody>
       </table>
     </>

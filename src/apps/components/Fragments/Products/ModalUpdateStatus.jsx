@@ -55,8 +55,8 @@ const ModalUpdateStatus = ({ isOpen, onClose, id }) => {
               />
               <RadioOption
                 name="status"
-                id="pre-order"
-                value="pre-order"
+                id="preorder"
+                value="preorder"
                 label="Pre-Order"
               />
               <RadioOption

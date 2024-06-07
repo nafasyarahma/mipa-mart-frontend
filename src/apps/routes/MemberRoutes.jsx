@@ -100,7 +100,7 @@ const useMemberRoutes = () => {
         }
       />
       <Route
-        path="/member/order/detail"
+        path="/member/order/:id/detail"
         element={
           <PrivateRoute role="member" redirectPath="/forbidden">
             <OrderDetailMember />

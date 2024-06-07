@@ -4,9 +4,10 @@ import { Fragment } from "react";
 import {
   CartPage,
   CheckoutPage,
-  OrderPageCustomer,
   OrderDetailCustomer,
   EditProfileCustomer,
+
+  OrderListCustomer,
 } from "../pages"
 
 const useCustomerRoutes = () => {
@@ -14,8 +15,8 @@ const useCustomerRoutes = () => {
     <Fragment>
       <Route path="/customer/cart" element={<CartPage />} />
       <Route path="/customer/checkout" element={<CheckoutPage />} />
-      <Route path="/customer/order" element={<OrderPageCustomer />} />
-      <Route path="/customer/order/detail" element={<OrderDetailCustomer />} />
+      <Route path="/customer/orders" element={<OrderListCustomer />} />
+      <Route path="/customer/order/:id/detail" element={<OrderDetailCustomer />} />
       <Route path="/customer/profile/edit" element={<EditProfileCustomer />} />
     </Fragment>
   );
