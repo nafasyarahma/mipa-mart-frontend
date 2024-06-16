@@ -9,6 +9,7 @@ const EditProfileMember = () => {
   const navigate = useNavigate();
 
   const [memberData, setMemberData] = useState({
+    username: "",
     email: "",
     password: "",
     name: "",
@@ -62,6 +63,8 @@ const EditProfileMember = () => {
       [name]: value,
     }));
   };
+
+  console.log(memberData)
 
   return (
     <>

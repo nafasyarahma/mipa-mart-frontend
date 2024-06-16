@@ -20,10 +20,11 @@ const CardProduct = ({ product }) => {
     navigate(`/product/${product.id}/detail`);
   };
 
+
+
   return (
     <div
-      onClick={handleCardClick}
-      className="bg-white rounded-lg overflow-hidden shadow-lg w-full sm:w-54 lg:w-64 hover:scale-105 transition-transform duration-300"
+      className="flex flex-col bg-white rounded-lg overflow-hidden shadow-lg w-full sm:w-54 lg:w-64 hover:scale-105 transition-transform duration-300"
     >
       <div className="relative w-full h-48">
         <img
@@ -35,14 +36,14 @@ const CardProduct = ({ product }) => {
           {product.status}
         </div>
       </div>
-      <div className="p-4">
+      <div className="p-4 flex-1 flex flex-col">
         <h3 className="text-lg font-medium mb-2">{product.name}</h3>
         <p className="text-gray-600 text-sm mb-4">
           {truncateDescription(product.description, 80)}
         </p>
-        <div className="flex items-center justify-between">
+        <div className="flex items-center justify-between mt-auto pt-2">
           <span className="font-bold text-lg">{fotmattedPrice}</span>
-          <Button label="+ Keranjang" />
+          <Button label="Lihat Deatil" onClick={handleCardClick} />
         </div>
       </div>
     </div>

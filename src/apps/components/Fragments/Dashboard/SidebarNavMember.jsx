@@ -7,7 +7,7 @@ import ToastNotification from "../../assets/helpers/ToastNotification";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faRightFromBracket } from "@fortawesome/free-solid-svg-icons";
 
-const SidebarNavMember = () => {
+const SidebarNavMember = ({username}) => {
   const navigate = useNavigate();
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
@@ -35,6 +35,7 @@ const SidebarNavMember = () => {
         sidebar="sidebar-member"
         toggleSidebar={toggleSidebar}
         link="/member/profil/edit"
+        username={username}
       />
       <aside
         id="sidebar-member"

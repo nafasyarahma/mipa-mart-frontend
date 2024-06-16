@@ -40,27 +40,10 @@ const NavbarCatalog = () => {
   return (
     <nav className="fixed top-0 z-50 flex justify-between items-center w-full bg-white text-gray-700 border border-b-gray-500">
       <div className="px-5 xl:px-12 py-6 flex justify-between w-full items-center">
-        <Link className="text-2xl font-bold font-heading" to="/">
+        <Link className="text-2xl font-bold font-heading hover:text-purple-500" to="/">
           MIPA MART
         </Link>
-        {/* Nav Links */}
-        <ul className="hidden md:flex  px-4 font-semibold font-heading space-x-12">
-          <li>
-            <Link className="hover:text-purple-500" to="/">
-              Katalog
-            </Link>
-          </li>
-          <li>
-            <Link className="hover:text-purple-500" to="/category">
-              Kategori
-            </Link>
-          </li>
-          <li>
-            <Link className="hover:text-purple-500" to="/contact">
-              Contact
-            </Link>
-          </li>
-        </ul>
+        
         {/* Header Icons */}
         {isAuthenticated ? (
           <div className="xl:flex items-center space-x-5">

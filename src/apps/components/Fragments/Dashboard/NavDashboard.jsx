@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 library.add(fas);
 
 const NavDashboard = (props) => {
-  const { pageTitle, sidebar, toggleSidebar, link, isAdmin } = props;
+  const { pageTitle, sidebar, toggleSidebar, link, isAdmin, username } = props;
 
   return (
     <nav className="fixed px-2 top-0 z-50 w-full bg-white border-b border-gray-200 dark:bg-gray-800 dark:border-gray-700">
@@ -29,18 +29,21 @@ const NavDashboard = (props) => {
           </div>
 
           {!isAdmin && (
-            <Link to={link}>
-              <button
-                type="button"
-                className="flex text-sm bg-gray-800 rounded-full focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600"
-              >
-                <FontAwesomeIcon
-                  icon="fa-solid fa-circle-user"
-                  size="2xl"
-                  color="white"
-                />
-              </button>
-            </Link>
+            <div className="text-white flex flex-rows gap-4 items-center">
+              <p>{username}</p>
+              <Link to={link}>
+                <button
+                  type="button"
+                  className="flex text-sm bg-gray-800 rounded-full focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600"
+                >
+                  <FontAwesomeIcon
+                    icon="fa-solid fa-circle-user"
+                    size="2xl"
+                    color="white"
+                  />
+                </button>
+              </Link>
+            </div>
           )}
         </div>
       </div>

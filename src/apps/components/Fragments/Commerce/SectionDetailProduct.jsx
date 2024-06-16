@@ -37,7 +37,7 @@ const SectionDetailProduct = ({ product }) => {
   const handleAddToCart = async (e) => {
     e.preventDefault();
     const data = { productId: product.id, quantity };
-    console.log(data)
+    
     try {
       const response = await CustomerSourceAPI.addToCart(data);
       ToastNotification.toastSuccess(response);
