@@ -12,8 +12,10 @@ const {
 
 class ProductSourceAPI {
   // public
-  static async getAllProducts() {
-    const response = await axios.get(PRODUCTS)
+  static async getAllProducts(name='', category='') {
+    const response = await axios.get(PRODUCTS, {
+      params: { name, category }
+    })
     return response.data.data;
   }
 

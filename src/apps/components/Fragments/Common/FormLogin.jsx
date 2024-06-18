@@ -41,7 +41,7 @@ const FormLogin = ({ onLoginSuccess }) => {
         type="text"
         placeholder="Masukkan username"
         value={username}
-        onChange={(e) => setUsername(e.target.value)}
+        onChange={(e) => setUsername(e.target.value.toLowerCase())}
         required
         >Username</InputForm>
       <InputForm

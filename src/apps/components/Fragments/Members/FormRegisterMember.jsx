@@ -28,7 +28,7 @@ const FormRegisterMember = () => {
     const { name, value } = e.target;
     setMemberData({
       ...memberData,
-      [name]: value,
+      [name]: name === 'username' ? value.toLowerCase() : value,
     });
   }
 

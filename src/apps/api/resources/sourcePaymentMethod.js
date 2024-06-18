@@ -8,7 +8,6 @@ const {
 
 class PaymentMethodSourceAPI {
   static async postPaymentMethod(data) {
-    console.log(data)
     const response = await authenticatedApi.post(MEMBER_PAYMENT_METHODS, data);
     return response.data.message;
   }

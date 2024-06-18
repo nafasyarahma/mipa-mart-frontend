@@ -7,7 +7,7 @@ import ProductSourceAPI from "../../../api/resources/sourceProduct";
 import ToastNotification from "../../assets/helpers/ToastNotification";
 
 const TableProducts = ({ subTitle }) => {
-  const [produts, setProducts] = useState([]);
+  const [products, setProducts] = useState([]);
   const [isUpdateStatusModalOpen, setUpdateStatusModalOpen] = useState(false);
   const [selectedProductId, setSelectedProductId] = useState(null);
 
@@ -28,7 +28,7 @@ const TableProducts = ({ subTitle }) => {
   const handleDelete = async(id) => {
     try {
       const response = await ProductSourceAPI.deleteProductById(id);
-      const currectData = produts.filter((product) => product.id !== id);
+      const currectData = products.filter((product) => product.id !== id);
       setProducts(currectData);
       ToastNotification.toastSuccess(response);
     } catch (error) {
@@ -83,8 +83,8 @@ const TableProducts = ({ subTitle }) => {
         </thead>
 
         <tbody>
-          {produts.length > 0 ? (
-            produts.map((product, index) => (
+          {products.length > 0 ? (
+            products.map((product, index) => (
               <tr
                 key={product.id}
                 className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600"
@@ -103,7 +103,7 @@ const TableProducts = ({ subTitle }) => {
                     dataModalToggle="updateProductStatus"
                   />
                 </td>
-                <td className="px-6 py-4">{product.category?.name ?? "-"}</td>
+                <td className="px-6 py-4">{product.category?.name  || "-"}</td>
                 <td className="flex items-center px-6 py-4">
                   <IconButton color="sky" icon="fa-solid fa-circle-info" />
                   <Link to={`/member/product/${product.id}/edit`}>

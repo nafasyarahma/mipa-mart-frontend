@@ -1,9 +1,9 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 
-const SearchBar = () => {
+const SearchBar = ({value, onSubmit, onChange}) => {
   return (
-    <form className="w-full lg:w-96">
+    <form onSubmit={onSubmit} className="w-full lg:w-96">
       <label
         htmlFor="default-search"
         className="mb-2 text-sm font-medium text-gray-900 sr-only"
@@ -19,7 +19,8 @@ const SearchBar = () => {
           id="default-search"
           className="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-purple-500 focus:border-purple-500"
           placeholder="Cari nama produk..."
-          required
+          value={value}
+          onChange={onChange}
         />
         <button
           type="submit"

@@ -20,7 +20,7 @@ const FormRegisterCustomer = () => {
     const {name, value} = e.target;
     setCustomerData((prevData) => ({
       ...prevData,
-      [name]: value,
+      [name]: name === 'username' ? value.toLowerCase() : value,
     }));
   };
 

@@ -67,7 +67,6 @@ const CheckoutLayout = () => {
     data.append("deliveryMethodId", selectedDeliveryMethod);
     data.append("paymentImage", paymentImage)
     data.append("note", note);
-    console.log(data)
 
     try {
       const response = await CustomerSourceAPI.postOrder(data);

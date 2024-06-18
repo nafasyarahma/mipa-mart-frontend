@@ -31,7 +31,6 @@ const CartPage = () => {
   }
 
   const handleDelete = async (id) => {
-    console.log(id);
     try {
       const response = await CustomerSourceAPI.deleteCartItem(id);
       const updatedCart = cart.filter((item) => item.id !== id);

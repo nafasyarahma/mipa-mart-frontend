@@ -90,7 +90,7 @@ const FormEditProduct = ({ subTitle }) => {
     });
 
     try {
-
+      console.log(selectedCategory)
       const response = await ProductSourceAPI.putProductById(id, formData);
       ToastNotification.toastSuccess(response);
       navigate("/member/products");
@@ -99,6 +99,7 @@ const FormEditProduct = ({ subTitle }) => {
       ToastNotification.toastError(error.response.data.message);
     }
   };
+  
 
   return (
     <>
@@ -140,7 +141,7 @@ const FormEditProduct = ({ subTitle }) => {
             onChange={handleCategoryChange}
             className="block w-full p-2 mb-6 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500"
           >
-            <option value="">Pilih Kategori</option>
+            <option value='' >Pilih Kategori</option>
             {categories.map((category) => (
               <option key={category.id} value={category.id}>
                 {category.name}

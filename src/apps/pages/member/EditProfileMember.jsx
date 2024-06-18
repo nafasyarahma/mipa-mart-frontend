@@ -64,8 +64,6 @@ const EditProfileMember = () => {
     }));
   };
 
-  console.log(memberData)
-
   return (
     <>
       <DashboarMemberLayout 
