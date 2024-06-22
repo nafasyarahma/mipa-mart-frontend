@@ -12,6 +12,7 @@ const {
   CUSTOMER_CART_ITEM,
   CUSTOMER_ORDER,
   CUSTOMER_ORDER_BY_ID,
+  CUSTOMER_ORDER_HISTORY,
   ADMIN_CUSTOMERS,
   ADMIN_CUSTOMER_BY_ID,
   CUSTOMER_FORGOT_PASSWORD,
@@ -77,6 +78,11 @@ class CustomerSourceAPI {
 
   static async getOrderById(id) {
     const response = await authenticatedApi.get(CUSTOMER_ORDER_BY_ID(id));
+    return response.data.data;
+  }
+
+  static async getHistoryOrder() {
+    const response = await authenticatedApi.get(CUSTOMER_ORDER_HISTORY);
     return response.data.data;
   }
 

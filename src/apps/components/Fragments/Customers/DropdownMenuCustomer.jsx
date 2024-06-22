@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 
 const DropdownMenuCustomer = () => {
   const navigate = useNavigate();
-
+  
   const handleLogout = async () => {
     try {
       const response = await AuthSourceAPI.logout();
@@ -31,6 +31,12 @@ const DropdownMenuCustomer = () => {
         to="/customer/orders"
       >
         Daftar Pesanan
+      </Link>
+      <Link
+        className="block px-4 py-2 text-gray-700 hover:bg-gray-100"
+        to="/customer/orders/history"
+      >
+        Riwayat Pesanan
       </Link>
       <button
         onClick={handleLogout}

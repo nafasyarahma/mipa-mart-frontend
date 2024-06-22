@@ -11,14 +11,29 @@ const OrderDetailLayout = ({ type, title, order }) => {
       <h1 className="mb-4 text-gray-700 text-2xl text-center lg:text-start font-bold">
         {title}
       </h1>
-      <h1 className="text-gray-600 font-semobild mb-2">
-        ID: #{order.id}{" "}
-        <span className="bg-purple-500 text-white text-sm rounded-lg px-2 py-1">
-          {order.status}
-        </span>
-      </h1>
-      <p className="text-gray-600">Tanggal Pemesanan: {order.created_at}</p>
-      <div className="mt-8 max-w-5xl justify-center md:flex md:space-x-6 xl:px-0">
+      <div className="flex flex-row justify-between">
+      <div>
+        <p className="text-gray-600 font-semobild mb-2">ID: #{order.id}</p>
+        <p className="text-gray-600">Tanggal Pemesanan: {order.created_at}</p>
+      </div>
+      <div>
+        <p className="text-gray-600 font-semobild mb-2 text-right">
+          Status Pesanan{" "}
+          <span className="bg-purple-500 text-white text-sm rounded-lg px-2 py-1">
+            {order.order_status}
+          </span>
+        </p>
+        <p className="text-gray-600 font-semobild mb-2 text-right">
+          Status Pembayaran{"  "}
+          <span className="bg-purple-500 text-white text-sm rounded-lg px-2 py-1">
+            {order.payment_status}
+          </span>
+        </p>
+      </div>
+      </div>
+      
+
+      <div className="mt-8 max-w-6xl justify-center md:flex md:space-x-6 xl:px-0 mx-auto">
         <div className="flex flex-col md:w-2/3 gap-6">
           <OrderProducts order={order} />
 

@@ -53,11 +53,6 @@ const SidebarNavMember = ({username}) => {
               label="Dashboard"
             />
             <SidebarMenu
-              link="/member/orders"
-              icon="fa-solid fa-cart-arrow-down"
-              label="Pesanan"
-            />
-            <SidebarMenu
               link="/member/products"
               icon="fa-solid fa-box-open"
               label="Produk"
@@ -72,6 +67,17 @@ const SidebarNavMember = ({username}) => {
               icon="fa-solid fa-truck-fast"
               label="Metode Pengiriman"
             />
+            <SidebarMenu
+              link="/member/orders"
+              icon="fa-solid fa-cart-arrow-down"
+              label="Pesanan"
+            />
+            <SidebarMenu
+              link="/member/orders/history"
+              icon="fa-solid fa-clock-rotate-left"
+              label="Riwayat Pesanan"
+            />
+            
             <button
               onClick={handleLogout}
               className="flex items-center p-2 text-red-500 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 group"

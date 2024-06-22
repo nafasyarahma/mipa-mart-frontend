@@ -9,7 +9,7 @@ const OrderProducts = ({order}) => {
             order.products.map((product) => (
               <OrderProduct
                 key={product.id}
-                item={product}
+                product={product}
               />
             ))
           ) : (

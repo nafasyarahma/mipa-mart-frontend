@@ -7,6 +7,7 @@ import {
   ManagementPaymentMethods,
   ManagementDeliveryMethods,
   ManagementOrders,
+  HistoryOrders,
   AddPaymentMethod,
   AddDeliveryMethod,
   EditDeliveryMethod,
@@ -96,6 +97,14 @@ const useMemberRoutes = () => {
         element={
           <PrivateRoute role="member" redirectPath="/forbidden">
             <ManagementOrders />
+          </PrivateRoute>
+        }
+      />
+      <Route
+        path="/member/orders/history"
+        element={
+          <PrivateRoute role="member" redirectPath="/forbidden">
+            <HistoryOrders />
           </PrivateRoute>
         }
       />

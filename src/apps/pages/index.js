@@ -6,6 +6,7 @@ import ManagementProducts from "./member/ManagementProducts";
 import ManagementPaymentMethods from "./member/ManagementPaymentMethods";
 import ManagementDeliveryMethods from "./member/ManagementDeliveryMethods";
 import ManagementOrders from "./member/ManagementOrders";
+import HistoryOrders from "./member/HistoryOrders";
 import AdminDashboard from "./admin/AdminDashboard";
 import ManagementCategories from "./admin/ManagementCategories";
 import ManagementMembers from "./admin/ManagementMembers";
@@ -32,6 +33,7 @@ import CartPage from "./commerce/CartPage";
 import DetailProduct from "./commerce/DetailProductPage";
 import CheckoutPage from "./commerce/CheckoutPage";
 import OrderListCustomer from "./customer/OrderListCustomer";
+import OrderHistoryCustomer from "./customer/OrderHistoryCustomer";
 import OrderDetailCustomer from "./customer/OrderDetailCustomer";
 import EditProfileCustomer from "./customer/EditProfileCustomer";
 
@@ -50,6 +52,7 @@ export {
   ManagementPaymentMethods, 
   ManagementDeliveryMethods,
   ManagementOrders,
+  HistoryOrders,
   ManagementCategories,
   ManagementMembers,
   ManagementCustomers,
@@ -75,6 +78,7 @@ export {
   DetailProduct,
   CheckoutPage,
   OrderListCustomer,
+  OrderHistoryCustomer,
   OrderDetailCustomer,
   EditProfileCustomer,
 

@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom";
-import DashboarMemberLayout from "../../components/Layouts/DashboardMemberLayout"
-import OrderDetailLayout from "../../components/Layouts/OrderDetailLayout"
+import DashboarMemberLayout from "../../components/Layouts/DashboardMemberLayout";
+import OrderDetailLayout from "../../components/Layouts/OrderDetailLayout";
 import { useEffect, useState } from "react";
 import MemberSourceAPI from "../../api/resources/sourceMember";
 
@@ -21,16 +21,17 @@ const OrderDetailMember = () => {
     fetchOrder(id);
   }, [id]);
 
-  return(
+  return (
     <>
-    <DashboarMemberLayout
-        pageTitle="Kelola Pesanan"
-        pageDescription="Anda dapat melihat detail pesanan yang masuk dan mengelola staus pesanan"
-      >
-        <OrderDetailLayout type="member" title="Detail Pesanan" order={order}></OrderDetailLayout>
+      <DashboarMemberLayout>
+        <OrderDetailLayout
+          type="member"
+          title="Detail Pesanan"
+          order={order}
+        />
       </DashboarMemberLayout>
     </>
-  )
-}
+  );
+};
 
-export default OrderDetailMember
+export default OrderDetailMember;

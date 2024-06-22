@@ -1,36 +1,23 @@
 import { Link } from "react-router-dom";
-import IconButton from "../../Elements/basic/IconButton";
 import { useEffect, useState } from "react";
 import MemberSourceAPI from "../../../api/resources/sourceMember";
-import ModalOrderStatus from "./ModalOrderStatus";
 
-const TableOrders = ({ subTitle }) => {
-  const [orders, setOrders] = useState([]);
-  const [isModalOpen, setModalOpen] = useState(false);
-  const [selectedOrderId, setSelectedOrderId] = useState(null);
+const TableHistoryOrders = ({ subTitle }) => {
+  const [historyOrders, setHistoryOrders] = useState([]);
+  // const [selectedOrderId, setSelectedOrderId] = useState(null);
 
   useEffect(() => {
-    const fetchOrders = async () => {
+    const fetchHistoryOrders = async () => {
       try {
-        const response = await MemberSourceAPI.getMemberOrders();
-        setOrders(response.orders);
+        const response = await MemberSourceAPI.getMemberHistoryOrders();
+        setHistoryOrders(response.historyOrders);
       } catch (error) {
         console.error(error);
       }
     };
 
-    fetchOrders();
+    fetchHistoryOrders();
   }, []);
-
-  const handleModalOpen = (orderId) => {
-    setSelectedOrderId(orderId);
-    setModalOpen(true);
-  };
-
-  const handleModalClose = () => {
-    setModalOpen(false);
-    setSelectedOrderId(null)
-  };
 
   return (
     <>
@@ -51,10 +38,7 @@ const TableOrders = ({ subTitle }) => {
               Tanggal Pemesanan
             </th>
             <th scope="col" className="px-6 py-3">
-              Payment
-            </th>
-            <th scope="col" className="px-6 py-3">
-              Delivery
+              Tanggal Selesai
             </th>
             <th scope="col" className="px-6 py-3">
               Total Pesanan
@@ -63,16 +47,13 @@ const TableOrders = ({ subTitle }) => {
               Status Pesanan
             </th>
             <th scope="col" className="px-6 py-3">
-              Status Pembayaran
-            </th>
-            <th scope="col" className="px-6 py-3">
               Aksi
             </th>
           </tr>
         </thead>
         <tbody>
-          {orders.length > 0 ? (
-            orders.map((order, index) => (
+          {historyOrders.length > 0 ? (
+            historyOrders.map((order, index) => (
             <tr
               key={order.id} 
               className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600"
@@ -80,22 +61,9 @@ const TableOrders = ({ subTitle }) => {
             <td className="px-6 py-4">{index + 1}</td>
             <td className="px-6 py-4">#{order.id}</td>
             <td className="px-6 py-4 ">{order.created_at}</td>
-            <td className="px-6 py-4 ">{order.payment_method.provider}</td>
-            <td className="px-6 py-4 ">{order.delivery_method.method}</td>
+            <td className="px-6 py-4 ">{order.updated_at}</td>
             <td className="px-6 py-4 ">Rp{order.total_price}</td>
-            <td className="px-6 py-4 items-center gap-3">
-              <span className="flex items-center gap-2">
-                {order.order_status}
-                <IconButton 
-                  color="green" 
-                  icon="fa-solid fa-pen" 
-                  onClick={() => handleModalOpen(order.id)}
-                  dataModalTarget="updateOrderStatus"
-                  dataModalToggle="updateOrderStatus"
-                />
-              </span>
-            </td>
-            <td className="px-6 py-4 ">{order.payment_status}</td>
+            <td className="px-6 py-4 ">{order.order_status}</td>
             <td className="flex items-center px-6 py-4">
               <Link to={`/member/order/${order.id}/detail`}>
                 <p className="underline hover:text-purple-500">Lihat Detail</p>
@@ -113,13 +81,8 @@ const TableOrders = ({ subTitle }) => {
           
         </tbody>
       </table>
-      <ModalOrderStatus
-      orderId={selectedOrderId}
-      isOpen={isModalOpen}
-      onClose={handleModalClose}
-      />
     </>
   );
 };
 
-export default TableOrders;
+export default TableHistoryOrders;

@@ -24,7 +24,7 @@ const OrderDetailCustomer = () => {
   return (
     <CommerceLayout>
       <OrderDetailLayout
-        title="Pesanan Saya"
+        title="Detail Pesanan"
         type="customer"
         order={order}
       ></OrderDetailLayout>

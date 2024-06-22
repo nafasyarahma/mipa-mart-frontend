@@ -1,7 +1,7 @@
-import OrderList from "../../components/Fragments/Orders/OrderList";
+import OrderHistoryList from "../../components/Fragments/Orders/OrderHistoryList";
 import CommerceLayout from "../../components/Layouts/CommerceLayout";
 
-const OrderListCustomer = () => {
+const OrderHistoryCustomer = () => {
   return (
     <CommerceLayout>
       <section className="bg-white py-8 antialiased">
@@ -9,10 +9,10 @@ const OrderListCustomer = () => {
           <div className="mx-auto max-w-5xl">
             <div className="gap-4 sm:flex sm:items-center sm:justify-between">
               <h2 className="text-xl font-semibold text-gray-900 sm:text-2xl">
-                Pesanan Saya
+                Riwayat Pesanan
               </h2>
             </div>
-            <OrderList/>
+            <OrderHistoryList/>
           </div>
         </div>
       </section>
@@ -20,4 +20,4 @@ const OrderListCustomer = () => {
   );
 };
 
-export default OrderListCustomer;
+export default OrderHistoryCustomer;
