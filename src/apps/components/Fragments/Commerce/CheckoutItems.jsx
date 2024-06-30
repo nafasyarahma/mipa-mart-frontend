@@ -1,10 +1,11 @@
-import OrderProduct from "../../Elements/OrderProduct";
+import CheckoutItem from "../../Elements/basic/CheckoutItem";
+
 const CheckoutItems = ({cart, totalPrice}) => {
   return (
     <div className="rounded-lg border p-4 space-y-3">
       {cart.length > 0 ? (
             cart.map((item) => (
-              <OrderProduct
+              <CheckoutItem
                 key={item.id}
                 item={item}
               />
