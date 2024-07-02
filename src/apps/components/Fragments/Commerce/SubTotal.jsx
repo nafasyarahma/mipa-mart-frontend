@@ -10,7 +10,7 @@ const SubTotal = ({totalPrice}) => {
       <div className="flex justify-between">
         <p className="text-lg font-bold">Total</p>
         <div className="">
-          <p className="mb-1 text-lg font-bold">Rp{totalPrice}</p>
+          <p className="mb-1 text-lg font-bold">{totalPrice}</p>
         </div>
       </div>
       <Link to="/customer/checkout">

@@ -7,6 +7,7 @@ import MemberSourceAPI from "../../api/resources/sourceMember";
 const OrderDetailMember = () => {
   const { id } = useParams();
   const [order, setOrder] = useState("");
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const fetchOrder = async (id) => {
@@ -15,6 +16,8 @@ const OrderDetailMember = () => {
         setOrder(response.order);
       } catch (error) {
         console.error(error);
+      } finally {
+        setIsLoading(false);
       }
     };
 
@@ -24,11 +27,16 @@ const OrderDetailMember = () => {
   return (
     <>
       <DashboarMemberLayout>
-        <OrderDetailLayout
-          type="member"
-          title="Detail Pesanan"
-          order={order}
-        />
+        {isLoading ? (
+          <p>loading</p>
+        ) : (
+          <OrderDetailLayout
+            type="member"
+            title="Detail Pesanan"
+            order={order}
+          />
+        )}
+        ;
       </DashboarMemberLayout>
     </>
   );

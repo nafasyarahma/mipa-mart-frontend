@@ -171,7 +171,7 @@ const FormRegisterMember = () => {
             id="address"
             name="address"
             type="text"
-            placeholder="Alamat atau tempat tinggal saat ini"
+            placeholder="Alamat atau lokasi usaha"
             value={memberData.address}
             onChange={handleInputChange}
             className="sm:col-span-6"

@@ -1,11 +1,11 @@
 import CheckoutItems from "../Commerce/CheckoutItems";
 import { useState, useEffect } from "react";
 import CustomerSourceAPI from "../../../api/resources/sourceCustomer";
+import formatingPrices from "../../../utils/fotmattingPrices";
 
 const OrderSummary = () => {
   const [cart, setCart] = useState([]);
   const [totalPrice, setTotalPrice] = useState(0);
-
 
   useEffect(() => {
     const fetchCartData = async () => {
@@ -27,7 +27,11 @@ const OrderSummary = () => {
       <p className="text-gray-400 mb-6">
         Check your items. And select a suitable shipping method.
       </p>
-      <CheckoutItems cart={cart} totalPrice={totalPrice}/>
+      <CheckoutItems
+        cart={cart}
+        totalPrice={totalPrice}
+        formatingPrices={formatingPrices}
+      />
     </div>
   );
 };

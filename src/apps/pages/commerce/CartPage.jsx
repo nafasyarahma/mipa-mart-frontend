@@ -4,6 +4,7 @@ import CartItem from "../../components/Elements/CartItem";
 import SubTotal from "../../components/Fragments/Commerce/SubTotal";
 import CustomerSourceAPI from "../../api/resources/sourceCustomer";
 import ToastNotification from "../../components/assets/helpers/ToastNotification";
+import formatingPrices from "../../utils/fotmattingPrices";
 
 const CartPage = () => {
   const [cart, setCart] = useState([]);
@@ -61,6 +62,7 @@ const CartPage = () => {
                 key={item.id}
                 item={item}
                 handleDelete={handleDelete}
+                format={formatingPrices}
               />
             ))
           ) : (
@@ -68,7 +70,7 @@ const CartPage = () => {
           )}
         </div>
         {/* <!-- Sub total --> */}
-        <SubTotal totalPrice={totalPrice}></SubTotal>
+        <SubTotal totalPrice={formatingPrices(totalPrice)}></SubTotal>
       </div>
     </CommerceLayout>
   );

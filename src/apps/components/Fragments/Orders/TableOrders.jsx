@@ -3,6 +3,8 @@ import IconButton from "../../Elements/basic/IconButton";
 import { useEffect, useState } from "react";
 import MemberSourceAPI from "../../../api/resources/sourceMember";
 import ModalOrderStatus from "./ModalOrderStatus";
+import formatingDates from "../../../utils/formattingDates";
+import formatingPrices from "../../../utils/fotmattingPrices";
 
 const TableOrders = ({ subTitle }) => {
   const [orders, setOrders] = useState([]);
@@ -79,12 +81,12 @@ const TableOrders = ({ subTitle }) => {
             >
             <td className="px-6 py-4">{index + 1}</td>
             <td className="px-6 py-4">#{order.id}</td>
-            <td className="px-6 py-4 ">{order.created_at}</td>
+            <td className="px-6 py-4 ">{formatingDates(order.created_at)}</td>
             <td className="px-6 py-4 ">{order.payment_method.provider}</td>
             <td className="px-6 py-4 ">{order.delivery_method.method}</td>
-            <td className="px-6 py-4 ">Rp{order.total_price}</td>
+            <td className="px-6 py-4 ">{formatingPrices(order.total_price)}</td>
             <td className="px-6 py-4 items-center gap-3">
-              <span className="flex items-center gap-2">
+              <span className="flex items-center gap-2 capitalize">
                 {order.order_status}
                 <IconButton 
                   color="green" 
@@ -95,10 +97,21 @@ const TableOrders = ({ subTitle }) => {
                 />
               </span>
             </td>
-            <td className="px-6 py-4 ">{order.payment_status}</td>
+            <td className="px-6 py-4 items-center gap-3">
+              <span className="flex items-center gap-2 capitalize">
+                {order.payment_status}
+                <IconButton 
+                  color="green" 
+                  icon="fa-solid fa-pen" 
+                  onClick=""
+                  dataModalTarget=""
+                  dataModalToggle=""
+                />
+              </span>
+            </td>
             <td className="flex items-center px-6 py-4">
               <Link to={`/member/order/${order.id}/detail`}>
-                <p className="underline hover:text-purple-500">Lihat Detail</p>
+                <p className="underline text-purple-300 hover:text-purple-500">Lihat Detail</p>
               </Link>
             </td>
           </tr>

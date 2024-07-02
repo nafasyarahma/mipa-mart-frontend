@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import OrderItem from "../../Elements/OrderItem";
 import CustomerSourceAPI from "../../../api/resources/sourceCustomer";
+import OrderHistoryItem from "../../Elements/OrderHistoryItem";
 
 const OrderHistoryList = () => {
   const [historyOrders, setHistoryOrders] = useState([]);
@@ -22,7 +23,7 @@ const OrderHistoryList = () => {
     <div className="mt-6 flow-root sm:mt-8">
       <div className="divide-y divide-gray-200 dark:divide-gray-700">
         {historyOrders.length > 0 ? (
-          historyOrders.map((order) => <OrderItem key={order.id} order={order} />)
+          historyOrders.map((order) => <OrderHistoryItem key={order.id} order={order} />)
         ) : (
           <div>Tidak ada order</div>
         )}

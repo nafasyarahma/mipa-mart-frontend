@@ -68,7 +68,7 @@ const TableCategories = ({ subTitle }) => {
                 <td className="px-6 py-4">{index + 1}</td>
                 <td className="px-6 py-4 ">{category.name}</td>
                 <td className="px-6 py-4">{category.description || "-"}</td>
-                <td className="flex items-center px-6 py-4">
+                <td className="flex items-center px-6 py-4 gap-2">
                   <Link to={`/admin/category/${category.id}/edit`}>
                     <IconButton
                       color="yellow"

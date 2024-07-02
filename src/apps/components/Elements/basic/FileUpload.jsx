@@ -20,7 +20,7 @@ const FileUpload = ({id, onChange, multiple, required, label, containerClassName
         className="mt-1 text-xs text-gray-500"
         id="file_input_help"
       >
-        SVG, PNG, JPG or GIF (MAX. 800x400px).
+        JPG, JPEG, or PNG (max. 10mb)
       </p>
     </div>
   );

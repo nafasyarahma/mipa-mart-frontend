@@ -93,14 +93,6 @@ const ModalOrderStatus = ({ isOpen, onClose, orderId }) => {
                 Status
               </p>
               <RadioOption
-                id="pending"
-                name="status"
-                value="pending"
-                label="Pending"
-                checked={orderStatus === "pending"}
-                onChange={handleStatusChange}
-              />
-              <RadioOption
                 id="accepted"
                 name="status"
                 value="accepted"

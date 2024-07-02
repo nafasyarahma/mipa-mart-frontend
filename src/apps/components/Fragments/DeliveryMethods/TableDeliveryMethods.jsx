@@ -70,7 +70,7 @@ const TableDeliveryMethods = ({ subTitle }) => {
                 <td className="px-6 py-4">{index + 1}</td>
                 <td className="px-6 py-4 ">{method.method}</td>
                 <td className="px-6 py-4 ">{method.description}</td>
-                <td className="flex items-center px-6 py-4">
+                <td className="flex items-center px-6 py-4 gap-2">
                   <Link to={`/member/delivery-method/${method.id}/edit`}>
                     <IconButton
                       color="yellow"

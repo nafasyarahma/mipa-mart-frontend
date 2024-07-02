@@ -2,7 +2,7 @@ import { useState } from "react";
 import IconButton from "../Elements/basic/IconButton";
 import ModalChangeQuantity from "../Fragments/Commerce/ModalChangeQuantity";
 
-const CartItem = ({ item, handleDelete }) => {
+const CartItem = ({ item, handleDelete, format }) => {
   const totalPrice = item.product.price * item.quantity;
   const [isModalOpen, setModalOpen] = useState(false);
 
@@ -27,7 +27,7 @@ const CartItem = ({ item, handleDelete }) => {
             <h2 className="text-lg font-bold text-gray-900">
               {item.product.name}
             </h2>
-            <p className="mt-1 text-sm text-gray-600">Rp{item.product.price}</p>
+            <p className="mt-1 text-sm text-gray-600">{format(item.product.price)}</p>
           </div>
           <div className="flex items-center">
             <p className="text-sm font-semibold text-gray-600 mr-2">
@@ -44,7 +44,7 @@ const CartItem = ({ item, handleDelete }) => {
           <div className=" border-gray-100">
             <p className="text-sm text-gray-600 text-right">Total</p>
             <p className="mt-2 font-bold text-gray-900 text-right">
-              Rp{totalPrice}
+              {format(totalPrice)}
             </p>
           </div>
           <div className="flex justify-end">

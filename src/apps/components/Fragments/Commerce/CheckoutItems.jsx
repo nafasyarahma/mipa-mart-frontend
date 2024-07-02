@@ -1,6 +1,6 @@
 import CheckoutItem from "../../Elements/basic/CheckoutItem";
 
-const CheckoutItems = ({cart, totalPrice}) => {
+const CheckoutItems = ({cart, totalPrice, formatingPrices}) => {
   return (
     <div className="rounded-lg border p-4 space-y-3">
       {cart.length > 0 ? (
@@ -8,6 +8,7 @@ const CheckoutItems = ({cart, totalPrice}) => {
               <CheckoutItem
                 key={item.id}
                 item={item}
+                formatingPrices={formatingPrices}
               />
             ))
           ) : (
@@ -15,7 +16,7 @@ const CheckoutItems = ({cart, totalPrice}) => {
           )}
       <div className="flex justify-between font-bold px-2 pt-4 border-t">
         <p>Total Bayar</p>
-        <p>Rp{totalPrice}</p>
+        <p>{formatingPrices(totalPrice)}</p>
       </div>
     </div>
   );

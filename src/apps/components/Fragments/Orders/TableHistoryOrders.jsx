@@ -1,6 +1,8 @@
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import MemberSourceAPI from "../../../api/resources/sourceMember";
+import formatingDates from "../../../utils/formattingDates";
+import formatingPrices from "../../../utils/fotmattingPrices";
 
 const TableHistoryOrders = ({ subTitle }) => {
   const [historyOrders, setHistoryOrders] = useState([]);
@@ -60,13 +62,13 @@ const TableHistoryOrders = ({ subTitle }) => {
             >
             <td className="px-6 py-4">{index + 1}</td>
             <td className="px-6 py-4">#{order.id}</td>
-            <td className="px-6 py-4 ">{order.created_at}</td>
-            <td className="px-6 py-4 ">{order.updated_at}</td>
-            <td className="px-6 py-4 ">Rp{order.total_price}</td>
-            <td className="px-6 py-4 ">{order.order_status}</td>
+            <td className="px-6 py-4">{formatingDates(order.created_at)}</td>
+            <td className="px-6 py-4">{formatingDates(order.updated_at)}</td>
+            <td className="px-6 py-4">{formatingPrices(order.total_price)}</td>
+            <td className="px-6 py-4 capitalize">{order.order_status}</td>
             <td className="flex items-center px-6 py-4">
               <Link to={`/member/order/${order.id}/detail`}>
-                <p className="underline hover:text-purple-500">Lihat Detail</p>
+                <p className="underline text-purple-300 hover:text-purple-500">Lihat Detail</p>
               </Link>
             </td>
           </tr>

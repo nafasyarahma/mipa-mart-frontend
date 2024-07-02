@@ -83,7 +83,7 @@ const TableCustomers = ({ subTitle }) => {
                 <td className="px-6 py-4">{customer.name}</td>
                 <td className="px-6 py-4n">{customer.no_wa}</td>
                 <td className="px-6 py-4n">{customer.address}</td>
-                <td className="flex items-center px-6 py-4">
+                <td className="flex items-center px-6 py-4 gap-2">
                   <Link to={`/admin/customer/${customer.id}/edit`}>
                     <IconButton
                       color="yellow"

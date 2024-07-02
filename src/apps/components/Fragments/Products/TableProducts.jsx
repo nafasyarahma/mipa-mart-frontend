@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import ModalUpdateProductStatus from "./ModalUpdateProductStatus";
 import ProductSourceAPI from "../../../api/resources/sourceProduct";
 import ToastNotification from "../../assets/helpers/ToastNotification";
+import formatingPrices from "../../../utils/fotmattingPrices";
 
 const TableProducts = ({ subTitle }) => {
   const [products, setProducts] = useState([]);
@@ -45,6 +46,11 @@ const TableProducts = ({ subTitle }) => {
   const handleModalClose = () => {
     setUpdateStatusModalOpen(false);
     setSelectedProductId(null)
+  };
+
+  const truncateDescription = (description, maxLength) => {
+    if (description.length <= maxLength) return description;
+    return description.substring(0, maxLength) + "...";
   };
 
   return (
@@ -91,10 +97,10 @@ const TableProducts = ({ subTitle }) => {
               >
                 <td className="px-6 py-4">{index + 1}</td>
                 <td className="px-6 py-4">{product.name}</td>
-                <td className="px-6 py-4">{product.price}</td>
-                <td className="px-6 py-4">{product.description}</td>
+                <td className="px-6 py-4">{formatingPrices(product.price)}</td>
+                <td className="px-6 py-4">{truncateDescription(product.description, 45)}</td>
                 <td className="px-6 py-4 flex justify-between items-center gap-3">
-                  <span className="flex-grow">{product.status}</span>
+                  <span className="flex-grow capitalize">{product.status}</span>
                   <IconButton
                     color="green"
                     icon="fa-solid fa-pen"
@@ -104,8 +110,7 @@ const TableProducts = ({ subTitle }) => {
                   />
                 </td>
                 <td className="px-6 py-4">{product.category?.name  || "-"}</td>
-                <td className="flex items-center px-6 py-4">
-                  <IconButton color="sky" icon="fa-solid fa-circle-info" />
+                <td className="flex items-center px-6 py- gap-2">
                   <Link to={`/member/product/${product.id}/edit`}>
                     <IconButton
                       color="yellow"

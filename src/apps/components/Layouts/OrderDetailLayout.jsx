@@ -4,8 +4,10 @@ import OrderDetailNote from "../Fragments/Orders/OrderDetailNote";
 import SellerInfo from "../Fragments/Orders/SellerInfo";
 import CustomerInfo from "../Fragments/Orders/CustomerInfo";
 import OrderProducts from "../Fragments/Orders/OrderProducts";
+import formatingDates from "../../utils/formattingDates";
 
 const OrderDetailLayout = ({ type, title, order }) => {
+  
   return (
     <>
       <h1 className="mb-4 text-gray-700 text-2xl text-center lg:text-start font-bold">
@@ -14,7 +16,7 @@ const OrderDetailLayout = ({ type, title, order }) => {
       <div className="flex flex-row justify-between">
       <div>
         <p className="text-gray-600 font-semobild mb-2">ID: #{order.id}</p>
-        <p className="text-gray-600">Tanggal Pemesanan: {order.created_at}</p>
+        <p className="text-gray-600">Tanggal Pemesanan: {formatingDates(order.created_at)}</p>
       </div>
       <div>
         <p className="text-gray-600 font-semobild mb-2 text-right">

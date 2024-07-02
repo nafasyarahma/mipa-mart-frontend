@@ -1,4 +1,4 @@
-const OrderProduct = ({product}) => {
+const OrderProduct = ({product, format}) => {
   return (
     <div className="flex flex-col rounded-lg bg-white sm:flex-row p-2">
       <img
@@ -9,7 +9,7 @@ const OrderProduct = ({product}) => {
       <div className="flex w-full flex-col justify-between px-4">
         <p className="text-gray-600">{product.name}</p>
         <div className="flex justify-between">
-          <p className="font-semibold">Rp{product.price}</p>
+          <p className="font-semibold">{format(product.price)}</p>
           <p className="text-gray-500">x{product.quantity}</p>
         </div>
       </div>

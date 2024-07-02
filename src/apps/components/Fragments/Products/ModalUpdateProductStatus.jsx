@@ -112,7 +112,7 @@ const ModalUpdateProductStatus = ({ isOpen, onClose, productId }) => {
                 name="status"
                 id="soldout"
                 value="soldout"
-                label="Habis"
+                label="Soldout"
                 checked={productStatus === "soldout"}
                 onChange={handleStatusChange}
               />

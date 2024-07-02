@@ -45,6 +45,13 @@ const TableMembers = ({ subTitle }) => {
     setSelectedMemberId(null)
   };
 
+  const formatText = (text) => {
+    return text
+      .split('_')
+      .map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
+      .join(' ');
+  };
+
   return (
     <>
       <div className="flex justify-between items-center pb-4">
@@ -116,15 +123,14 @@ const TableMembers = ({ subTitle }) => {
                   />
                 </td>
                 <td className="px-6 py-4">{member.npm}</td>
-                <td className="px-6 py-4 capitalize">{member.major}</td>
+                <td className="px-6 py-4 capitalize">{formatText(member.major)}</td>
                 <td className="px-6 py-4">
                   <Link to={member.ktm_image}>
-                    <span className="underline text-sky-400">Lihat</span>
+                    <span className="underline text-sky-300">Lihat</span>
                   </Link>
                 </td>
                 <td className="px-6 py-4n">{member.no_wa}</td>
-                <td className="flex items-center px-6 py-4">
-                  <IconButton color="sky" icon="fa-solid fa-circle-info" />
+                <td className="flex items-center px-6 py-4 gap-2">
                   <Link to={`/admin/member/${member.id}/edit`}>
                     <IconButton
                       color="yellow"

@@ -5,7 +5,7 @@ const EditCategory = () => {
   return (
     <>
       <DashboardAdminLayout pageTitle="Kelola Kategori">
-        <FormEditCategory subTitle="Tambah Kategori"/>
+        <FormEditCategory subTitle="Edit Kategori"/>
       </DashboardAdminLayout>
     </>
   )

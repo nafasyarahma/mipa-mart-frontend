@@ -46,6 +46,7 @@ const FormAddPaymentMethod = ({ subTitle }) => {
           id="accountNumber"
           name="accountNumber"
           type="text"
+          placeholder="Nomor tujuan untuk transfer"
           value={accountNumber}
           onChange={(e) => setAccountNumber(e.target.value)}
           required

@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import Button from "./basic/Button";
+import formatingPrices from "../../utils/fotmattingPrices";
 
 const CardProduct = ({ product }) => {
   const navigate = useNavigate();
@@ -8,13 +9,6 @@ const CardProduct = ({ product }) => {
     if (description.length <= maxLength) return description;
     return description.substring(0, maxLength) + "...";
   };
-
-  const fotmattedPrice = new Intl.NumberFormat("id-ID", {
-    style: "currency",
-    currency: "IDR",
-  })
-    .format(product.price)
-    .replace(/,00/g, "");
 
   const handleCardClick = () => {
     navigate(`/product/${product.id}/detail`);
@@ -42,7 +36,7 @@ const CardProduct = ({ product }) => {
           {truncateDescription(product.description, 80)}
         </p>
         <div className="flex items-center justify-between mt-auto pt-2">
-          <span className="font-bold text-lg">{fotmattedPrice}</span>
+          <span className="font-bold text-lg">{formatingPrices(product.price)}</span>
           <Button label="Lihat Deatil" onClick={handleCardClick} />
         </div>
       </div>

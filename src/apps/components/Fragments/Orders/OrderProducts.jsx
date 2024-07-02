@@ -1,4 +1,5 @@
 import OrderProduct from "../../Elements/OrderProduct";
+import formatingPrices from "../../../utils/fotmattingPrices";
 
 const OrderProducts = ({order}) => {
   const orderProducts = order?.products || [];
@@ -10,6 +11,7 @@ const OrderProducts = ({order}) => {
               <OrderProduct
                 key={product.id}
                 product={product}
+                format={formatingPrices}
               />
             ))
           ) : (
@@ -17,7 +19,7 @@ const OrderProducts = ({order}) => {
           )}
       <div className="flex justify-between font-bold px-2 pt-4 border-t">
         <p>Total Bayar</p>
-        <p>Rp{order.total_price}</p>
+        <p>{formatingPrices(order.total_price)}</p>
       </div>
     </div>
   );
