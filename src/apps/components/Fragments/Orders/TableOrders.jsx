@@ -5,10 +5,12 @@ import MemberSourceAPI from "../../../api/resources/sourceMember";
 import ModalOrderStatus from "./ModalOrderStatus";
 import formatingDates from "../../../utils/formattingDates";
 import formatingPrices from "../../../utils/fotmattingPrices";
+import ModalPaymentStatus from "./ModalPaymentStatus";
 
 const TableOrders = ({ subTitle }) => {
   const [orders, setOrders] = useState([]);
-  const [isModalOpen, setModalOpen] = useState(false);
+  const [isOrderModalOpen, setOrderModalOpen] = useState(false);
+  const [isPaymentModalOpen, setPaymentModalOpen] = useState(false);
   const [selectedOrderId, setSelectedOrderId] = useState(null);
 
   useEffect(() => {
@@ -24,14 +26,24 @@ const TableOrders = ({ subTitle }) => {
     fetchOrders();
   }, []);
 
-  const handleModalOpen = (orderId) => {
+  const handleOrderModalOpen = (orderId) => {
     setSelectedOrderId(orderId);
-    setModalOpen(true);
+    setOrderModalOpen(true);
   };
 
-  const handleModalClose = () => {
-    setModalOpen(false);
-    setSelectedOrderId(null)
+  const handleOrderModalClose = () => {
+    setOrderModalOpen(false);
+    setSelectedOrderId(null);
+  };
+
+  const handlePaymentModalOpen = (orderId) => {
+    setSelectedOrderId(orderId);
+    setPaymentModalOpen(true);
+  };
+
+  const handlePaymentModalClose = () => {
+    setPaymentModalOpen(false);
+    setSelectedOrderId(null);
   };
 
   return (
@@ -75,61 +87,73 @@ const TableOrders = ({ subTitle }) => {
         <tbody>
           {orders.length > 0 ? (
             orders.map((order, index) => (
-            <tr
-              key={order.id} 
-              className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600"
-            >
-            <td className="px-6 py-4">{index + 1}</td>
-            <td className="px-6 py-4">#{order.id}</td>
-            <td className="px-6 py-4 ">{formatingDates(order.created_at)}</td>
-            <td className="px-6 py-4 ">{order.payment_method.provider}</td>
-            <td className="px-6 py-4 ">{order.delivery_method.method}</td>
-            <td className="px-6 py-4 ">{formatingPrices(order.total_price)}</td>
-            <td className="px-6 py-4 items-center gap-3">
-              <span className="flex items-center gap-2 capitalize">
-                {order.order_status}
-                <IconButton 
-                  color="green" 
-                  icon="fa-solid fa-pen" 
-                  onClick={() => handleModalOpen(order.id)}
-                  dataModalTarget="updateOrderStatus"
-                  dataModalToggle="updateOrderStatus"
-                />
-              </span>
-            </td>
-            <td className="px-6 py-4 items-center gap-3">
-              <span className="flex items-center gap-2 capitalize">
-                {order.payment_status}
-                <IconButton 
-                  color="green" 
-                  icon="fa-solid fa-pen" 
-                  onClick=""
-                  dataModalTarget=""
-                  dataModalToggle=""
-                />
-              </span>
-            </td>
-            <td className="flex items-center px-6 py-4">
-              <Link to={`/member/order/${order.id}/detail`}>
-                <p className="underline text-purple-300 hover:text-purple-500">Lihat Detail</p>
-              </Link>
-            </td>
-          </tr>
+              <tr
+                key={order.id}
+                className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600"
+              >
+                <td className="px-6 py-4">{index + 1}</td>
+                <td className="px-6 py-4">#{order.id}</td>
+                <td className="px-6 py-4 ">
+                  {formatingDates(order.created_at)}
+                </td>
+                <td className="px-6 py-4 ">{order.payment_method.provider}</td>
+                <td className="px-6 py-4 ">{order.delivery_method.method}</td>
+                <td className="px-6 py-4 ">
+                  {formatingPrices(order.total_price)}
+                </td>
+                <td className="px-6 py-4 items-center gap-3">
+                  <span className="flex justify-between items-center gap-2 capitalize">
+                    {order.order_status}
+                    <IconButton
+                      color="green"
+                      icon="fa-solid fa-pen"
+                      onClick={() => handleOrderModalOpen(order.id)}
+                      dataModalTarget="updateOrderStatus"
+                      dataModalToggle="updateOrderStatus"
+                    />
+                  </span>
+                </td>
+                <td className="px-6 py-4 items-center gap-3">
+                  <span className="flex justify-between items-center gap-2 capitalize">
+                    {order.payment_status}
+                    <IconButton
+                      color="green"
+                      icon="fa-solid fa-pen"
+                      onClick={() => handlePaymentModalOpen(order.id)}
+                      dataModalTarget="updatePaymentStatus"
+                      dataModalToggle="updatePaymentStatus"
+                    />
+                  </span>
+                </td>
+                <td className="flex items-center px-6 py-4">
+                  <Link to={`/member/order/${order.id}/detail`}>
+                    <p className="underline text-purple-300 hover:text-purple-500">
+                      Lihat Detail
+                    </p>
+                  </Link>
+                </td>
+              </tr>
             ))
-          ) :(
+          ) : (
             <tr>
               <td colSpan="8" className="px-6 py-4 text-center text-black">
                 Belum ada pesanan
               </td>
             </tr>
-            )}
-          
+          )}
         </tbody>
       </table>
       <ModalOrderStatus
-      orderId={selectedOrderId}
-      isOpen={isModalOpen}
-      onClose={handleModalClose}
+        id="updateOrderStatus"
+        orderId={selectedOrderId}
+        isOpen={isOrderModalOpen}
+        onClose={handleOrderModalClose}
+      />
+      <ModalPaymentStatus
+        id="updatePaymentStatus"
+        orderId={selectedOrderId}
+        isOpen={isPaymentModalOpen}
+        onClose={handlePaymentModalClose}
       />
     </>
   );

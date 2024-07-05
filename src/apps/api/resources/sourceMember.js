@@ -9,6 +9,7 @@ const {
   MEMBER_ORDER_HISTORY,
   MEMBER_ORDER_BY_ID,
   MEMBER_ORDER_STATUS,
+  MEMBER_PAYMENT_STATUS,
   ADMIN_MEMBERS,
   ADMIN_MEMBER_BY_ID,
   ADMIN_MEMBER_STATUS,
@@ -49,6 +50,11 @@ class MemberSourceAPI {
 
   static async putOrderStatusById(id, data) {
     const response = await authenticatedApi.put(MEMBER_ORDER_STATUS(id), data);
+    return response.data.message;
+  }
+
+  static async putPaymentStatusById(id, data) {
+    const response = await authenticatedApi.put(MEMBER_PAYMENT_STATUS(id), data);
     return response.data.message;
   }
 

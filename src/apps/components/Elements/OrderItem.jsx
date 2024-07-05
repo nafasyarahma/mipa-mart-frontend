@@ -3,7 +3,7 @@ import Button from "./basic/Button";
 import formatingDates from "../../utils/formattingDates";
 import formatingPrices from "../../utils/fotmattingPrices";
 
-const OrderItem = ({ order }) => {
+const OrderItem = ({ order, handleComplete }) => {
 
   return (
     <div className="flex flex-wrap items-start gap-y-4 gap-x-4 py-6">
@@ -44,10 +44,11 @@ const OrderItem = ({ order }) => {
         </dd>
       </dl>
 
-      <div className="w-full grid lg:w-40 lg:items-center flex justify-end ">
+      <div className="w-full  lg:w-60 lg:items-center flex flex-row justify-end gap-2">
         <Link to={`/customer/order/${order.id}/detail`}>
           <Button label="Lihat Detail"></Button>
         </Link>
+        <Button label="Selesai" onClick={handleComplete}></Button>
       </div>
     </div>
   );

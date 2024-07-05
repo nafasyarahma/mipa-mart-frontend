@@ -5,8 +5,8 @@ const OrderListCustomer = () => {
   return (
     <CommerceLayout>
       <section className="bg-white py-8 antialiased">
-        <div className="mx-auto max-w-screen-xl px-4 2xl:px-0">
-          <div className="mx-auto max-w-5xl">
+        <div className="mx-auto max-w-screen-xl 2xl:px-0">
+          <div className="mx-auto w-full">
             <div className="gap-4 sm:flex sm:items-center sm:justify-between">
               <h2 className="text-xl font-semibold text-gray-900 sm:text-2xl">
                 Pesanan Saya

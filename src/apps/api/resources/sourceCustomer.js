@@ -81,6 +81,11 @@ class CustomerSourceAPI {
     return response.data.data;
   }
 
+  static async completeOrder(id) {
+    const response = await authenticatedApi.put(`${CUSTOMER_ORDER_BY_ID(id)}/complete`);
+    return response.data.message;
+  }
+
   static async getHistoryOrder() {
     const response = await authenticatedApi.get(CUSTOMER_ORDER_HISTORY);
     return response.data.data;

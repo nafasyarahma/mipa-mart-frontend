@@ -1,8 +1,9 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import SidebarMenu from "../../Elements/SidebarMenu";
 import NavDashboard from "./NavDashboard";
 import AuthSourceAPI from "../../../api/resources/sourceAuth";
+import MemberSourceAPI from "../../../api/resources/sourceMember";
 import ToastNotification from "../../assets/helpers/ToastNotification";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faRightFromBracket } from "@fortawesome/free-solid-svg-icons";
@@ -10,6 +11,7 @@ import { faRightFromBracket } from "@fortawesome/free-solid-svg-icons";
 const SidebarNavMember = ({username}) => {
   const navigate = useNavigate();
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [pendingOrdersCount, setPendingOrdersCount] = useState(0);
 
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
@@ -28,6 +30,30 @@ const SidebarNavMember = ({username}) => {
     }
   };
 
+  const fetchMemberOrders = async () => {
+    try {
+      const response = await MemberSourceAPI.getMemberOrders();
+      return response.orders;
+    } catch (error) {
+      console.error(error);
+    }
+  }
+ 
+  const countOrderPending = (orders) => {
+    const pendingOrders = orders.filter(order => order.order_status === "pending");
+    return pendingOrders.length;
+  }
+
+  useEffect(() => {
+    const getOrdersData = async () => {
+      const orders = await fetchMemberOrders();
+      const pendingCount = await countOrderPending(orders);
+      setPendingOrdersCount(pendingCount);
+    }
+
+    getOrdersData();
+  }, []);
+
   return (
     <>
       <NavDashboard
@@ -39,13 +65,13 @@ const SidebarNavMember = ({username}) => {
       />
       <aside
         id="sidebar-member"
-        className={`fixed top-0 left-0 z-40 w-64 h-screen pt-20 transition-transform 
+        className={`fixed top-0 left-0 z-40 w-64 min-h-full pt-20 transition-transform 
       ${
         isSidebarOpen ? "" : "-translate-x-full"
       } bg-white border-r border-gray-200 sm:translate-x-0 dark:bg-gray-800 dark:border-gray-700`}
         aria-label="Sidebar"
       >
-        <div className="h-full px-3 pb-4 overflow-y-auto bg-white dark:bg-gray-800">
+        <div className="h-full overflow-y-auto px-3 pb-4 bg-white dark:bg-gray-800">
           <ul className="space-y-2 font-medium">
             <SidebarMenu
               link="/member/dashboard"
@@ -71,6 +97,7 @@ const SidebarNavMember = ({username}) => {
               link="/member/orders"
               icon="fa-solid fa-cart-arrow-down"
               label="Pesanan"
+              badgeCount={pendingOrdersCount}
             />
             <SidebarMenu
               link="/member/orders/history"

@@ -4,14 +4,14 @@ import Button from "../../Elements/basic/Button";
 import MemberSourceAPI from "../../../api/resources/sourceMember";
 import ToastNotification from "../../assets/helpers/ToastNotification";
 
-const ModalOrderStatus = ({ id, isOpen, onClose, orderId }) => {
-  const [orderStatus, setOrderStatus] = useState("");
+const ModalPaymentStatus = ({ id, isOpen, onClose, orderId }) => {
+  const [paymentStatus, setPaymentStatus] = useState("");
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await MemberSourceAPI.getMemberOrderById(orderId);
-        setOrderStatus(response.order.order_status);
+        setPaymentStatus(response.order.payment_status);
       } catch (error) {
         console.error(error);
       }
@@ -23,16 +23,16 @@ const ModalOrderStatus = ({ id, isOpen, onClose, orderId }) => {
   }, [orderId, isOpen]);
 
   const handleStatusChange = (e) => {
-    setOrderStatus(e.target.value);
+    setPaymentStatus(e.target.value);
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
-      const data = { orderStatus };
+      const data = { paymentStatus };
   
-      const response = await MemberSourceAPI.putOrderStatusById(
+      const response = await MemberSourceAPI.putPaymentStatusById(
         orderId,
         data
       );
@@ -57,13 +57,13 @@ const ModalOrderStatus = ({ id, isOpen, onClose, orderId }) => {
         isOpen ? "modal-open" : "hidden"
       } overflow-y-auto overflow-x-hidden fixed inset-0 z-50 flex justify-center  w-full md:inset-0 h-modal md:h-full`}
     >
-      <div className="relative p-4 w-full max-w-md h-full md:h-auto ">
+      <div className="relative p-4 w-full max-w-xl h-full md:h-auto ">
         {/* Modal Content */}
         <div className="modal-content relative p-4 bg-white rounded-lg shadow sm:p-5">
           {/* Modal header */}
           <div className="flex justify-between items-center pb-4 mb-4 rounded-t border-b sm:mb-5 ">
             <h3 className="text-lg font-semibold text-gray-900">
-              Update Status Order
+              Update Status Pembayaran
             </h3>
             <button
               onClick={onClose}
@@ -94,19 +94,19 @@ const ModalOrderStatus = ({ id, isOpen, onClose, orderId }) => {
                 Status
               </p>
               <RadioOption
-                id="accepted"
-                name="orderStatus"
-                value="accepted"
-                label="Setujui"
-                checked={orderStatus === "accepted"}
+                id="unpaid"
+                name="paymentStatus"
+                value="unpaid"
+                label="Belum Dibayar"
+                checked={paymentStatus === "unpaid"}
                 onChange={handleStatusChange}
               />
               <RadioOption
-                id="rejected"
-                name="orderStatus"
-                value="rejected"
-                label="Tolak"
-                checked={orderStatus === "rejected"}
+                id="paid"
+                name="paymentStatus"
+                value="paid"
+                label="Sudah Dibayar"
+                checked={paymentStatus === "paid"}
                 onChange={handleStatusChange}
               />
             </div>
@@ -120,4 +120,4 @@ const ModalOrderStatus = ({ id, isOpen, onClose, orderId }) => {
   );
 };
 
-export default ModalOrderStatus;
+export default ModalPaymentStatus;

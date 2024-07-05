@@ -18,6 +18,7 @@ const API_ENDPOINT = {
 
   MEMBER_ORDERS: `${BASE_URL}/member/orders`,
   MEMBER_ORDER_STATUS : (id) => `${BASE_URL}/member/orders/${id}/status`,
+  MEMBER_PAYMENT_STATUS : (id) => `${BASE_URL}/member/orders/${id}/payment-status`,
   MEMBER_ORDER_BY_ID: (id) => `${BASE_URL}/member/orders/${id}`,
   MEMBER_ORDER_HISTORY: `${BASE_URL}/member/orders/history`,
 
