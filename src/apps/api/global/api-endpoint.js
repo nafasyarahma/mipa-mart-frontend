@@ -39,6 +39,7 @@ const API_ENDPOINT = {
   CUSTOMER_RESET_PASSWORD: (token) => `${BASE_URL}/customer/reset-password/${token}`,
 
   CUSTOMER_CART: `${BASE_URL}/customer/carts`,
+  CUSTOMER_CART_BY_ID: (id) => `${BASE_URL}/customer/carts/${id}`,
   CUSTOMER_CART_ITEM: (id) => `${BASE_URL}/customer/carts/item/${id}`,
 
   CUSTOMER_ORDER: `${BASE_URL}/customer/orders`,

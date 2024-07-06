@@ -31,7 +31,7 @@ const useCustomerRoutes = () => {
         }
       />
       <Route
-        path="/customer/checkout"
+        path="/customer/checkout/:cartId"
         element={
           <PrivateRoute role="customer" redirectPath="/login">
             <CheckoutPage />

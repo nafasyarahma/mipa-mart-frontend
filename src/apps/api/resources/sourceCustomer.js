@@ -9,6 +9,7 @@ const {
   CUSTOMER_REGISTER,
   CUSTOMER_PROFILE,
   CUSTOMER_CART,
+  CUSTOMER_CART_BY_ID,
   CUSTOMER_CART_ITEM,
   CUSTOMER_ORDER,
   CUSTOMER_ORDER_BY_ID,
@@ -46,18 +47,23 @@ class CustomerSourceAPI {
     return response.data.data;
   }
 
+  static async getCartById(id) {
+    const response = await authenticatedApi.get(CUSTOMER_CART_BY_ID(id));
+    return response.data.data;
+  }
+
   static async changeQuantity(id, data) {
     const response = await authenticatedApi.put(CUSTOMER_CART_ITEM(id), data);
     return response.data.message;
   }
 
-  static async getSellerPaymentMethods() {
-    const response = await authenticatedApi.get(`${BASE_URL}/customer/order/payment-methods`);
+  static async getSellerPaymentMethods(cartId) {
+    const response = await authenticatedApi.get(`${BASE_URL}/customer/order/payment-methods/${cartId}`);
     return response.data.data;
   }
 
-  static async getSellerDeliveryMethods() {
-    const response = await authenticatedApi.get(`${BASE_URL}/customer/order/delivery-methods`);
+  static async getSellerDeliveryMethods(cartId) {
+    const response = await authenticatedApi.get(`${BASE_URL}/customer/order/delivery-methods/${cartId}`);
     return response.data.data;
   }
 

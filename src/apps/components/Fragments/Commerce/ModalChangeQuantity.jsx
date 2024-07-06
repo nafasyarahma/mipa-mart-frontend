@@ -13,12 +13,9 @@ const ModalChangeQuantity = ({ isOpen, onClose, item }) => {
 
     try {
       const data = { quantity };
-      const response = await CustomerSourceAPI.changeQuantity(item.id, data);
-      ToastNotification.toastSuccess(response);
+      await CustomerSourceAPI.changeQuantity(item.id, data);
       onClose();
-      setTimeout(() => {
-        document.location.reload();
-      }, 3000);
+      document.location.reload();
     } catch (error) {
       ToastNotification.toastError(error.response.data.message);
       console.error(error);

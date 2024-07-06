@@ -3,24 +3,27 @@ import OrderSummary from "../Fragments/Orders/OrderSummary";
 import OrderDeliveries from "../Fragments/Orders/OrderDeliveries";
 import OrderPayments from "../Fragments/Orders/OrderPayments";
 import Button from "../Elements/basic/Button";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import TextArea from "../Elements/basic/TextArea";
 import CustomerSourceAPI from "../../api/resources/sourceCustomer";
 import ToastNotification from "../assets/helpers/ToastNotification";
 
 const CheckoutLayout = () => {
   const navigate = useNavigate();
+  const { cartId } = useParams();
   const [paymentMethods, setPaymentMethods] = useState([]);
   const [selectedPaymentMethod, setSelectedPaymentMethod] = useState(null);
   const [deliveryMethods, setDeliveryMenthods] = useState([]);
   const [selectedDeliveryMethod, setSelectedDeliveryMethod] = useState(null);
   const [paymentImage, setPaymentImage] = useState(null);
-  const [note, setNote] = useState("")
+  const [note, setNote] = useState("");
 
   useEffect(() => {
     const fetchSellerPaymentMethods = async () => {
       try {
-        const response = await CustomerSourceAPI.getSellerPaymentMethods();
+        const response = await CustomerSourceAPI.getSellerPaymentMethods(
+          cartId
+        );
         setPaymentMethods(response.paymentMethods);
       } catch (error) {
         console.error("Failed to fetch cart data:", error);
@@ -28,12 +31,14 @@ const CheckoutLayout = () => {
     };
 
     fetchSellerPaymentMethods();
-  }, []);
+  }, [cartId]);
 
   useEffect(() => {
     const fetchSellerDeliveryMethods = async () => {
       try {
-        const response = await CustomerSourceAPI.getSellerDeliveryMethods();
+        const response = await CustomerSourceAPI.getSellerDeliveryMethods(
+          cartId
+        );
         setDeliveryMenthods(response.deliveryMethods);
       } catch (error) {
         console.error("Failed to fetch cart data:", error);
@@ -41,7 +46,7 @@ const CheckoutLayout = () => {
     };
 
     fetchSellerDeliveryMethods();
-  }, []);
+  }, [cartId]);
 
   const handlePaymentMethodChange = (methodId) => {
     setSelectedPaymentMethod(methodId);
@@ -65,19 +70,18 @@ const CheckoutLayout = () => {
     const data = new FormData();
     data.append("paymentMethodId", selectedPaymentMethod);
     data.append("deliveryMethodId", selectedDeliveryMethod);
-    data.append("paymentImage", paymentImage)
+    data.append("paymentImage", paymentImage);
     data.append("note", note);
 
     try {
       const response = await CustomerSourceAPI.postOrder(data);
       ToastNotification.toastSuccess(response);
-      navigate("/customer/orders")
+      navigate("/customer/orders");
     } catch (error) {
       ToastNotification.toastError(error.response.data.message);
       console.error(error);
     }
-  }
-
+  };
 
   return (
     <div className="grid sm:px-10 lg:grid-cols-2 lg:px-20">
@@ -109,7 +113,11 @@ const CheckoutLayout = () => {
         ></TextArea>
 
         <div className="mt-8">
-            <Button label="Pesan" className="w-full mb-4" onClick={handleSubmit} />
+          <Button
+            label="Pesan"
+            className="w-full mb-4"
+            onClick={handleSubmit}
+          />
           <Link to="/customer/cart">
             <Button label="Batal" className="w-full" />
           </Link>

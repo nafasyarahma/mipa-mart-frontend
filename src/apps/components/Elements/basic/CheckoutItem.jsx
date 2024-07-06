@@ -1,10 +1,9 @@
-const CheckoutItem = ({item, formatingPrices}) => {
-  console.log(item)
+const CheckoutItem = ({ item, formatingPrices }) => {
   return (
     <div className="flex flex-col rounded-lg bg-white sm:flex-row p-2">
       <img
         className="h-16 w-24 rounded-md border object-cover object-center"
-        src={item.product.images}
+        src={item.product.images[0].url}
         alt=""
       />
       <div className="flex w-full flex-col justify-between px-4">

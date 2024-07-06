@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import OrderItem from "../../Elements/OrderItem";
 import CustomerSourceAPI from "../../../api/resources/sourceCustomer";
 import OrderHistoryItem from "../../Elements/OrderHistoryItem";
 
