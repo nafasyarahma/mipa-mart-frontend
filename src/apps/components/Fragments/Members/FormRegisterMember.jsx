@@ -1,6 +1,5 @@
 import { useState } from "react";
 import InputForm from "../../Elements/InputForm";
-import useSelect from "../../../../hooks/useSelect";
 import FileUpload from "../../Elements/basic/FileUpload";
 import TextArea from "../../Elements/basic/TextArea";
 import Button from "../../Elements/basic/Button";
@@ -10,7 +9,7 @@ import { useNavigate } from "react-router-dom";
 
 const FormRegisterMember = () => {
   const navigate = useNavigate();
-  const { selectedValue, handleChange } = useSelect("");
+  const [selectedMajor, setSelectedMajor] = useState('');
   const [memberData, setMemberData] = useState({
     name: "",
     email: "",
@@ -32,6 +31,10 @@ const FormRegisterMember = () => {
     });
   }
 
+  const handleMajorChange = (e) => {
+    setSelectedMajor(e.target.value);
+  };
+
   const handleImageChange = (e) => {
     setImageFile(e.target.files[0]);
   }
@@ -44,7 +47,7 @@ const FormRegisterMember = () => {
     data.append("email", memberData.email);
     data.append("username", memberData.username);
     data.append("password", memberData.password);
-    data.append("major", selectedValue);
+    data.append("major", selectedMajor);
     data.append("npm", memberData.npm);
     data.append("whatsappNumber", memberData.whatsappNumber);
     data.append("address", memberData.address);
@@ -123,8 +126,8 @@ const FormRegisterMember = () => {
             <select
               id="major"
               name="major"
-              value={selectedValue}
-              onChange={handleChange}
+              value={selectedMajor}
+              onChange={handleMajorChange}
               className="block w-full rounded-md mt-2 border-0 py-2.5 px-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-1 focus:ring-inset focus:ring-indigo-500 sm:text-sm sm:leading-6"
               required
             >

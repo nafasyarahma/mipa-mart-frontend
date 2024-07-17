@@ -72,8 +72,8 @@ class CustomerSourceAPI {
     return response.data.message;
   }
 
-  static async postOrder(data) {
-    const response = await authenticatedApi.post(CUSTOMER_ORDER, data);
+  static async postOrder(cartId, data) {
+    const response = await authenticatedApi.post(`${CUSTOMER_ORDER}/${cartId}`, data);
     return response.data.message;
   }
 

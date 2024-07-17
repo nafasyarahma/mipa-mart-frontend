@@ -74,7 +74,7 @@ const CheckoutLayout = () => {
     data.append("note", note);
 
     try {
-      const response = await CustomerSourceAPI.postOrder(data);
+      const response = await CustomerSourceAPI.postOrder(cartId, data);
       ToastNotification.toastSuccess(response);
       navigate("/customer/orders");
     } catch (error) {

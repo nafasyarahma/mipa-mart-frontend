@@ -43,7 +43,7 @@ const CardProduct = ({ product }) => {
         </p>
         <div className="flex items-center justify-between mt-auto pt-2">
           <span className="font-bold text-lg">{formatingPrices(product.price)}</span>
-          <Button label="Lihat Deatil" onClick={handleCardClick} />
+          <Button label="Lihat Detail" onClick={handleCardClick} />
         </div>
       </div>
     </div>

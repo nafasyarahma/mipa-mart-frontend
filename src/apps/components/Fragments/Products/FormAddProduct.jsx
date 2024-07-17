@@ -2,36 +2,35 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import InputForm from "../../Elements/InputForm.jsx";
 import Button from "../../Elements/basic/Button.jsx";
-//import useSelect from "../../../../hooks/useSelect.jsx";
 import RadioOption from "../../Elements/basic/RadioOption.jsx";
 import TextArea from "../../Elements/basic/TextArea.jsx";
-import FileUpload from "../../Elements/basic/FileUpload.jsx";
+//import FileUpload from "../../Elements/basic/FileUpload.jsx";
 import CategorySourceAPI from "../../../api/resources/sourceCategory.js";
 import ProductSourceAPI from "../../../api/resources/sourceProduct.js";
-import ToastNotification from "../../assets/helpers/ToastNotification.js";2
+import ToastNotification from "../../assets/helpers/ToastNotification.js";
+import FileUploadProduct from "./FileUploadProduct.jsx";
 
 const FormAddProduct = ({ subTitle }) => {
   const navigate = useNavigate();
   const [categories, setCategories] = useState([]);
-  const [selectedCategory, setSelectedCategory] = useState('');
+  const [selectedCategory, setSelectedCategory] = useState("");
   const [productData, setProductData] = useState({
-    name: '',
-    price: '',
-    status: '',
+    name: "",
+    price: "",
+    status: "",
     productImages: [],
-    description: '',
+    description: "",
   });
-  // const { selectedValue, handleChange } = useSelect("");
 
   useEffect(() => {
     const fetchCategories = async () => {
       try {
         const response = await CategorySourceAPI.getAllCategories();
-        setCategories(response.categories)
+        setCategories(response.categories);
       } catch (error) {
         console.error(error);
       }
-    }
+    };
 
     fetchCategories();
   }, []);
@@ -40,7 +39,7 @@ const FormAddProduct = ({ subTitle }) => {
     const { name, value } = e.target;
     setProductData((prevData) => ({
       ...prevData,
-      [name]: value
+      [name]: value,
     }));
   };
 
@@ -48,10 +47,10 @@ const FormAddProduct = ({ subTitle }) => {
     setSelectedCategory(e.target.value);
   };
 
-  const handleFileChange = (e) => {
+  const handleImageChange = (images) => {
     setProductData((prevData) => ({
       ...prevData,
-      productImages: e.target.files
+      productImages: images,
     }));
   };
 
@@ -59,16 +58,18 @@ const FormAddProduct = ({ subTitle }) => {
     e.preventDefault();
 
     const formData = new FormData();
-    formData.append('name', productData.name);
-    formData.append('price', productData.price);
-    formData.append('status', productData.status);
-    formData.append('categoryId', selectedCategory);
-    formData.append('description', productData.description);
+    formData.append("name", productData.name);
+    formData.append("price", productData.price);
+    formData.append("status", productData.status);
+    formData.append("categoryId", selectedCategory);
+    formData.append("description", productData.description);
 
-    Array.from(productData.productImages).forEach((file) => {
-      formData.append('productImages', file);
+    productData.productImages.forEach((img) => {
+      if (img.file) {
+        formData.append("productImages", img.file);
+      }
     });
-  
+
     try {
       const response = await ProductSourceAPI.postProduct(formData);
       ToastNotification.toastSuccess(response);
@@ -78,7 +79,6 @@ const FormAddProduct = ({ subTitle }) => {
       ToastNotification.toastError(error.response.data.message);
     }
   };
-
 
   return (
     <>
@@ -134,12 +134,12 @@ const FormAddProduct = ({ subTitle }) => {
           <p className="block text-sm font-semibold text-gray-900 mr-20">
             Status
           </p>
-          <RadioOption 
-            name="status" 
-            id="ready" 
-            value="ready" 
-            label="Ready" 
-            checked={productData.status === 'ready'}
+          <RadioOption
+            name="status"
+            id="ready"
+            value="ready"
+            label="Ready"
+            checked={productData.status === "ready"}
             onChange={handleChange}
           />
           <RadioOption
@@ -147,7 +147,7 @@ const FormAddProduct = ({ subTitle }) => {
             id="preorder"
             value="preorder"
             label="Pre-Order"
-            checked={productData.status === 'preorder'}
+            checked={productData.status === "preorder"}
             onChange={handleChange}
           />
           <RadioOption
@@ -155,16 +155,10 @@ const FormAddProduct = ({ subTitle }) => {
             id="soldout"
             value="soldout"
             label="Sold Out"
-            checked={productData.status === 'soldout'}
+            checked={productData.status === "soldout"}
             onChange={handleChange}
           />
         </div>
-
-        <FileUpload 
-          id="productImages" 
-          label="Foto Produk" 
-          onChange={handleFileChange}
-          multiple />
 
         <TextArea
           id="description"
@@ -174,9 +168,14 @@ const FormAddProduct = ({ subTitle }) => {
           value={productData.description}
           onChange={handleChange}
         />
-      <div className="flex justify-end">
-        <Button type="submit" className="mt-10 w-32" label="Simpan"></Button>
-      </div>
+
+        <FileUploadProduct
+          images={productData.productImages}
+          onChange={handleImageChange}
+        ></FileUploadProduct>
+        <div className="flex justify-end">
+          <Button type="submit" className="mt-10 w-32" label="Simpan"></Button>
+        </div>
       </form>
     </>
   );

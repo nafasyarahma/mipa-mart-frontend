@@ -4,11 +4,11 @@ import InputForm from "../../Elements/InputForm.jsx";
 import Button from "../../Elements/basic/Button.jsx";
 import RadioOption from "../../Elements/basic/RadioOption.jsx";
 import TextArea from "../../Elements/basic/TextArea.jsx";
-import FileUpload from "../../Elements/basic/FileUpload.jsx";
+//import FileUpload from "../../Elements/basic/FileUpload.jsx";
+import FileUploadProduct from "./FileUploadProduct.jsx";
 import CategorySourceAPI from "../../../api/resources/sourceCategory.js";
 import ProductSourceAPI from "../../../api/resources/sourceProduct.js";
-import ToastNotification from "../../assets/helpers/ToastNotification.js";2
-
+import ToastNotification from "../../assets/helpers/ToastNotification.js";
 
 const FormEditProduct = ({ subTitle }) => {
   const navigate = useNavigate();
@@ -35,7 +35,7 @@ const FormEditProduct = ({ subTitle }) => {
           price: product.price,
           status: product.status,
           description: product.description,
-          productImages: product.productImages,
+          productImages: product.images.map((img) => ({ url: img }))
         });
         setSelectedCategory(product.category?.id || '');
       } catch (error) {
@@ -69,10 +69,10 @@ const FormEditProduct = ({ subTitle }) => {
     setSelectedCategory(e.target.value);
   };
 
-  const handleFileChange = (e) => {
+  const handleImageChange = (images) => {
     setProductData((prevData) => ({
       ...prevData,
-      productImages: e.target.files
+      productImages: images
     }));
   };
 
@@ -85,8 +85,12 @@ const FormEditProduct = ({ subTitle }) => {
     formData.append('categoryId', selectedCategory);
     formData.append('description', productData.description);
 
-    Array.from(productData.productImages).forEach((file) => {
-      formData.append('productImages', file);
+    productData.productImages.forEach((img) => {
+      if (img.file) {
+        formData.append('productImages', img.file);
+      } else {
+        formData.append('productImages', img.url);
+      }
     });
 
     try {
@@ -180,11 +184,11 @@ const FormEditProduct = ({ subTitle }) => {
           />
         </div>
 
-        <FileUpload 
-          id="productImages" 
-          label="Foto Produk" 
-          onChange={handleFileChange}
-          multiple />
+        <FileUploadProduct
+        label="Foto Produk"
+        images={productData.productImages}
+        onChange={handleImageChange}
+        />
 
         <TextArea
           id="description"
