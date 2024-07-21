@@ -15,16 +15,15 @@ const FormEditProduct = ({ subTitle }) => {
   const { id } = useParams();
 
   const [categories, setCategories] = useState([]);
-  const [selectedCategory, setSelectedCategory] = useState('');
+  const [selectedCategory, setSelectedCategory] = useState("");
   const [productData, setProductData] = useState({
-    name: '',
-    price: '',
-    status: '',
+    name: "",
+    price: "",
+    status: "",
     productImages: [],
-    description: '',
+    description: "",
   });
-  
-  
+
   useEffect(() => {
     const fetchProduct = async () => {
       try {
@@ -35,24 +34,23 @@ const FormEditProduct = ({ subTitle }) => {
           price: product.price,
           status: product.status,
           description: product.description,
-          productImages: product.images.map((img) => ({ url: img }))
+          productImages: product.images.map((img) => ({ url: img })),
         });
-        setSelectedCategory(product.category?.id || '');
+        setSelectedCategory(product.category?.id || "");
       } catch (error) {
         console.error(error);
       }
-    }
+    };
 
-  
     const fetchCategories = async () => {
       try {
         const response = await CategorySourceAPI.getAllCategories();
-        setCategories(response.categories)
+        setCategories(response.categories);
       } catch (error) {
         console.error(error);
       }
-    }
-    
+    };
+
     fetchProduct();
     fetchCategories();
   }, [id]);
@@ -61,7 +59,7 @@ const FormEditProduct = ({ subTitle }) => {
     const { name, value } = e.target;
     setProductData((prevData) => ({
       ...prevData,
-      [name]: value
+      [name]: value,
     }));
   };
 
@@ -72,29 +70,32 @@ const FormEditProduct = ({ subTitle }) => {
   const handleImageChange = (images) => {
     setProductData((prevData) => ({
       ...prevData,
-      productImages: images
+      productImages: images,
     }));
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     const formData = new FormData();
-    formData.append('name', productData.name);
-    formData.append('price', productData.price);
-    formData.append('status', productData.status);
-    formData.append('categoryId', selectedCategory);
-    formData.append('description', productData.description);
+    formData.append("name", productData.name);
+    formData.append("price", productData.price);
+    formData.append("status", productData.status);
+    formData.append("categoryId", selectedCategory);
+    formData.append("description", productData.description);
 
     productData.productImages.forEach((img) => {
-      if (img.file) {
-        formData.append('productImages', img.file);
-      } else {
-        formData.append('productImages', img.url);
+      if (!img.isRemoved) {
+        if (img.file) {
+          formData.append("productImages", img.file);
+        } else {
+          formData.append("productImages", img.url);
+        }
       }
     });
 
+    console.log(productData.productImages);
+
     try {
-      console.log(selectedCategory)
       const response = await ProductSourceAPI.putProductById(id, formData);
       ToastNotification.toastSuccess(response);
       navigate("/member/products");
@@ -103,7 +104,6 @@ const FormEditProduct = ({ subTitle }) => {
       ToastNotification.toastError(error.response.data.message);
     }
   };
-  
 
   return (
     <>
@@ -145,7 +145,7 @@ const FormEditProduct = ({ subTitle }) => {
             onChange={handleCategoryChange}
             className="block w-full p-2 mb-6 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500"
           >
-            <option value='' >Pilih Kategori</option>
+            <option value="">Pilih Kategori</option>
             {categories.map((category) => (
               <option key={category.id} value={category.id}>
                 {category.name}
@@ -158,12 +158,12 @@ const FormEditProduct = ({ subTitle }) => {
           <p className="block text-sm font-semibold text-gray-900 mr-20">
             Status
           </p>
-          <RadioOption 
-            name="status" 
-            id="ready" 
-            value="ready" 
-            label="Ready" 
-            checked={productData.status === 'ready'}
+          <RadioOption
+            name="status"
+            id="ready"
+            value="ready"
+            label="Ready"
+            checked={productData.status === "ready"}
             onChange={handleChange}
           />
           <RadioOption
@@ -171,7 +171,7 @@ const FormEditProduct = ({ subTitle }) => {
             id="preorder"
             value="preorder"
             label="Pre-Order"
-            checked={productData.status === 'preorder'}
+            checked={productData.status === "preorder"}
             onChange={handleChange}
           />
           <RadioOption
@@ -179,15 +179,15 @@ const FormEditProduct = ({ subTitle }) => {
             id="soldout"
             value="soldout"
             label="Sold Out"
-            checked={productData.status === 'soldout'}
+            checked={productData.status === "soldout"}
             onChange={handleChange}
           />
         </div>
 
         <FileUploadProduct
-        label="Foto Produk"
-        images={productData.productImages}
-        onChange={handleImageChange}
+          label="Foto Produk"
+          images={productData.productImages}
+          onChange={handleImageChange}
         />
 
         <TextArea
@@ -198,9 +198,9 @@ const FormEditProduct = ({ subTitle }) => {
           value={productData.description}
           onChange={handleChange}
         />
-      <div className="flex justify-end">
-        <Button type="submit" className="mt-10 w-32" label="Simpan"></Button>
-      </div>
+        <div className="flex justify-end">
+          <Button type="submit" className="mt-10 w-32" label="Simpan"></Button>
+        </div>
       </form>
     </>
   );

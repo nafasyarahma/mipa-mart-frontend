@@ -4,12 +4,13 @@ import { useEffect, useState } from "react";
 
 const FileUploadProduct = ({ images, onChange }) => {
   const [imagePreviews, setImagePreviews] = useState([]);
-
+  
   useEffect(() => {
     if (images && images.length > 0) {
       const initialPreviews = images.map((img) => ({
         file: img.file || null,
         url: img.url || URL.createObjectURL(img.file),
+        isRemoved: false
       }));
       setImagePreviews(initialPreviews);
     }
@@ -20,17 +21,33 @@ const FileUploadProduct = ({ images, onChange }) => {
     const newPreviews = files.map((file) => ({
       file,
       url: URL.createObjectURL(file),
+      isRemoved: false
     }));
 
-    setImagePreviews((prevPreviews) => [...prevPreviews, newPreviews]);
-    onChange([...imagePreviews, ...newPreviews]);
-  };
-
-  const removeFile = (index) => {
-    const updatedPreviews = imagePreviews.filter((_, i) => i !== index);
+    const updatedPreviews = [...imagePreviews, ...newPreviews];
     setImagePreviews(updatedPreviews);
     onChange(updatedPreviews);
   };
+
+  // const removeFile = (index) => {
+   
+  //   const updatedPreviews = imagePreviews.filter((_, i) => i !== index);
+  //   console.log(updatedPreviews)
+  //   setImagePreviews(updatedPreviews);
+  //   onChange(updatedPreviews);
+  // };
+
+  const removeFile = (index) => {
+    const updatedPreviews = imagePreviews.map((img, i) => {
+      if (i === index) {
+        return { ...img, isRemoved: true };
+      }
+      return img
+    });
+
+    setImagePreviews(updatedPreviews);
+    onChange(updatedPreviews);
+  }
 
   return (
     <div
@@ -61,12 +78,13 @@ const FileUploadProduct = ({ images, onChange }) => {
 
         <ul id="gallery" className="flex flex-1 flex-wrap -m-1">
           {imagePreviews.length > 0 ? (
-            imagePreviews.map((img, index) => (
+            imagePreviews.map((img, index) => 
+              !img.isRemoved && (
               <li
                 key={index}
                 className="block p-1 w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/6 xl:w-1/8 h-24"
               >
-                <article className="group hasImage w-full h-full rounded-md bg-gray-100 relative text-transparent hover:text-white shadow-sm">
+                <div className="group hasImage w-full h-full rounded-md bg-gray-100 relative text-transparent hover:text-white shadow-sm">
                   <img
                     alt="upload preview"
                     className="img-preview w-full h-full object-cover rounded-md bg-fixed"
@@ -86,7 +104,7 @@ const FileUploadProduct = ({ images, onChange }) => {
                     </div>
                   </section>
                   )}
-                </article>
+                </div>
               </li>
             ))
           ) : (
