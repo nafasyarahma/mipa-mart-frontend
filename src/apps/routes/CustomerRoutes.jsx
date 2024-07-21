@@ -9,6 +9,7 @@ import {
   EditProfileCustomer,
   OrderListCustomer,
   OrderHistoryCustomer,
+  OrderReview
 } from "../pages";
 
 const useCustomerRoutes = () => {
@@ -59,6 +60,14 @@ const useCustomerRoutes = () => {
         element={
           <PrivateRoute role="customer" redirectPath="/forbidden">
             <OrderDetailCustomer />
+          </PrivateRoute>
+        }
+      />
+       <Route
+        path="/customer/order/:orderId/review"
+        element={
+          <PrivateRoute role="customer" redirectPath="/forbidden">
+            <OrderReview />
           </PrivateRoute>
         }
       />

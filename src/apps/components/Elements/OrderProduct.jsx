@@ -1,4 +1,7 @@
-const OrderProduct = ({product, format}) => {
+import { Link } from "react-router-dom";
+
+const OrderProduct = ({ product, format }) => {
+  console.log(product);
   return (
     <div className="flex flex-col rounded-lg bg-white sm:flex-row p-2">
       <img
@@ -7,7 +10,18 @@ const OrderProduct = ({product, format}) => {
         alt=""
       />
       <div className="flex w-full flex-col justify-between px-4">
-        <p className="text-gray-600">{product.name}</p>
+        {product.product_id ? (
+          <Link
+            to={`/product/${product.product_id}/detail`}
+            className="text-gray-600 hover:underline hover:text-purple-500"
+          >
+            {" "}
+            {product.name}
+          </Link>
+        ) : (
+          <p className="text-gray-600">{product.name}</p>
+        )}
+
         <div className="flex justify-between">
           <p className="font-semibold">{format(product.price)}</p>
           <p className="text-gray-500">x{product.quantity}</p>

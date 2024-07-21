@@ -35,6 +35,7 @@ import CheckoutPage from "./commerce/CheckoutPage";
 import OrderListCustomer from "./customer/OrderListCustomer";
 import OrderHistoryCustomer from "./customer/OrderHistoryCustomer";
 import OrderDetailCustomer from "./customer/OrderDetailCustomer";
+import OrderReview from "./customer/OrderReviewPage";
 import EditProfileCustomer from "./customer/EditProfileCustomer";
 
 import ForbiddenPage from "./error/UnauthorizedPage";
@@ -80,6 +81,7 @@ export {
   OrderListCustomer,
   OrderHistoryCustomer,
   OrderDetailCustomer,
+  OrderReview,
   EditProfileCustomer,
 
   ForbiddenPage,

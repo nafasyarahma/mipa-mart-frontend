@@ -4,6 +4,11 @@ import formatingDates from "../../utils/formattingDates";
 import formatingPrices from "../../utils/fotmattingPrices";
 
 const OrderHistoryItem = ({ order }) => {
+  // memeriksa apakah semua produk telah di review
+  // const allReviewed = order.products.every((product) =>
+  //   order.reviews.some((review) => review.product_id === product.product_id)
+  // );
+  const hasAnyReview = order.reviews.length > 0;
 
   return (
     <div className="flex flex-wrap items-start gap-y-4 gap-x-4 py-6">
@@ -31,24 +36,24 @@ const OrderHistoryItem = ({ order }) => {
       </dl>
 
       <dl className="w-1/2 sm:w-1/4 lg:w-auto lg:flex-1">
-        <dt className="text-base font-medium text-gray-500">Tanggal Pesan:</dt>
+        <dt className="text-base font-medium text-gray-500">
+          Tanggal Selesai:
+        </dt>
         <dd className="mt-1.5 text-base font-semibold text-gray-900">
-         {formatingDates(order.created_at)}
+          {formatingDates(order.updated_at)}
         </dd>
       </dl>
 
+      <div className="w-full lg:w-60 lg:items-center flex flex-row justify-end gap-2 ">
+        {!hasAnyReview && (
+          <Link to={`/customer/order/${order.id}/review`}>
+            <Button label="Beri Ulasan"></Button>
+          </Link>
+        )}
       
-      <dl className="w-1/2 sm:w-1/4 lg:w-auto lg:flex-1">
-        <dt className="text-base font-medium text-gray-500">Tanggal Selesai:</dt>
-        <dd className="mt-1.5 text-base font-semibold text-gray-900">
-         {formatingDates(order.updated_at)}
-        </dd>
-      </dl>
-
-      <div className="w-full grid lg:w-40 lg:items-center flex justify-end ">
-        <Link to={`/customer/order/${order.id}/detail`}>
-          <Button label="Lihat Detail"></Button>
-        </Link>
+      <Link to={`/customer/order/${order.id}/detail`}>
+        <Button label="Lihat Detail"></Button>
+      </Link>
       </div>
     </div>
   );

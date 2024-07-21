@@ -49,6 +49,17 @@ class ProductSourceAPI {
     const response = await authenticatedApi.delete(MEMBER_PRODUCT_BY_ID(id))
     return response.data.message;
   }
+
+  // customer
+  static async addProductReview(productId, data) {
+    const response = await authenticatedApi.post(`${PRODUCTS}/${productId}/reviews`, data);
+    return response.data.message;
+  }
+
+  static async getProductReview(productId) {
+    const response = await axios.get(`${PRODUCTS}/${productId}/reviews`);
+    return response.data.data;
+  }
 }
 
 export default ProductSourceAPI

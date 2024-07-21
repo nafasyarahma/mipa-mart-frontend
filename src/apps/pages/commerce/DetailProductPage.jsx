@@ -4,6 +4,7 @@ import SlideImage from "../../components/Elements/SlideImage";
 import CommerceLayout from "../../components/Layouts/CommerceLayout";
 import SectionDetailProduct from "../../components/Fragments/Commerce/SectionDetailProduct";
 import ProductSourceAPI from "../../api/resources/sourceProduct";
+import ProductReviews from "../../components/Fragments/Commerce/ProductReviews";
 
 const DetailProduct = () => {
   const { id } = useParams();
@@ -64,6 +65,7 @@ const DetailProduct = () => {
           <SectionDetailProduct product={product} />
         </div>
       </div>
+        <ProductReviews></ProductReviews>
     </CommerceLayout>
   );
 };
