@@ -24,7 +24,7 @@ const OrderHistoryList = () => {
         {historyOrders.length > 0 ? (
           historyOrders.map((order) => <OrderHistoryItem key={order.id} order={order} />)
         ) : (
-          <div>Tidak ada order</div>
+          <div>Belum ada riwayat pesanan</div>
         )}
       </div>
     </div>

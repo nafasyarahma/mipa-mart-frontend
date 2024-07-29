@@ -84,13 +84,11 @@ const FormEditProduct = ({ subTitle }) => {
     formData.append("description", productData.description);
 
     productData.productImages.forEach((img) => {
-      if (!img.isRemoved) {
         if (img.file) {
           formData.append("productImages", img.file);
         } else {
           formData.append("productImages", img.url);
         }
-      }
     });
 
     console.log(productData.productImages);
@@ -184,12 +182,6 @@ const FormEditProduct = ({ subTitle }) => {
           />
         </div>
 
-        <FileUploadProduct
-          label="Foto Produk"
-          images={productData.productImages}
-          onChange={handleImageChange}
-        />
-
         <TextArea
           id="description"
           name="description"
@@ -198,6 +190,13 @@ const FormEditProduct = ({ subTitle }) => {
           value={productData.description}
           onChange={handleChange}
         />
+
+        <FileUploadProduct
+          label="Foto Produk"
+          images={productData.productImages}
+          onChange={handleImageChange}
+        />
+        
         <div className="flex justify-end">
           <Button type="submit" className="mt-10 w-32" label="Simpan"></Button>
         </div>

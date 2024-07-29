@@ -64,13 +64,16 @@ const NavbarCatalog = () => {
 
   return (
     <nav className="fixed top-0 z-50 w-full bg-white text-gray-700 border-b border-gray-500">
-      <div className="flex justify-between items-center px-5 xl:px-12 py-6">
+      <div className="flex justify-between items-center px-5 xl:px-12 py-4">
+        <div className="flex flex-row items-center gap-2">
+        <img className="w-12" src="/public/assets/logo.png"></img>
         <Link
           className="text-2xl font-bold font-heading hover:text-purple-500"
           to="/"
         >
           MIPA MART
         </Link>
+        </div>
 
         {/* Responsive navbar */}
         <div className="flex items-center xl:hidden">

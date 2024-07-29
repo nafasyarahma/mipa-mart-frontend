@@ -1,33 +1,37 @@
+import { useEffect, useState } from "react";
+import CardReview from "../../Elements/basic/CardReview";
+import ProductSourceAPI from "../../../api/resources/sourceProduct";
 
-const ProductReviews = () => {
-  // if (!reviews || reviews.length === 0) {
-  //   return <p className="text-gray-500">Belum ada ulasan untuk produk ini.</p>;
-  // }
+const ProductReviews = ({ productId }) => {
+  const [reviews, setReviews] = useState([]);
+
+  useEffect(() => {
+    const fetchReviews = async (productId) => {
+      try {
+        const response = await ProductSourceAPI.getProductReview(productId);
+        setReviews(response.reviews);
+      } catch (error) {
+        console.error("Failed to fetch product:", error);
+      }
+    };
+
+    fetchReviews(productId);
+  }, [productId]);
 
   return (
-    <div className="">
-      <h2 className="text-2xl font-semibold mb-4">Ulasan Pembeli</h2>
-      <div className=" flex">
-        {/* {reviews.map((review, index) => ( */}
-          <div  className="p-4 border rounded-lg shadow-sm">
-            <div className="flex items-center mb-2">
-              <div>
-                <p className="font-semibold">Agnes Monica</p>
-                <p className="text-gray-500 text-sm">14 Juli 2025</p>
-              </div>
-            </div>
-            <div className="text-gray-700">Seger banget bikin nagih</div>  
-          </div>
-          <div  className="p-4 border rounded-lg shadow-sm">
-            <div className="flex items-center mb-2">
-              <div>
-                <p className="font-semibold">Agnes Monica</p>
-                <p className="text-gray-500 text-sm">14 Juli 2025</p>
-              </div>
-            </div>
-            <div className="text-gray-700">Seger banget bikin nagih</div>  
-          </div>
-        {/* ))} */}
+    <div className="p-6">
+      <h1 className="text-2xl font-bold mb-6 text-center">Ulasan Produk</h1>
+      <div className="flex flex-col gap-4">
+      {!reviews || reviews.length > 0 ? (
+        reviews.map((review) => (
+          <CardReview
+            key={review.id}
+            review={review}
+          />
+        ))
+      ) : (
+        <p className="text-gray-500 text-center">Belum ada ulasan untuk produk ini.</p>
+      )}
       </div>
     </div>
   );

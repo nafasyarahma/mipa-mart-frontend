@@ -51,8 +51,8 @@ const DetailProduct = () => {
 
   return (
     <CommerceLayout>
-      <div className="flex items-start flex-col md:flex-row mx-auto">
-        <div className="min-h-screen w-full md:w-1/2 p-6 relative">
+      <div className="flex items-start flex-col md:flex-row mx-auto mb-10">
+        <div className=" w-full md:w-1/2 p-6 relative">
           <SlideImage
             previousImage={previousImage}
             currentIndex={currentIndex}
@@ -61,11 +61,13 @@ const DetailProduct = () => {
           />
         </div>
 
-        <div className="min-h-screen w-full md:w-1/2 p-6">
+        <div className=" w-full md:w-1/2 p-6">
           <SectionDetailProduct product={product} />
         </div>
       </div>
-        <ProductReviews></ProductReviews>
+
+      <ProductReviews productId={id}></ProductReviews>
+      
     </CommerceLayout>
   );
 };

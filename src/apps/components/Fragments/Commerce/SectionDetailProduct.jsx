@@ -50,13 +50,13 @@ const SectionDetailProduct = ({ product }) => {
 
   return (
     <>
-      <div className="border-b-2 pb-4">
-        <p className="text-very-dark mb-4 font-bold text-2xl lg:text-4xl">
+      <div className="border-b pb-4">
+        <p className="text-very-dark mb-4 font-bold text-2xl lg:text-3xl">
           {product.name}
         </p>
         <p className="text-gray-600 font-bold text-xl">{fotmattedPrice}</p>
       </div>
-      <div className="py-4 text-sm text-gray-600 border-b-2">
+      <div className="py-4 text-sm text-gray-600 border-b">
         <p className="font-bold">Deskripsi</p>
         <p
           className="my-2"
@@ -64,7 +64,7 @@ const SectionDetailProduct = ({ product }) => {
         ></p>
       </div>
 
-      <div className="py-4 border-b-2 text-sm text-gray-600">
+      <div className="py-4 border-b text-sm text-gray-600">
         <p className="font-bold mb-2">Penjual</p>
         <div>
           <FontAwesomeIcon icon="fa-solid fa-user" />

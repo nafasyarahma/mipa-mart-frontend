@@ -79,7 +79,6 @@ const CatalogPage = () => {
             onChange={(e) => setSearchQuery(e.target.value)}
           />
         </div>
-        ;
       </div>
       
       {products.length > 0 ? (

@@ -43,7 +43,7 @@ const OrderList = () => {
             />
           ))
         ) : (
-          <div>Tidak ada order</div>
+          <div>Belum ada pesanan</div>
         )}
       </div>
     </div>
