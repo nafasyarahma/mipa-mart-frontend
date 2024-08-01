@@ -92,8 +92,18 @@ class CustomerSourceAPI {
     return response.data.message;
   }
 
+  static async cancelOrder(id) {
+    const response = await authenticatedApi.put(`${CUSTOMER_ORDER_BY_ID(id)}/cancel`);
+    return response.data.message;
+  }
+
   static async getHistoryOrder() {
     const response = await authenticatedApi.get(CUSTOMER_ORDER_HISTORY);
+    return response.data.data;
+  }
+
+  static async getOrderReviewsHistory(orderId) {
+    const response = await authenticatedApi.get(`${CUSTOMER_ORDER_BY_ID(orderId)}/review/history`);
     return response.data.data;
   }
 

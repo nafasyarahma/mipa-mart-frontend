@@ -29,9 +29,9 @@ const OrderReview = () => {
     fetchOrder(orderId);
   }, [orderId]);
 
-  const handleReviewSubmit = async (productId, comment) => {
+  const handleReviewSubmit = async (productId, rating, comment) => {
     
-    const data = {orderId, comment};
+    const data = {orderId, rating, comment};
 
     try {
       const response = await ProductSourceAPI.addProductReview(productId, data);

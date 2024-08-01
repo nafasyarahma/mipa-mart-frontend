@@ -3,8 +3,7 @@ import Button from "./basic/Button";
 import formatingDates from "../../utils/formattingDates";
 import formatingPrices from "../../utils/fotmattingPrices";
 
-const OrderItem = ({ order, handleComplete }) => {
-
+const OrderItem = ({ order, handleComplete, handleCancel }) => {
   return (
     <div className="flex flex-wrap items-start gap-y-4 gap-x-4 py-6">
       <dl className="w-full sm:w-1/3 lg:w-1/4 ">
@@ -40,7 +39,7 @@ const OrderItem = ({ order, handleComplete }) => {
       <dl className="w-1/2 sm:w-1/4 lg:w-auto lg:flex-1">
         <dt className="text-base font-medium text-gray-500">Tanggal Pesan:</dt>
         <dd className="mt-1.5 text-base font-semibold text-gray-900">
-         {formatingDates(order.created_at)}
+          {formatingDates(order.created_at)}
         </dd>
       </dl>
 
@@ -48,7 +47,14 @@ const OrderItem = ({ order, handleComplete }) => {
         <Link to={`/customer/order/${order.id}/detail`}>
           <Button label="Lihat Detail"></Button>
         </Link>
-        <Button label="Selesai" onClick={handleComplete}></Button>
+
+        {order.order_status === "pending" && (
+          <Button label="Batalkan" onClick={handleCancel}></Button>
+        )}
+
+        {order.order_status === "processed" && (
+          <Button label="Selesai" onClick={handleComplete}></Button>
+        )}
       </div>
     </div>
   );

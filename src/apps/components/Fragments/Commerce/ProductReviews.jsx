@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import CardReview from "../../Elements/basic/CardReview";
+import CardReview from "../../Elements/CardReview";
 import ProductSourceAPI from "../../../api/resources/sourceProduct";
 
 const ProductReviews = ({ productId }) => {

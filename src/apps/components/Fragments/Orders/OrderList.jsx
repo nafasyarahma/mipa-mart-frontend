@@ -31,6 +31,18 @@ const OrderList = () => {
     }
   };
 
+  const handleCancel = async (id) => {
+    try {
+      const response = await CustomerSourceAPI.cancelOrder(id);
+      const currectData = orders.filter((order) => order.id !== id);
+      setOrders(currectData);
+      ToastNotification.toastSuccess(response);
+    } catch (error) {
+      ToastNotification.toastError(error.response.data.message);
+      console.error(error);
+    }
+  };
+
   return (
     <div className="mt-6 flow-root sm:mt-8">
       <div className="divide-y divide-gray-200 dark:divide-gray-700">
@@ -40,6 +52,7 @@ const OrderList = () => {
               key={order.id}
               order={order}
               handleComplete={() => handleComplete(order.id)}
+              handleCancel={() => handleCancel(order.id)}
             />
           ))
         ) : (

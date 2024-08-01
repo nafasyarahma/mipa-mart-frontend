@@ -45,11 +45,17 @@ const OrderHistoryItem = ({ order }) => {
       </dl>
 
       <div className="w-full lg:w-60 lg:items-center flex flex-row justify-end gap-2 ">
-        {!hasAnyReview && (
+      {order.order_status === 'completed' && (
+        !hasAnyReview ? (
           <Link to={`/customer/order/${order.id}/review`}>
             <Button label="Beri Ulasan"></Button>
           </Link>
-        )}
+        ) : (
+          <Link to={`/customer/order/${order.id}/review/history`}>
+            <Button label="Lihat Ulasan"></Button>
+          </Link>
+        )
+      )}
       
       <Link to={`/customer/order/${order.id}/detail`}>
         <Button label="Lihat Detail"></Button>
