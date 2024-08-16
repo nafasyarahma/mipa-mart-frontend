@@ -36,7 +36,6 @@ const OrderDetailMember = () => {
             order={order}
           />
         )}
-        ;
       </DashboarMemberLayout>
     </>
   );

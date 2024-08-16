@@ -5,9 +5,9 @@ import FileUpload from "../../Elements/basic/FileUpload";
 const OrderPayments = ({paymentMethods, selectedPaymentMethod, onChangePaymentMethod, onFileChange }) => {
   return (
     <div>
-      <p className="text-xl font-medium">Metode Pembayaran</p>
-      <p className="text-gray-400">
-        Complete your order by providing your payment details.
+      <p className="text-xl font-medium mb-2">Metode Pembayaran</p>
+      <p className="text-gray-400 mb-6">
+        Pilih salah satu metode pembayaran yang disediakan.
       </p>
 
       <div className="mt-6">

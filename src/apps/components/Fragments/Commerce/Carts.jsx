@@ -10,15 +10,15 @@ const Cart = ({ cart, removeCart }) => {
 
   const handleDelete = async (cartItemId) => {
     try {
-      const response = await CustomerSourceAPI.deleteCartItem(cartItemId);
+      await CustomerSourceAPI.deleteCartItem(cartItemId);
       const updatedCartItems = cartItems.filter((item) => item.id !== cartItemId);
       setCartItems(updatedCartItems);
 
       if (updatedCartItems.length === 0) {
         removeCart(cart.id); 
       }
-
-      ToastNotification.toastSuccess(response);
+      window.location.reload();
+      
     } catch (error) {
       console.error("Failed to add to cart", error);
       ToastNotification.toastError(error.response.data.message);

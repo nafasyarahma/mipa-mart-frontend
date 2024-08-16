@@ -16,9 +16,13 @@ const RadioOptionPayment = ({ id, provider, no_account, name, checked, onChange 
       >
         <div className="ml-2">
           <span className="mt-2 font-semibold text-gray-600">{provider}</span>
-          <p className="font-semibold text-gray-500 text-sm leading-6 mr-8">
+          {no_account && name ? (
+            <p className="font-semibold text-gray-500 text-sm leading-6 mr-8">
             {no_account} a.n. <span className="uppercase">{name}</span>
           </p>
+          ): (
+            <p>-</p>
+          )}
         </div>
       </label>
     </div>

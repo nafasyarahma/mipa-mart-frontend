@@ -59,7 +59,7 @@ const CatalogPage = () => {
           Semua Produk
         </h1>
         <div className="flex flex-row items-center gap-6 ml-auto">
-          <select
+        <select
             id="category"
             value={selectedCategory}
             onChange={handleCategoryChange}

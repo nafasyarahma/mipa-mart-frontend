@@ -1,14 +1,25 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMinus, faPlus } from "@fortawesome/free-solid-svg-icons";
 import Button from "../../Elements/basic/Button";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import CustomerSourceAPI from "../../../api/resources/sourceCustomer";
 import ToastNotification from "../../assets/helpers/ToastNotification";
 import { useNavigate } from "react-router-dom";
+import checkAuth from "../../../utils/checkAuth";
 
 const SectionDetailProduct = ({ product }) => {
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
   const navigate = useNavigate();
   const [quantity, setQuantity] = useState(1);
+
+  useEffect(() => {
+    // Panggil checkAuth pada saat komponen di-mount
+    const roleLogged = checkAuth();
+
+    if (roleLogged === "customer") {
+      setIsAuthenticated(true);
+    }
+  }, []);
 
   const formattedDescription = product.description.replace(/\n/g, "<br />");
 
@@ -36,6 +47,13 @@ const SectionDetailProduct = ({ product }) => {
 
   const handleAddToCart = async (e) => {
     e.preventDefault();
+
+    // Cek apakah pengguna sudah login
+    if (!isAuthenticated) {
+      navigate("/login");
+      return;
+    }
+
     const data = { productId: product.id, quantity };
     
     try {

@@ -2,9 +2,11 @@ import { useEffect, useState } from "react";
 import OrderItem from "../../Elements/OrderItem";
 import CustomerSourceAPI from "../../../api/resources/sourceCustomer";
 import ToastNotification from "../../assets/helpers/ToastNotification";
+import { useNavigate } from "react-router-dom";
 
 const OrderList = () => {
   const [orders, setOrders] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchOrders = async () => {
@@ -25,6 +27,7 @@ const OrderList = () => {
       const currectData = orders.filter((order) => order.id !== id);
       setOrders(currectData);
       ToastNotification.toastSuccess(response);
+      navigate("/customer/orders/history");
     } catch (error) {
       ToastNotification.toastError(error.response.data.message);
       console.error(error);
@@ -37,6 +40,7 @@ const OrderList = () => {
       const currectData = orders.filter((order) => order.id !== id);
       setOrders(currectData);
       ToastNotification.toastSuccess(response);
+      navigate("/customer/orders/history");
     } catch (error) {
       ToastNotification.toastError(error.response.data.message);
       console.error(error);

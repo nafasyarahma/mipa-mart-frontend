@@ -6,11 +6,11 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { Link, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
-import { jwtDecode } from "jwt-decode";
 import DropdownMenuCustomer from "../Customers/DropdownMenuCustomer";
 import Button from "../../Elements/basic/Button";
 import AuthSourceAPI from "../../../api/resources/sourceAuth";
 import ToastNotification from "../../assets/helpers/ToastNotification";
+import checkAuth from "../../../utils/checkAuth";
 
 const NavbarCatalog = () => {
   const navigate = useNavigate();
@@ -26,27 +26,31 @@ const NavbarCatalog = () => {
     setDropdownVisible(!dropdownVisible);
   };
 
-  const checkAuth = () => {
-    const accessToken = localStorage.getItem("accessToken");
-    let roleLogged = null;
+  // const checkAuth = () => {
+  //   const accessToken = localStorage.getItem("accessToken");
+  //   let roleLogged = null;
 
-    if (accessToken) {
-      try {
-        const decodedToken = jwtDecode(accessToken);
-        roleLogged = decodedToken.role;
-      } catch (error) {
-        console.error("Error decoding token", error);
-      }
-    }
+  //   if (accessToken) {
+  //     try {
+  //       const decodedToken = jwtDecode(accessToken);
+  //       roleLogged = decodedToken.role;
+  //     } catch (error) {
+  //       console.error("Error decoding token", error);
+  //     }
+  //   }
+
+  //   if (roleLogged === "customer") {
+  //     setIsAuthenticated(true);
+  //   }
+  // };
+
+  useEffect(() => {
+    // Panggil checkAuth pada saat komponen di-mount
+    const roleLogged = checkAuth();
 
     if (roleLogged === "customer") {
       setIsAuthenticated(true);
     }
-  };
-
-  useEffect(() => {
-    // Panggil checkAuth pada saat komponen di-mount
-    checkAuth();
   }, []);
 
   const handleLogout = async () => {

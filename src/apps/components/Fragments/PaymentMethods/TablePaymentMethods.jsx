@@ -72,8 +72,8 @@ const TablePaymentMethods = ({ subTitle }) => {
               >
                 <td className="px-6 py-4">{index + 1}</td>
                 <td className="px-6 py-4">{method.provider}</td>
-                <td className="px-6 py-4">{method.no_account}</td>
-                <td className="px-6 py-4">{method.name}</td>
+                <td className="px-6 py-4">{method?.no_account || "-" }</td>
+                <td className="px-6 py-4">{method?.name || "-"}</td>
                 <td className="flex items-center px-6 py-4">
                   <IconButton 
                     color="red" 

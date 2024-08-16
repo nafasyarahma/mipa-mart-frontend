@@ -49,7 +49,7 @@ const FormAddPaymentMethod = ({ subTitle }) => {
           placeholder="Nomor tujuan untuk transfer"
           value={accountNumber}
           onChange={(e) => setAccountNumber(e.target.value)}
-          required
+          
         >
           Nomor/Rekening Tujuan
         </InputForm>
@@ -60,7 +60,6 @@ const FormAddPaymentMethod = ({ subTitle }) => {
           placeholder="Nama Penerima"
           value={name}
           onChange={(e) => setName(e.target.value)}
-          required
         >
           Atas Nama
         </InputForm>

@@ -2,7 +2,6 @@ import { Route } from "react-router-dom";
 import { Fragment } from "react";
 import PrivateRoute from "./utils/PrivateRoute";
 import {
-  DetailProduct,
   CartPage,
   CheckoutPage,
   OrderDetailCustomer,
@@ -16,14 +15,6 @@ import {
 const useCustomerRoutes = () => {
   return (
     <Fragment>
-      <Route
-        path="/product/:id/detail"
-        element={
-          <PrivateRoute role="customer" redirectPath="/login">
-            <DetailProduct />
-          </PrivateRoute>
-        }
-      />
       <Route
         path="/customer/cart"
         element={

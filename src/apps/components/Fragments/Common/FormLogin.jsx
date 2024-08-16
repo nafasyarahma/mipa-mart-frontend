@@ -5,10 +5,17 @@ import ToastNotification from "../../assets/helpers/ToastNotification.js";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import { jwtDecode } from "jwt-decode";
+import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const FormLogin = ({ onLoginSuccess }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [isPasswordVisible, setIsPasswordVisible] = useState(false);
+
+  const togglePasswordVisibility = () => {
+    setIsPasswordVisible(!isPasswordVisible);
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -46,17 +53,35 @@ const FormLogin = ({ onLoginSuccess }) => {
         >
           Username
         </InputForm>
-        <InputForm
-          id="password"
-          name="password"
-          type="password"
-          placeholder="Masukkan password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          required
-        >
-          Password
-        </InputForm>
+
+        <div className="relative">
+          <label
+            htmlFor="password"
+            className="block text-sm font-semibold leading-6 text-gray-900"
+          >
+            Password
+          </label>
+          <div className="relative">
+            <input
+              id="password"
+              name="password"
+              type={isPasswordVisible ? "text" : "password"}
+              placeholder="Masukkan password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+              className="block w-full rounded-md mt-2 border-0 py-1.5 px-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-1 focus:ring-inset focus:ring-indigo-500 sm:text-sm sm:leading-6"
+            />
+            <button
+              type="button"
+              onClick={togglePasswordVisibility}
+              className="absolute inset-y-0 end-0 flex items-center z-20 px-3 cursor-pointer text-gray-400 rounded-e-md focus:outline-none focus:text-blue-600"
+            >
+              <FontAwesomeIcon icon={isPasswordVisible ? faEyeSlash : faEye} />
+            </button>
+          </div>
+        </div>
+        
         <div className="text-sm text-right">
           <Link
             to="/forgot-password/choose-role"
