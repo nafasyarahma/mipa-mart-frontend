@@ -52,7 +52,8 @@ const OrderItem = ({ order, handleComplete, handleCancel }) => {
           <Button label="Batalkan" onClick={handleCancel}></Button>
         )}
 
-        {order.order_status === "processed" || "ready" && (
+        {(order.order_status === "processed" ||
+          order.order_status === "ready") && (
           <Button label="Selesai" onClick={handleComplete}></Button>
         )}
       </div>
