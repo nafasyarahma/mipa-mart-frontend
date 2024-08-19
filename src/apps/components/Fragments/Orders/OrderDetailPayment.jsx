@@ -8,9 +8,11 @@ const OrderDetailPayment = ({ order }) => {
       <h2 className="mb-4 font-bold">Metode Pembayaran</h2>
       <div className="">
         <span className="mt-2 font-semibold">{orderPayment.provider}</span>
-        <p className="text-slate-500 text-sm">
-          {orderPayment.no_account} a.n. {orderPayment.name}
-        </p>
+        {orderPayment.no_account && orderPayment.no_account && (
+          <p className="text-slate-500 text-sm">
+            {orderPayment.no_account} a.n. {orderPayment.name}
+          </p>
+        )}
 
         {order.payment_image ? (
           <Link to={order.payment_image}>
@@ -19,7 +21,7 @@ const OrderDetailPayment = ({ order }) => {
             </p>
           </Link>
         ) : (
-          <p>-</p>
+          <p className="text-sm text-gray-300 italic mt-2">Belum ada bukti pembayaran</p>
         )}
       </div>
     </div>

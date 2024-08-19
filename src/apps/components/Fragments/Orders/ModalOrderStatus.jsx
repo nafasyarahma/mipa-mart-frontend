@@ -57,7 +57,7 @@ const ModalOrderStatus = ({ id, isOpen, onClose, orderId }) => {
         isOpen ? "modal-open" : "hidden"
       } overflow-y-auto overflow-x-hidden fixed inset-0 z-50 flex justify-center  w-full md:inset-0 h-modal md:h-full`}
     >
-      <div className="relative p-4 w-full max-w-md h-full md:h-auto ">
+      <div className="relative p-4 w-full max-w-xl h-full md:h- ">
         {/* Modal Content */}
         <div className="modal-content relative p-4 bg-white rounded-lg shadow sm:p-5">
           {/* Modal header */}
@@ -97,16 +97,16 @@ const ModalOrderStatus = ({ id, isOpen, onClose, orderId }) => {
                 id="processed"
                 name="orderStatus"
                 value="processed"
-                label="Diproses"
+                label="Pesanan Diproses"
                 checked={orderStatus === "processed"}
                 onChange={handleStatusChange}
               />
               <RadioOption
-                id="rejected"
+                id="ready"
                 name="orderStatus"
-                value="rejected"
-                label="Tolak"
-                checked={orderStatus === "rejected"}
+                value="ready"
+                label="Pesanan Siap"
+                checked={orderStatus === "ready"}
                 onChange={handleStatusChange}
               />
             </div>

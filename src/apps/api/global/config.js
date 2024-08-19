@@ -1,5 +1,5 @@
 const CONFIG = {
-  BASE_URL: 'http://localhost:5000'
+  BASE_URL: 'https://mipa-mart-backend-production.up.railway.app'
 }
 
 export default CONFIG
