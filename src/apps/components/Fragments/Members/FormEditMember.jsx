@@ -46,7 +46,7 @@ const FormEditMember = ({ subTitle, memberData, handleChange, handleSumbit }) =>
           name="no_wa"
           type="text"
           placeholder="Nomor WhatsApp yang dapat dihubungi"
-          value={memberData.whatsappNumber}
+          value={memberData.no_wa}
           onChange={handleChange}
           required
         >

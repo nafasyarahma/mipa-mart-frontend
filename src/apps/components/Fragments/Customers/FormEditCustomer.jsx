@@ -41,11 +41,11 @@ const FormEditCustomer = ({ subTitle, customerData, handleChange, handleSumbit }
           Nama
         </InputForm>
         <InputForm
-          id="whatsappNumber"
-          name="whatsappNumber"
+          id="no_wa"
+          name="no_wa"
           type="text"
           placeholder="Nomor WhatsApp yang dapat dihubungi"
-          value={customerData.whatsappNumber}
+          value={customerData.no_wa}
           onChange={handleChange}
           required
         >

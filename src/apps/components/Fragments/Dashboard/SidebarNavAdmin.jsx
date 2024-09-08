@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import SidebarMenu from "../../Elements/SidebarMenu";
 import NavDashboard from "./NavDashboard";
 import AuthSourceAPI from "../../../api/resources/sourceAuth";
@@ -6,10 +6,12 @@ import ToastNotification from "../../assets/helpers/ToastNotification";
 import { useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faRightFromBracket } from "@fortawesome/free-solid-svg-icons";
+import MemberSourceAPI from "../../../api/resources/sourceMember";
 
 const SidebarNavAdmin = () => {
   const navigate = useNavigate();
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [pendingMembersCount, setPendingMembersCount] = useState(0);
 
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
@@ -27,6 +29,30 @@ const SidebarNavAdmin = () => {
       ToastNotification.toastError(error.response.data.message);
     }
   };
+
+  const fetchMembers = async () => {
+    try {
+      const response = await MemberSourceAPI.getAllMembers();
+      return response.members;
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+  const countMemberPending = (members) => {
+    const pendingMembers = members.filter(member => member.verif_status === "pending");
+    return pendingMembers.length;
+  }
+
+  useEffect(() => {
+    const getMemberData = async () => {
+      const members = await fetchMembers();
+      const pendingCount = await countMemberPending(members);
+      setPendingMembersCount(pendingCount);
+    }
+
+    getMemberData();
+  }, []);
 
   return (
     <>
@@ -61,6 +87,7 @@ const SidebarNavAdmin = () => {
               link="/admin/members"
               icon="fa-solid fa-address-card"
               label="Member"
+              badgeCount={pendingMembersCount}
             />
             <SidebarMenu
               link="/admin/customers"
